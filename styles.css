@@ -548,3 +548,30 @@ h2::after {
     padding: 20px 16px;
   }
 }
+
+/* Стили для изображений в карточках курсов */
+.course-image {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  margin-top: 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.course-card:hover .course-image {
+  transform: scale(1.03);
+}
+
+/* Стили для изображения в CTA-блоке */
+.cta-image {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  margin: 24px auto 32px;
+  display: block;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  animation: zoomIn 0.8s ease forwards;
+}
