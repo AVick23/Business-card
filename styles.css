@@ -186,6 +186,52 @@ h2::after {
   line-height: 1;
 }
 
+/* ➕ Философия преподавания */
+.philosophy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.phil-item {
+  background: var(--md-sys-color-surface-variant);
+  padding: 28px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.phil-item.animated {
+  animation: glideUp 0.6s var(--transition-base) forwards;
+}
+
+.phil-item:hover {
+  background: #3a3a3a;
+  transform: translateY(-5px);
+}
+
+.phil-item .material-icons-round {
+  font-size: 42px;
+  color: var(--md-sys-color-primary);
+  margin-bottom: 16px;
+}
+
+.phil-item h3 {
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+  color: var(--md-sys-color-on-surface);
+}
+
+.phil-item p {
+  font-size: 1rem;
+  color: var(--md-sys-color-on-surface-variant);
+  line-height: 1.6;
+}
+
+/* Курсы */
 .courses .course-grid {
   display: grid;
   gap: 32px;
@@ -235,6 +281,79 @@ h2::after {
   line-height: 1.6;
 }
 
+/* ➕ Список "Ты научишься" */
+.outcome-list {
+  margin-top: 16px;
+  padding-left: 20px;
+  font-size: 0.95rem;
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.outcome-list li {
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.outcome-list li::before {
+  content: '✓';
+  color: var(--md-sys-color-primary);
+  font-weight: bold;
+  position: absolute;
+  left: -20px;
+}
+
+/* ➕ Отзывы */
+.testimonials {
+  margin: 80px 0;
+}
+
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 32px;
+  margin-top: 40px;
+}
+
+.testimonial-card {
+  background: var(--md-sys-color-surface-variant);
+  padding: 32px;
+  border-radius: 24px;
+  position: relative;
+  font-style: italic;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.testimonial-card.animated {
+  animation: glideUp 0.6s var(--transition-base) forwards;
+}
+
+.testimonial-card::before {
+  content: '"';
+  position: absolute;
+  top: 16px;
+  left: 24px;
+  font-size: 5rem;
+  color: rgba(187, 134, 252, 0.1);
+  font-family: serif;
+  line-height: 1;
+}
+
+.testimonial-card p {
+  margin-bottom: 24px;
+  padding-left: 20px;
+  color: var(--md-sys-color-on-surface);
+  font-size: 1.05rem;
+}
+
+.author {
+  font-weight: 600;
+  color: var(--md-sys-color-primary);
+  font-style: normal;
+  text-align: right;
+}
+
+/* Контакты */
 .contact h2 {
   margin-bottom: 40px;
 }
@@ -280,33 +399,74 @@ h2::after {
   border-color: var(--md-sys-color-primary);
 }
 
-.socials {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  margin-top: 32px;
+/* ➕ CTA Кнопка */
+.cta-section {
+  margin: 80px 0;
+  text-align: center;
 }
 
-.social-link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 64px;
-  height: 64px;
-  background: var(--md-sys-color-surface-variant);
-  color: var(--md-sys-color-on-surface-variant);
-  border-radius: 50%;
+.cta-box {
+  background: linear-gradient(135deg, #3700B3, #6750A4);
+  padding: 48px;
+  border-radius: 28px;
+  box-shadow: 0 10px 30px rgba(103, 80, 164, 0.3);
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-box::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+  animation: pulse 3s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.95); opacity: 0.7; }
+  50% { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(0.95); opacity: 0.7; }
+}
+
+.cta-box h2 {
+  color: white;
+  margin-bottom: 16px;
+  font-size: 2.2rem;
+}
+
+.cta-box p {
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 32px;
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-button {
+  display: inline-block;
+  background: white;
+  color: #6750A4;
+  font-weight: 600;
+  padding: 16px 48px;
+  border-radius: 50px;
   text-decoration: none;
-  font-size: 32px;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
   transition: all 0.3s ease;
-  opacity: 0;
+  border: 2px solid transparent;
 }
 
-.social-link:hover {
-  background: var(--md-sys-color-primary);
-  color: var(--md-sys-color-on-primary);
-  transform: translateY(-6px) rotate(10deg);
-  box-shadow: 0 8px 20px rgba(187, 134, 252, 0.4);
+.cta-button:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+  background: #f9f9f9;
+  border-color: white;
 }
 
 .footer {
@@ -341,14 +501,22 @@ h2::after {
     font-size: 40px;
   }
 
-  .contact-list {
-    gap: 16px;
+  .testimonial-grid,
+  .philosophy-grid {
+    grid-template-columns: 1fr;
   }
 
-  .social-link {
-    width: 56px;
-    height: 56px;
-    font-size: 28px;
+  .cta-box {
+    padding: 32px 24px;
+  }
+
+  .cta-box h2 {
+    font-size: 1.8rem;
+  }
+
+  .cta-button {
+    padding: 14px 36px;
+    font-size: 1rem;
   }
 }
 
