@@ -1,23 +1,26 @@
-/* Material Design 3 — Deep Black Theme + Animations + Photo */
+/* === APPLE-СТИЛЬ: МАГИЯ === */
 
 :root {
-  --md-sys-color-primary: #BB86FC;        /* Акцент — фиолетовый */
-  --md-sys-color-on-primary: #000000;
-  --md-sys-color-primary-container: #3700B3;
-  --md-sys-color-on-primary-container: #E1E1FF;
+  /* Цвета: чистый, нейтральный, с акцентом */
+  --apple-bg: #000000;                    /* Глубокий чёрный, как в Dark Mode */
+  --apple-surface: #0f0f0f;               /* Поверхность — чуть светлее */
+  --apple-on-surface: #f5f5f7;            /* Белый-серый текст */
+  --apple-on-surface-variant: #b8b8c0;    /* Полупрозрачный текст */
+  --apple-accent: #5856D6;                /* Apple Blue — не яркий, а глубокий */
+  --apple-accent-light: #6a68e0;
+  --apple-outline: rgba(255,255,255,0.1);
 
-  --md-sys-color-surface: #121212;        /* Глубокий чёрный фон */
-  --md-sys-color-on-surface: #EDEDED;     /* Основной текст */
-  --md-sys-color-surface-variant: #2D2D2D;
-  --md-sys-color-on-surface-variant: #B3B3B3;
+  /* Тени: очень мягкие, как в iOS */
+  --apple-shadow-xs: 0 1px 3px rgba(0,0,0,0.2);
+  --apple-shadow-sm: 0 2px 8px rgba(0,0,0,0.25);
+  --apple-shadow-md: 0 4px 16px rgba(0,0,0,0.3);
+  --apple-shadow-lg: 0 8px 32px rgba(0,0,0,0.35);
 
-  --md-sys-color-outline: #666666;
-
-  --md-sys-elevation-level1: 0 2px 4px rgba(0,0,0,0.4);
-  --md-sys-elevation-level2: 0 4px 8px rgba(0,0,0,0.5);
-  --md-sys-elevation-level3: 0 8px 16px rgba(0,0,0,0.6);
-
-  --transition-base: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  /* Анимации: физичные, как в UIKit */
+  --apple-ease-out: cubic-bezier(0.3, 0.7, 0.4, 1); /* Классический Apple easing */
+  --apple-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 0.3s var(--apple-ease-out);
+  --transition-slow: 0.5s var(--apple-ease-out);
 }
 
 * {
@@ -27,71 +30,77 @@
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
-  background-color: var(--md-sys-color-surface);
-  color: var(--md-sys-color-on-surface);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background-color: var(--apple-bg);
+  color: var(--apple-on-surface);
   line-height: 1.7;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 32px 24px;
+  padding: 48px 24px;
 }
 
-/* ==== Анимации ==== */
+/* ==== МАГИЧЕСКИЕ АНИМАЦИИ ====
+   Как будто объекты возникают из тумана... */
 
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(40px); }
-  to { opacity: 1; transform: translateY(0); }
+@keyframes fadeInFromAbove {
+  from { opacity: 0; transform: translateY(-30px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-@keyframes slideInLeft {
-  from { opacity: 0; transform: translateX(-50px); }
-  to { opacity: 1; transform: translateX(0); }
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 12px rgba(88, 86, 214, 0.3); }
+  50% { box-shadow: 0 0 24px rgba(88, 86, 214, 0.6); }
 }
 
-@keyframes slideInRight {
-  from { opacity: 0; transform: translateX(50px); }
-  to { opacity: 1; transform: translateX(0); }
+@keyframes breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.01); }
 }
 
-@keyframes zoomIn {
-  from { opacity: 0; transform: scale(0.9); }
-  to { opacity: 1; transform: scale(1); }
+@keyframes floatUp {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+  100% { transform: translateY(0); }
 }
 
-@keyframes glideUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+.fade-in-from-above.animated {
+  animation: fadeInFromAbove 0.7s var(--apple-ease-out) forwards;
+  opacity: 0;
 }
 
-@keyframes pulseDivider {
-  0%, 100% { transform: scaleX(0); }
-  50% { transform: scaleX(1); }
+.pulse-glow {
+  animation: glowPulse 2s infinite alternate;
 }
 
-.fade-in-up.animated { animation: fadeInUp 0.8s var(--transition-base) forwards; }
-.slide-in-left.animated { animation: slideInLeft 0.8s var(--transition-base) forwards; }
-.slide-in-right.animated { animation: slideInRight 0.8s var(--transition-base) forwards; }
-.zoom-in.animated { animation: zoomIn 0.6s var(--transition-base) forwards; }
-.glide-up.animated { animation: glideUp 0.6s var(--transition-base) forwards; }
+.breathe {
+  animation: breathe 3s ease-in-out infinite;
+}
 
-.delay-1 { animation-delay: 0.2s; }
-.delay-2 { animation-delay: 0.4s; }
-.delay-3 { animation-delay: 0.6s; }
+.float-up {
+  animation: floatUp 4s ease-in-out infinite;
+}
 
-/* ==== Стили компонентов ==== */
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+
+/* ==== HEADER — ЧИСТОТА И МАГИЯ ==== */
 
 .header {
   text-align: center;
-  padding: 60px 24px 40px;
+  padding: 80px 24px 60px;
   position: relative;
+  overflow: hidden;
 }
 
 .avatar-container {
-  margin-bottom: 32px;
+  margin-bottom: 40px;
 }
 
 .avatar {
@@ -99,80 +108,103 @@ body {
   height: 160px;
   border-radius: 50%;
   object-fit: cover;
-  border: 4px solid var(--md-sys-color-primary);
-  box-shadow: 0 8px 24px rgba(187, 134, 252, 0.3);
-  transition: all 0.4s ease;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: var(--apple-shadow-md);
+  transition: all 0.4s var(--apple-ease-out);
+  will-change: transform, box-shadow;
 }
 
 .avatar:hover {
-  transform: scale(1.05) rotate(5deg);
-  box-shadow: 0 12px 32px rgba(187, 134, 252, 0.5);
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: var(--apple-shadow-lg);
+  border-color: rgba(88, 86, 214, 0.4);
 }
 
 .name {
-  font-size: clamp(2.5rem, 8vw, 3.5rem);
-  font-weight: 700;
-  background: linear-gradient(135deg, #BB86FC, #03DAC6);
+  font-size: clamp(2.8rem, 9vw, 4rem);
+  font-weight: 600;
+  background: linear-gradient(135deg, #ffffff, #d1d1d6);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  letter-spacing: -0.5px;
-  margin-bottom: 12px;
+  letter-spacing: -0.8px;
+  margin-bottom: 16px;
   opacity: 0;
-  animation: fadeInUp 1s 0.3s forwards;
+  animation: fadeInFromAbove 0.8s var(--apple-ease-out) 0.2s forwards;
 }
 
 .subtitle {
-  font-size: clamp(1.2rem, 4vw, 1.5rem);
+  font-size: clamp(1.3rem, 4vw, 1.8rem);
   font-weight: 400;
-  color: var(--md-sys-color-on-surface-variant);
+  color: var(--apple-on-surface-variant);
   opacity: 0;
-  animation: fadeInUp 1s 0.6s forwards;
+  animation: fadeInFromAbove 0.8s var(--apple-ease-out) 0.4s forwards;
 }
 
+/* === ПУЛЬСИРУЮЩИЙ АКЦЕНТНЫЙ ЭЛЕМЕНТ === */
 .pulse-divider {
   width: 100px;
-  height: 3px;
-  background: var(--md-sys-color-primary);
-  margin: 32px auto;
-  border-radius: 2px;
-  transform-origin: center;
-  animation: pulseDivider 1.5s infinite ease-in-out;
+  height: 1px;
+  background: rgba(88, 86, 214, 0.5);
+  margin: 40px auto;
+  border-radius: 100vw;
   opacity: 0;
-  animation-fill-mode: forwards;
-  animation-delay: 1.2s;
+  animation: fadeInFromAbove 0.8s var(--apple-ease-out) 0.6s forwards;
+  position: relative;
 }
 
+.pulse-divider::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--apple-accent);
+  box-shadow: 0 0 16px rgba(88, 86, 214, 0.4);
+  animation: glowPulse 1.8s infinite alternate;
+}
+
+/* === ФИЛОСОФИЯ, КУРСЫ, ОТЗЫВЫ — СТИЛЬ APPLE === */
+
 section {
-  margin: 80px 0;
+  margin: 100px 0;
 }
 
 h2 {
-  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  font-size: clamp(2rem, 5vw, 2.8rem);
   font-weight: 600;
   position: relative;
   display: inline-block;
-  margin-bottom: 32px;
+  margin-bottom: 48px;
+  color: var(--apple-on-surface);
+  opacity: 0;
+  animation: fadeInFromAbove 0.8s var(--apple-ease-out) 0.2s forwards;
 }
 
 h2::after {
   content: '';
   position: absolute;
-  left: 0;
-  bottom: -8px;
+  left: 50%;
+  bottom: -16px;
+  transform: translateX(-50%);
   width: 60px;
-  height: 4px;
-  background: var(--md-sys-color-primary);
-  border-radius: 2px;
+  height: 1px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 100vw;
 }
 
 .about p {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   max-width: 800px;
-  margin: 16px auto;
-  line-height: 1.8;
-  color: var(--md-sys-color-on-surface-variant);
+  margin: 24px auto;
+  line-height: 1.9;
+  color: var(--apple-on-surface-variant);
   position: relative;
+  opacity: 0;
+  animation: fadeInFromAbove 0.8s var(--apple-ease-out) 0.3s forwards;
 }
 
 .about p::before {
@@ -181,57 +213,69 @@ h2::after {
   left: -24px;
   top: -8px;
   font-size: 4rem;
-  color: rgba(187, 134, 252, 0.1);
-  font-family: serif;
+  color: rgba(255,255,255,0.05);
+  font-family: Georgia, serif;
   line-height: 1;
 }
 
-/* ➕ Философия преподавания */
+/* === ГРИД ФИЛОСОФИИ === */
 .philosophy-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 24px;
-  margin-top: 32px;
+  gap: 32px;
+  margin-top: 40px;
 }
 
 .phil-item {
-  background: var(--md-sys-color-surface-variant);
-  padding: 28px;
-  border-radius: 20px;
-  transition: all 0.3s ease;
+  background: var(--apple-surface);
+  padding: 32px;
+  border-radius: 24px;
+  transition: all 0.3s var(--apple-ease-out);
   text-align: center;
+  border: 1px solid rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   opacity: 0;
   transform: translateY(20px);
+  box-shadow: var(--apple-shadow-sm);
 }
 
 .phil-item.animated {
-  animation: glideUp 0.6s var(--transition-base) forwards;
+  animation: fadeInFromAbove 0.7s var(--apple-ease-out) forwards;
 }
 
 .phil-item:hover {
-  background: #3a3a3a;
-  transform: translateY(-5px);
+  transform: translateY(-6px);
+  box-shadow: var(--apple-shadow-md);
+  background: rgba(255,255,255,0.02);
+  border-color: rgba(255,255,255,0.1);
 }
 
 .phil-item .material-icons-round {
-  font-size: 42px;
-  color: var(--md-sys-color-primary);
+  font-size: 40px;
+  color: var(--apple-accent);
   margin-bottom: 16px;
+  transition: transform 0.3s var(--apple-ease-out);
+}
+
+.phil-item:hover .material-icons-round {
+  transform: scale(1.1);
 }
 
 .phil-item h3 {
   font-size: 1.3rem;
   margin-bottom: 12px;
-  color: var(--md-sys-color-on-surface);
+  color: var(--apple-on-surface);
+  font-weight: 600;
 }
 
 .phil-item p {
   font-size: 1rem;
-  color: var(--md-sys-color-on-surface-variant);
-  line-height: 1.6;
+  color: var(--apple-on-surface-variant);
+  line-height: 1.7;
 }
 
-/* Курсы */
+/* === КУРСЫ === */
 .courses .course-grid {
   display: grid;
   gap: 32px;
@@ -243,70 +287,55 @@ h2::after {
   align-items: flex-start;
   gap: 24px;
   padding: 32px;
-  background: var(--md-sys-color-surface-variant);
-  border-radius: 24px;
-  box-shadow: var(--md-sys-elevation-level1);
-  transition: all 0.4s ease;
+  background: var(--apple-surface);
+  border-radius: 28px;
+  transition: all 0.35s var(--apple-ease-out);
   text-decoration: none;
   color: inherit;
+  border: 1px solid rgba(255,255,255,0.05);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   opacity: 0;
+  transform: translateY(20px);
+  box-shadow: var(--apple-shadow-sm);
+}
+
+.course-card.animated {
+  animation: fadeInFromAbove 0.7s var(--apple-ease-out) forwards;
 }
 
 .course-card:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--md-sys-elevation-level3);
-  background: #333333;
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: var(--apple-shadow-lg);
+  background: rgba(255,255,255,0.03);
+  border-color: rgba(255,255,255,0.1);
 }
 
 .course-card .material-icons-round {
-  font-size: 48px;
-  color: var(--md-sys-color-primary);
-  transition: transform 0.3s ease;
+  font-size: 52px;
+  color: var(--apple-accent);
+  transition: transform 0.3s var(--apple-ease-out), filter 0.3s;
 }
 
 .course-card:hover .material-icons-round {
-  transform: rotate(15deg) scale(1.1);
+  transform: rotate(5deg) scale(1.1);
+  filter: brightness(1.2);
 }
 
 .course-card h3 {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 12px;
-  color: var(--md-sys-color-on-surface);
+  color: var(--apple-on-surface);
 }
 
 .course-card p {
   font-size: 1.05rem;
-  color: var(--md-sys-color-on-surface-variant);
-  line-height: 1.6;
+  color: var(--apple-on-surface-variant);
+  line-height: 1.7;
 }
 
-/* ➕ Список "Ты научишься" */
-.outcome-list {
-  margin-top: 16px;
-  padding-left: 20px;
-  font-size: 0.95rem;
-  color: var(--md-sys-color-on-surface-variant);
-}
-
-.outcome-list li {
-  margin-bottom: 8px;
-  position: relative;
-}
-
-.outcome-list li::before {
-  content: '✓';
-  color: var(--md-sys-color-primary);
-  font-weight: bold;
-  position: absolute;
-  left: -20px;
-}
-
-/* ➕ Отзывы */
-.testimonials {
-  margin: 80px 0;
-}
-
+/* === ОТЗЫВЫ === */
 .testimonial-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -315,17 +344,21 @@ h2::after {
 }
 
 .testimonial-card {
-  background: var(--md-sys-color-surface-variant);
-  padding: 32px;
-  border-radius: 24px;
+  background: var(--apple-surface);
+  padding: 36px;
+  border-radius: 28px;
   position: relative;
   font-style: italic;
+  border: 1px solid rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   opacity: 0;
-  transform: translateY(30px);
+  transform: translateY(20px);
+  box-shadow: var(--apple-shadow-sm);
 }
 
 .testimonial-card.animated {
-  animation: glideUp 0.6s var(--transition-base) forwards;
+  animation: fadeInFromAbove 0.7s var(--apple-ease-out) forwards;
 }
 
 .testimonial-card::before {
@@ -334,30 +367,26 @@ h2::after {
   top: 16px;
   left: 24px;
   font-size: 5rem;
-  color: rgba(187, 134, 252, 0.1);
-  font-family: serif;
+  color: rgba(255,255,255,0.04);
+  font-family: Georgia, serif;
   line-height: 1;
 }
 
 .testimonial-card p {
   margin-bottom: 24px;
   padding-left: 20px;
-  color: var(--md-sys-color-on-surface);
-  font-size: 1.05rem;
+  color: var(--apple-on-surface);
+  font-size: 1.1rem;
 }
 
 .author {
   font-weight: 600;
-  color: var(--md-sys-color-primary);
+  color: var(--apple-accent);
   font-style: normal;
   text-align: right;
 }
 
-/* Контакты */
-.contact h2 {
-  margin-bottom: 40px;
-}
-
+/* === КОНТАКТЫ === */
 .contact-list {
   display: flex;
   flex-direction: column;
@@ -370,50 +399,72 @@ h2::after {
   align-items: center;
   gap: 16px;
   padding: 20px;
-  background: var(--md-sys-color-surface-variant);
-  border-radius: 16px;
-  transition: all 0.3s ease;
+  background: var(--apple-surface);
+  border-radius: 20px;
+  transition: all 0.3s var(--apple-ease-out);
   cursor: pointer;
+  border: 1px solid rgba(255,255,255,0.05);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   opacity: 0;
+  transform: translateY(20px);
+  box-shadow: var(--apple-shadow-sm);
+}
+
+.contact-item.animated {
+  animation: fadeInFromAbove 0.7s var(--apple-ease-out) forwards;
 }
 
 .contact-item:hover {
-  background: #444;
-  transform: translateX(8px);
+  transform: translateX(8px) scale(1.01);
+  box-shadow: var(--apple-shadow-md);
+  background: rgba(255,255,255,0.02);
+  border-color: rgba(255,255,255,0.1);
 }
 
 .contact-item .material-icons-round {
   font-size: 28px;
-  color: var(--md-sys-color-primary);
+  color: var(--apple-accent);
+  transition: transform 0.3s var(--apple-ease-out);
+}
+
+.contact-item:hover .material-icons-round {
+  transform: scale(1.1);
 }
 
 .contact-item a {
-  color: var(--md-sys-color-on-surface);
+  color: var(--apple-on-surface);
   text-decoration: none;
   font-size: 1.1rem;
-  border-bottom: 2px solid transparent;
+  border-bottom: 1px solid transparent;
   transition: border-color 0.3s;
 }
 
 .contact-item a:hover {
-  border-color: var(--md-sys-color-primary);
+  border-color: rgba(88, 86, 214, 0.5);
 }
 
-/* ➕ CTA Кнопка */
+/* === CTA — МАГИЯ В ДЕЙСТВИИ === */
 .cta-section {
-  margin: 80px 0;
+  margin: 120px 0;
   text-align: center;
+  position: relative;
+  overflow: hidden;
 }
 
 .cta-box {
-  background: linear-gradient(135deg, #3700B3, #6750A4);
-  padding: 48px;
-  border-radius: 28px;
-  box-shadow: 0 10px 30px rgba(103, 80, 164, 0.3);
+  background: rgba(15, 15, 15, 0.7);
+  padding: 64px;
+  border-radius: 32px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: var(--apple-shadow-lg);
   max-width: 800px;
   margin: 0 auto;
   position: relative;
-  overflow: hidden;
+  opacity: 0;
+  animation: fadeInFromAbove 0.9s var(--apple-ease-out) 0.4s forwards;
 }
 
 .cta-box::before {
@@ -423,68 +474,87 @@ h2::after {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-  animation: pulse 3s infinite;
-  pointer-events: none; /* 👈 ЭТО КЛЮЧЕВАЯ СТРОКА */
-  z-index: 1; /* Опционально — если другие элементы тоже перекрывают */
+  background: radial-gradient(circle at center, rgba(88, 86, 214, 0.05) 0%, transparent 70%);
+  animation: pulse 4s infinite ease-in-out;
+  pointer-events: none;
+  z-index: -1;
+  border-radius: 50%;
 }
 
 @keyframes pulse {
-  0% { transform: scale(0.95); opacity: 0.7; }
-  50% { transform: scale(1.05); opacity: 1; }
-  100% { transform: scale(0.95); opacity: 0.7; }
+  0%, 100% { transform: scale(1); opacity: 0.08; }
+  50% { transform: scale(1.1); opacity: 0.15; }
 }
 
 .cta-box h2 {
   color: white;
   margin-bottom: 16px;
-  font-size: 2.2rem;
+  font-size: 2.5rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, #ffffff, #d1d1d6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: breathe 4s ease-in-out infinite;
+  letter-spacing: -0.5px;
 }
 
 .cta-box p {
-  color: rgba(255,255,255,0.9);
-  margin-bottom: 32px;
-  font-size: 1.1rem;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 40px;
+  font-size: 1.2rem;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
+  line-height: 1.8;
 }
 
 .cta-button {
   display: inline-block;
-  background: white;
-  color: #6750A4;
+  background: rgba(255,255,255,0.1);
+  color: white;
   font-weight: 600;
-  padding: 16px 48px;
-  border-radius: 50px;
+  padding: 18px 48px;
+  border-radius: 32px;
   text-decoration: none;
   font-size: 1.1rem;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-  transition: all 0.3s ease;
-  border: 2px solid transparent;
+  border: 1px solid rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.3s var(--apple-ease-out);
+  box-shadow: var(--apple-shadow-xs);
+  letter-spacing: 0.5px;
 }
 
 .cta-button:hover {
+  background: rgba(255,255,255,0.18);
   transform: translateY(-4px);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-  background: #f9f9f9;
-  border-color: white;
+  box-shadow: var(--apple-shadow-md);
+  border-color: rgba(255,255,255,0.25);
 }
 
+.cta-button:active {
+  transform: translateY(-1px);
+}
+
+/* === FOOTER === */
 .footer {
   text-align: center;
   padding: 48px 0 24px;
-  color: var(--md-sys-color-on-surface-variant);
+  color: var(--apple-on-surface-variant);
   font-size: 0.95rem;
-  border-top: 1px solid var(--md-sys-color-outline);
+  border-top: 1px solid var(--apple-outline);
   margin-top: 60px;
 }
 
-/* Адаптивность */
-
+/* === АДАПТИВНОСТЬ === */
 @media (max-width: 768px) {
   .container {
-    padding: 20px 16px;
+    padding: 32px 16px;
+  }
+
+  .header {
+    padding: 60px 16px 40px;
   }
 
   .avatar {
@@ -492,39 +562,35 @@ h2::after {
     height: 120px;
   }
 
-  .course-card {
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-    padding: 24px;
+  .name {
+    font-size: 2.4rem;
   }
 
-  .course-card .material-icons-round {
-    font-size: 40px;
-  }
-
-  .testimonial-grid,
-  .philosophy-grid {
-    grid-template-columns: 1fr;
+  .subtitle {
+    font-size: 1.4rem;
   }
 
   .cta-box {
-    padding: 32px 24px;
+    padding: 48px 24px;
   }
 
   .cta-box h2 {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
 
   .cta-button {
-    padding: 14px 36px;
+    padding: 16px 40px;
     font-size: 1rem;
   }
 }
 
 @media (max-width: 480px) {
+  .container {
+    padding: 24px 12px;
+  }
+
   .header {
-    padding: 40px 16px 30px;
+    padding: 40px 12px 30px;
   }
 
   .avatar {
@@ -533,21 +599,33 @@ h2::after {
   }
 
   .name {
-    font-size: 2.2rem;
-  }
-
-  .subtitle {
-    font-size: 1.1rem;
-  }
-
-  h2 {
     font-size: 2rem;
   }
 
-  .course-card {
-    padding: 20px 16px;
+  .subtitle {
+    font-size: 1.2rem;
+  }
+
+  .cta-box {
+    padding: 40px 20px;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  .phil-item,
+  .course-card,
+  .testimonial-card,
+  .contact-item {
+    padding: 24px;
+  }
+
+  .course-card .material-icons-round {
+    font-size: 44px;
   }
 }
+
 
 /* Стили для изображений в карточках курсов */
 .course-image {
