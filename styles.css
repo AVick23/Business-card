@@ -1,553 +1,285 @@
-/* === Глобальные переменные: глассморфизм в стиле Apple (dark mode) === */
-:root {
-  --primary: #6366f1;           /* Apple-style indigo */
-  --primary-light: rgba(99, 102, 241, 0.2);
-  --accent: #ff6b61;            /* тёплый акцент для CTA */
-  --text: #f0f0f0;
-  --text-light: #a0a0a6;
-  --bg: #0f0f12;                /* глубокий фон, как в macOS dark mode */
-  --bg-light: rgba(30, 30, 35, 0.6);
-  --card-bg: rgba(255, 255, 255, 0.05);
-  --card-border: rgba(255, 255, 255, 0.08);
-  --highlight-bg: rgba(99, 102, 241, 0.12);
-  --radius: 20px;
-  --gap: 24px;
-  --container-width: 880px;
-  --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  --shadow-hover: 0 12px 40px rgba(0, 0, 0, 0.4);
-  --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
+/* ===== Сброс и базовые настройки ===== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
+:root {
+  /* Тёмно-пастельная неоморфическая палитра */
+  --bg: #1e1f29;               /* Основной фон */
+  --card-bg: #252736;          /* Фон карточек и блоков */
+  --text: #e0e0ff;             /* Основной текст */
+  --text-muted: #a8aacc;       /* Второстепенный текст */
+  --accent: #8a8cff;           /* Акцентный цвет (фиолетово-лавандовый) */
+  --success: #7bd9a5;          /* Успех / прогресс */
+  --warning: #ffb366;          /* Предупреждение (места заканчиваются) */
+
+  /* Неоморфические тени */
+  --shadow-light: 8px 8px 16px rgba(0, 0, 0, 0.4), -8px -8px 16px rgba(255, 255, 255, 0.03);
+  --shadow-inset: inset 4px 4px 8px rgba(0, 0, 0, 0.4), inset -4px -4px 8px rgba(255, 255, 255, 0.03);
+  --shadow-flat: 0 4px 12px rgba(0, 0, 0, 0.25);
+
+  /* Прочее */
+  --radius: 18px;
+  --transition: all 0.3s ease;
 }
 
 body {
-  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
-  line-height: 1.65;
-  color: var(--text);
+  font-family: 'Inter', sans-serif;
   background-color: var(--bg);
-  font-size: 16px;
-  background: 
-    radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.05) 0%, transparent 20%),
-    radial-gradient(circle at 90% 80%, rgba(255, 107, 97, 0.04) 0%, transparent 25%),
-    var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
 }
 
 .container {
-  max-width: var(--container-width);
+  width: 90%;
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 0 var(--gap);
+  padding: 0 1rem;
 }
 
-/* === Утилиты === */
-.text-center { text-align: center; }
-.mb-32 { margin-bottom: 32px; }
-.mb-24 { margin-bottom: 24px; }
-.mt-16 { margin-top: 16px; }
-.highlight {
-  background: linear-gradient(120deg, rgba(99, 102, 241, 0.25) 0%, transparent 100%);
-  padding: 0 6px;
-  border-radius: 6px;
-  font-weight: 600;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
-}
-
-/* === Hero === */
-.hero {
-  padding: 96px var(--gap) 72px;
-  text-align: center;
-  position: relative;
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  background: rgba(15, 15, 18, 0.6);
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius);
-  margin: 32px var(--gap);
-  box-shadow: var(--shadow);
-}
-.avatar-large {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid var(--primary);
-  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2), 0 10px 30px rgba(0, 0, 0, 0.4);
-}
-.hero h1 {
-  font-size: 2.8rem;
+/* ===== Общие стили ===== */
+h1, h2, h3, h4 {
   font-weight: 700;
   line-height: 1.2;
-  margin: 32px 0 20px;
-  background: linear-gradient(to bottom, #fff, #d0d0d6);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
+  margin-bottom: 1rem;
 }
+
+h1 {
+  font-size: 2.5rem;
+}
+h2 {
+  font-size: 2rem;
+  margin-top: 2.5rem;
+}
+h3 {
+  font-size: 1.5rem;
+}
+h4 {
+  font-size: 1.25rem;
+}
+
+p {
+  margin-bottom: 1rem;
+  color: var(--text-muted);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ===== Hero ===== */
+.hero {
+  padding: 4rem 0 3rem;
+  text-align: center;
+  background: var(--bg);
+}
+
+.avatar-large {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1.5rem;
+  border: 2px solid var(--accent);
+  box-shadow: var(--shadow-light);
+}
+
+.highlight {
+  color: var(--accent);
+}
+
 .subtitle {
   font-size: 1.25rem;
-  color: var(--text-light);
-  max-width: 720px;
-  margin: 0 auto 32px;
-  font-weight: 400;
-}
-.stats-badge {
-  background: rgba(99, 102, 241, 0.15);
-  display: inline-block;
-  padding: 10px 24px;
-  border-radius: 50px;
-  font-size: 1rem;
-  color: var(--text);
-  margin: 24px 0;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  font-weight: 500;
+  max-width: 600px;
+  margin: 0 auto 1.5rem;
 }
 
-/* === Кнопки === */
+.stats-badge {
+  background: var(--card-bg);
+  padding: 0.8rem 1.5rem;
+  border-radius: var(--radius);
+  display: inline-block;
+  margin: 1.5rem 0;
+  box-shadow: var(--shadow-light);
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
 .button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 16px 36px;
-  border-radius: 50px;
+  display: inline-block;
+  padding: 1rem 2rem;
+  border-radius: var(--radius);
   font-weight: 600;
-  text-decoration: none;
-  transition: var(--transition);
-  white-space: nowrap;
-  font-size: 1.1rem;
+  text-align: center;
   cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow-light);
+  background: var(--card-bg);
+  color: var(--text);
   border: none;
-  font-family: inherit;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  font-size: 1.1rem;
 }
+
 .button.primary {
-  background: linear-gradient(135deg, var(--primary), #5b5fc7);
-  color: white;
-  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+  background: var(--accent);
+  color: #0f0f1a;
+  font-weight: 700;
+  box-shadow: var(--shadow-light);
 }
+
 .button.primary:hover {
-  background: linear-gradient(135deg, #5b5fc7, #4a4dbf);
-  transform: translateY(-3px);
-  box-shadow: 0 8px 28px rgba(99, 102, 241, 0.4);
+  background: #7a7cff;
+  transform: translateY(-2px);
 }
-.button.secondary {
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--primary);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+
+.button.large {
+  padding: 1.2rem 2.5rem;
+  font-size: 1.25rem;
 }
-.button.secondary:hover {
-  background: rgba(255, 255, 255, 0.12);
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-}
-.button.small { padding: 12px 24px; font-size: 0.95rem; }
-.button.large { padding: 18px 44px; font-size: 1.2rem; }
-.button.primary.pulse {
+
+.pulse {
   animation: pulse 2s infinite;
 }
+
 @keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.5); }
-  70% { box-shadow: 0 0 0 16px rgba(99, 102, 241, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0); }
+  0% { box-shadow: var(--shadow-light); }
+  50% { box-shadow: 0 0 0 8px rgba(138, 140, 255, 0.1); }
+  100% { box-shadow: var(--shadow-light); }
 }
 
-/* === Секции === */
-.section {
-  padding: 96px var(--gap);
-}
-.section.light-bg {
-  background: rgba(30, 30, 35, 0.4);
-}
-.section.highlight-bg {
-  background: var(--highlight-bg);
-}
-.section h2 {
-  font-size: 2.3rem;
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: 48px;
-  background: linear-gradient(to bottom, #fff, #e0e0e6);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
-}
-
-/* === Философия / Преимущества === */
-.philosophy-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 32px;
-}
-.phil-item {
-  background: var(--card-bg);
-  padding: 36px 30px;
-  border-radius: var(--radius);
-  text-align: center;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--card-border);
-  opacity: 0;
-  transform: translateY(20px);
-  transition: var(--transition);
-  box-shadow: var(--shadow);
-}
-.phil-item:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.4);
-  border-color: rgba(255, 255, 255, 0.12);
-}
-.phil-item.animated {
-  opacity: 1;
-  transform: translateY(0);
-}
-.phil-item .material-icons-round {
-  font-size: 3rem;
-  color: var(--primary);
-  margin-bottom: 22px;
-}
-.phil-item h3 {
-  font-size: 1.5rem;
-  margin-bottom: 18px;
-  font-weight: 600;
-  color: var(--text);
-}
-.phil-item p {
-  color: var(--text-light);
-  font-size: 1.05rem;
-  line-height: 1.7;
-}
-
-/* === Боль → Решение === */
-.pain-points {
-  background: rgba(255, 107, 97, 0.1);
-  border-left: 4px solid var(--accent);
-  padding: 28px;
-  border-radius: 0 var(--radius) var(--radius) 0;
-  margin-bottom: 40px;
-  color: #ff8c85;
-  font-weight: 500;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 107, 97, 0.2);
-}
-.pain-points p {
-  margin-bottom: 12px;
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-}
-.solution-box {
-  background: var(--card-bg);
-  border: 1px solid var(--primary);
-  padding: 32px;
-  border-radius: var(--radius);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-}
-.solution-box h3 {
-  color: var(--primary);
-  margin-bottom: 18px;
-  font-size: 1.5rem;
-  font-weight: 600;
-}
-
-/* === Как проходит обучение === */
-.how-it-works {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 32px;
-  margin-top: 24px;
-}
-.step {
-  text-align: center;
-  padding: 36px 24px;
-  background: var(--card-bg);
-  border-radius: var(--radius);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--card-border);
-  box-shadow: var(--shadow);
-  opacity: 0;
-  transform: translateY(20px);
-  transition: var(--transition);
-}
-.step:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.4);
-  border-color: rgba(255, 255, 255, 0.12);
-}
-.step.animated {
-  opacity: 1;
-  transform: translateY(0);
-}
-.step-number {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 56px;
-  height: 56px;
-  background: var(--primary);
-  color: white;
-  border-radius: 50%;
-  font-weight: 600;
-  margin-bottom: 24px;
-  font-size: 1.4rem;
-  font-family: 'SF Pro Display', sans-serif;
-  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
-}
-.step h4 {
-  font-size: 1.35rem;
-  margin-bottom: 16px;
-  font-weight: 600;
-  color: var(--text);
-}
-.step p {
-  color: var(--text-light);
-  font-size: 1.05rem;
-  line-height: 1.7;
-}
-
-/* === Оферта (курсы) === */
-.offer-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 32px;
-  margin-top: 24px;
-}
-.offer-card {
-  background: var(--card-bg);
-  padding: 36px;
-  border-radius: var(--radius);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--card-border);
-  box-shadow: var(--shadow);
-  opacity: 0;
-  transform: translateY(20px);
-  transition: var(--transition);
-}
-.offer-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.4);
-  border-color: rgba(255, 255, 255, 0.12);
-}
-.offer-card.animated {
-  opacity: 1;
-  transform: translateY(0);
-}
-.offer-card h3 {
-  font-size: 1.5rem;
-  margin-bottom: 20px;
-  font-weight: 600;
-  color: var(--text);
-}
-.offer-card p {
-  color: var(--text-light);
-  line-height: 1.7;
-  font-size: 1.05rem;
-}
-
-/* === Отзывы === */
-.testimonials {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 32px;
-  margin-top: 24px;
-}
-.testimonial-card {
-  background: var(--card-bg);
-  padding: 32px;
-  border-radius: var(--radius);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--card-border);
-  box-shadow: var(--shadow);
-  opacity: 0;
-  transform: translateY(20px);
-  transition: var(--transition);
-}
-.testimonial-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.4);
-  border-color: rgba(255, 255, 255, 0.12);
-}
-.testimonial-card.animated {
-  opacity: 1;
-  transform: translateY(0);
-}
-.testimonial-card p {
-  font-style: normal;
-  margin-bottom: 22px;
-  line-height: 1.7;
-  font-size: 1.05rem;
-  color: var(--text);
-}
-.testimonial-meta {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-.testimonial-meta strong {
-  color: var(--text);
-  font-weight: 600;
-}
-.testimonial-meta span {
-  color: var(--primary);
-  font-weight: 600;
+.small-note {
+  margin-top: 0.75rem;
   font-size: 0.95rem;
+  color: var(--warning);
 }
 
-/* === Бонус / Выделенный блок === */
-.highlight-box {
-  background: var(--card-bg);
-  padding: 48px 40px;
-  border-radius: var(--radius);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--primary);
-  text-align: center;
-  max-width: 760px;
-  margin: 0 auto;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-}
-.highlight-box h2 {
-  font-size: 2rem;
-  margin-bottom: 20px;
-  color: var(--text);
-  font-weight: 600;
-}
-.highlight-box p {
-  color: var(--text-light);
-  margin-bottom: 28px;
-  font-size: 1.1rem;
-}
-.highlight-box ul {
-  text-align: left;
-  margin: 28px 0;
-  padding-left: 28px;
-  color: var(--text-light);
-  font-size: 1.05rem;
-  line-height: 1.8;
-}
-.highlight-box li {
-  position: relative;
-  margin-bottom: 14px;
-  padding-left: 24px;
-}
-.highlight-box li:before {
-  content: "✓";
-  position: absolute;
-  left: 0;
-  color: var(--primary);
-  font-weight: bold;
+/* ===== Секции ===== */
+.section {
+  padding: 3rem 0;
 }
 
-/* === CTA секция === */
-.cta-section {
-  text-align: center;
-  margin: 64px var(--gap);
-  padding: 64px;
-  border-radius: var(--radius);
-  background: rgba(15, 15, 18, 0.5);
-  border: 1px solid var(--card-border);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  box-shadow: var(--shadow);
-}
-.cta-section h2 {
-  font-size: 2.4rem;
-  margin-bottom: 24px;
-  background: linear-gradient(to bottom, #fff, #d8d8e0);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
-  font-weight: 700;
-}
-.cta-section p {
-  max-width: 700px;
-  margin: 0 auto 36px;
-  color: var(--text-light);
-  font-size: 1.15rem;
-  line-height: 1.7;
+.light-bg {
+  background-color: #222432;
 }
 
-/* === Контакты === */
+/* ===== Философия / Карточки ===== */
+.philosophy-grid,
+.offer-grid,
+.testimonials,
+.how-it-works,
 .contact-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 24px;
-  margin-top: 32px;
+  gap: 1.5rem;
+  margin-top: 2rem;
 }
+
+.philosophy-grid {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.phil-item,
+.offer-card,
+.testimonial-card,
+.step,
 .contact-item {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 24px;
   background: var(--card-bg);
   border-radius: var(--radius);
-  text-decoration: none;
-  color: var(--text);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--card-border);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-light);
   transition: var(--transition);
-  box-shadow: var(--shadow);
 }
-.contact-item:hover {
-  transform: translateX(8px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-  border-color: var(--primary);
+
+.phil-item:hover,
+.offer-card:hover,
+.testimonial-card:hover,
+.step:hover {
+  transform: translateY(-4px);
 }
+
+.phil-item .material-icons-round,
+.offer-card .material-icons-round,
 .contact-item .material-icons-round {
-  font-size: 2.2rem;
-  color: var(--primary);
-}
-.contact-note {
-  text-align: center;
-  margin-top: 32px;
-  color: var(--text-light);
-  font-style: normal;
+  font-size: 2rem;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
 }
 
-/* === Футер === */
+.step-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: var(--card-bg);
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+  box-shadow: var(--shadow-light);
+  color: var(--accent);
+}
+
+/* ===== Отзывы ===== */
+.testimonial-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* ===== Контакты ===== */
+.contact-grid {
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  text-align: center;
+}
+
+.contact-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.25rem;
+}
+
+/* ===== CTA и футер ===== */
+.cta-section {
+  text-align: center;
+  background: linear-gradient(135deg, #222432, #1e1f29);
+}
+
 .footer {
-  padding: 40px var(--gap);
   text-align: center;
-  color: var(--text-light);
-  font-size: 1rem;
-  border-top: 1px solid var(--card-border);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  background: rgba(10, 10, 12, 0.6);
-  margin-top: 64px;
+  padding: 2rem 0;
+  color: var(--text-muted);
+  font-size: 0.9rem;
 }
 
-/* === Анимации появления === */
+/* ===== Мобильная CTA ===== */
+.mobile-cta {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  display: none;
+}
+
+/* ===== Анимации появления ===== */
 .fade-in-up,
 .phil-item,
 .testimonial-card,
 .step,
 .offer-card {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
+
 .fade-in-up.animated,
 .phil-item.animated,
 .testimonial-card.animated,
@@ -557,74 +289,22 @@ body {
   transform: translateY(0);
 }
 
-/* === Мобильная CTA (фиксированная кнопка) === */
-.mobile-cta {
-  display: none;
-}
+/* ===== Адаптив ===== */
 @media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+  h2 {
+    font-size: 1.75rem;
+  }
   .mobile-cta {
     display: block;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 16px var(--gap);
-    background: rgba(15, 15, 18, 0.8);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
-    z-index: 1000;
-    border-top: 1px solid var(--card-border);
   }
-  .mobile-cta .button {
-    width: 100%;
-    font-size: 1.2rem;
-    padding: 18px;
+  .button {
+    width: 90%;
   }
-}
-
-/* === Адаптивность === */
-@media (max-width: 768px) {
-  .hero h1 { font-size: 2.2rem; }
-  .subtitle { font-size: 1.15rem; }
-  .section { padding: 72px var(--gap); }
-  .philosophy-grid,
-  .testimonials,
-  .offer-grid,
-  .contact-grid,
-  .how-it-works {
-    grid-template-columns: 1fr;
-  }
-  .button { 
-    width: 100%; 
-    white-space: normal; 
-    margin-bottom: 12px;
-  }
-  .highlight-box { 
-    padding: 40px 24px; 
-    margin: 0 16px;
-  }
-  .stats-badge { 
-    font-size: 0.95rem; 
-    padding: 8px 20px; 
-  }
-  .avatar-large {
-    width: 120px;
-    height: 120px;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero h1 { font-size: 2.0rem; }
-  .section h2 { font-size: 2.0rem; }
-  .phil-item, .offer-card, .step { 
-    padding: 28px 20px; 
-  }
-  .hero {
-    padding: 80px 16px 56px;
-    margin: 16px;
-  }
-  .section {
-    padding: 64px 16px;
+  .stats-badge {
+    font-size: 0.9rem;
+    padding: 0.7rem 1.2rem;
   }
 }
