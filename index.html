@@ -11,9 +11,42 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-brand">
+        <h3>Алексей Викулов</h3>
+      </div>
+      <div class="navbar-toggler" id="navbarToggle">
+        <i class="fas fa-bars"></i>
+      </div>
+      <div class="navbar-menu" id="navbarMenu">
+        <ul class="navbar-links">
+          <li><a href="#about" class="nav-link">Обо мне</a></li>
+          <li><a href="#courses" class="nav-link">Курсы</a></li>
+          <li><a href="#pricing" class="nav-link">Цены</a></li>
+          <li><a href="#methodology" class="nav-link">Метод</a></li>
+          <li><a href="#testimonials" class="nav-link">Отзывы</a></li>
+          <li><a href="#portfolio" class="nav-link">Проекты</a></li>
+          <li><a href="#faq" class="nav-link">Вопросы</a></li>
+          <li><a href="#contact" class="nav-link">Контакты</a></li>
+        </ul>
+        <div class="navbar-cta">
+          <a href="https://wa.me/79183455143?text=Здравствуйте!%20Хочу%20записаться%20на%20занятие." 
+             class="button primary small nav-cta-btn" target="_blank">
+            <i class="fab fa-whatsapp"></i> WhatsApp
+          </a>
+          <a href="https://t.me/avick_bot" 
+             class="button secondary small nav-cta-btn" target="_blank">
+            <i class="fab fa-telegram"></i> Telegram-Bot
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
 
   <!-- Hero Section - с фото и кнопками записи -->
-  <header class="hero">
+  <header class="hero fade-in-up">
     <div class="container">
       <div class="hero-content">
         <div class="hero-image">
@@ -32,7 +65,6 @@
                   <i class="fab fa-telegram"></i> Записаться через Telegram
                 </a>
               </div>
-              
               <div class="social-links">
                 <a href="https://t.me/AVick23" target="_blank"><i class="fab fa-telegram"></i></a>
                 <a href="https://wa.me/79183455143" target="_blank"><i class="fab fa-whatsapp"></i></a>
@@ -42,8 +74,7 @@
             </div>
           </div>
         </div>
-        
-        <div class="hero-stats">
+        <div class="hero-stats fade-in-up">
           <div class="stats-grid">
             <div class="stat-item">
               <span class="stat-value">92%</span>
@@ -62,17 +93,15 @@
       </div>
     </div>
   </header>
-
+  
   <!-- About Me Section -->
-  <section class="section" id="about">
+  <section class="section fade-in-up" id="about">
     <div class="container">
       <h2>Обо мне</h2>
       <div class="about-content">
         <div class="about-text">
           <p>Я — Алексей Викулов, Backend Developer с 4+ годами опыта в разработке и преподавании. Мой метод "выстраданного познания" помогает ученикам не просто запоминать материал, а глубоко понимать его через практическую работу и решение реальных задач.</p>
-          
           <p>Мои ученики не просто сдают экзамены на высокие баллы — они получают навыки, которые помогают им в реальной работе и дальнейшем обучении. Я учу не только решать задачи, но и думать как разработчик.</p>
-          
           <div class="skills-grid">
             <div class="skill-item">
               <i class="fas fa-check-circle"></i>
@@ -100,7 +129,6 @@
             </div>
           </div>
         </div>
-        
         <div class="about-image">
           <div class="timeline">
             <div class="timeline-item">
@@ -129,9 +157,9 @@
       </div>
     </div>
   </section>
-
+  
   <!-- Courses Section -->
-  <section class="section light-bg" id="courses">
+  <section class="section light-bg fade-in-up" id="courses">
     <div class="container">
       <h2>Мои курсы</h2>
       <div class="courses-grid">
@@ -147,7 +175,6 @@
           </div>
           <a href="https://avick23.github.io/python/" class="button primary small" target="_blank">Подробнее</a>
         </div>
-        
         <div class="course-card">
           <div class="course-icon">
             <i class="fab fa-golang"></i>
@@ -160,7 +187,6 @@
           </div>
           <a href="#" class="button primary small">Подробнее</a>
         </div>
-        
         <div class="course-card">
           <div class="course-icon">
             <i class="fas fa-server"></i>
@@ -173,7 +199,6 @@
           </div>
           <a href="https://avick23.github.io/roadmap_backend/" class="button primary small" target="_blank">Подробнее</a>
         </div>
-        
         <div class="course-card">
           <div class="course-icon">
             <i class="fas fa-graduation-cap"></i>
@@ -189,13 +214,12 @@
       </div>
     </div>
   </section>
-
+  
   <!-- Pricing Section -->
-  <section class="section" id="pricing">
+  <section class="section fade-in-up" id="pricing">
     <div class="container">
       <h2>Стоимость занятий</h2>
       <p class="section-description">Гибкие варианты обучения под ваши задачи и бюджет</p>
-      
       <div class="pricing-grid">
         <div class="pricing-card">
           <div class="pricing-header">
@@ -225,7 +249,6 @@
             Записаться на индивидуальные занятия
           </a>
         </div>
-        
         <div class="pricing-card popular">
           <div class="popular-badge">Популярно</div>
           <div class="pricing-header">
@@ -256,26 +279,22 @@
           </a>
         </div>
       </div>
-      
-      <div class="pricing-note">
+      <div class="pricing-note fade-in-up">
         <i class="fas fa-info-circle"></i>
         <p>Первое занятие бесплатное для всех учеников. Оплата последующих занятий — после каждого урока. Гарантия возврата денег, если нет прогресса за 4 занятия.</p>
       </div>
     </div>
   </section>
-
+  
   <!-- Methodology Section -->
-  <section class="section light-bg" id="methodology">
+  <section class="section light-bg fade-in-up" id="methodology">
     <div class="container">
       <h2>Метод "Выстраданного познания"</h2>
       <p class="section-description">Мой уникальный подход к обучению, который превращает учебную группу в симулятор R&D команды</p>
-      
       <div class="methodology-content">
         <div class="methodology-left">
           <p>В отличие от традиционных методов обучения, где студенты получают информацию "на тарелочке", мой метод заставляет их самостоятельно добывать знания, сталкиваясь с реальными задачами.</p>
-          
           <p>Студенты проходят полный цикл работы над проблемой: от поиска информации и генерации гипотез до создания решения, его презентации и защиты своей позиции в дебатах.</p>
-          
           <div class="methodology-features">
             <div class="feature-item">
               <h4>Преподаватель как тренер-навигатор</h4>
@@ -291,7 +310,6 @@
             </div>
           </div>
         </div>
-        
         <div class="methodology-right">
           <div class="process-steps">
             <div class="step-item">
@@ -332,18 +350,16 @@
           </div>
         </div>
       </div>
-      
       <a href="https://avick23.github.io/method/" class="button primary large" target="_blank" style="margin-top: 2rem; display: inline-block;">
         Подробнее о методе
       </a>
     </div>
   </section>
-
+  
   <!-- Testimonials Section -->
-  <section class="section" id="testimonials">
+  <section class="section fade-in-up" id="testimonials">
     <div class="container">
       <h2>Что говорят мои ученики</h2>
-      
       <div class="testimonials-grid">
         <div class="testimonial-card">
           <div class="testimonial-rating">
@@ -362,7 +378,6 @@
             </div>
           </div>
         </div>
-        
         <div class="testimonial-card">
           <div class="testimonial-rating">
             <i class="fas fa-star"></i>
@@ -380,7 +395,6 @@
             </div>
           </div>
         </div>
-        
         <div class="testimonial-card">
           <div class="testimonial-rating">
             <i class="fas fa-star"></i>
@@ -401,13 +415,12 @@
       </div>
     </div>
   </section>
-
+  
   <!-- Portfolio Section -->
-  <section class="section light-bg" id="portfolio">
+  <section class="section light-bg fade-in-up" id="portfolio">
     <div class="container">
       <h2>Мои проекты</h2>
       <p class="section-description">Исследуйте мои образовательные ресурсы и проекты</p>
-      
       <div class="portfolio-grid">
         <div class="portfolio-item">
           <div class="portfolio-image" style="background: linear-gradient(135deg, #2a2c3a, #1e1f29);">
@@ -421,7 +434,6 @@
             <a href="https://avick23.github.io/python/" class="button primary small" target="_blank">Посмотреть</a>
           </div>
         </div>
-        
         <div class="portfolio-item">
           <div class="portfolio-image" style="background: linear-gradient(135deg, #2a2c3a, #1e1f29);">
             <div class="portfolio-icon">
@@ -434,7 +446,6 @@
             <a href="https://avick23.github.io/roadmap_backend/" class="button primary small" target="_blank">Посмотреть</a>
           </div>
         </div>
-        
         <div class="portfolio-item">
           <div class="portfolio-image" style="background: linear-gradient(135deg, #2a2c3a, #1e1f29);">
             <div class="portfolio-icon">
@@ -447,7 +458,6 @@
             <a href="https://avick23.github.io/method/" class="button primary small" target="_blank">Посмотреть</a>
           </div>
         </div>
-        
         <div class="portfolio-item">
           <div class="portfolio-image" style="background: linear-gradient(135deg, #2a2c3a, #1e1f29);">
             <div class="portfolio-icon">
@@ -463,12 +473,11 @@
       </div>
     </div>
   </section>
-
+  
   <!-- FAQ Section -->
-  <section class="section" id="faq">
+  <section class="section fade-in-up" id="faq">
     <div class="container">
       <h2>Часто задаваемые вопросы</h2>
-      
       <div class="faq-container">
         <div class="faq-item">
           <div class="faq-question">
@@ -479,7 +488,6 @@
             <p>Занятия проходят онлайн через Zoom или Google Meet. Перед занятием вы получаете материалы и задания. Во время занятия мы разбираем сложные моменты, решаем задачи и обсуждаем ваши вопросы.</p>
           </div>
         </div>
-        
         <div class="faq-item">
           <div class="faq-question">
             <h4>Есть ли гарантия результата?</h4>
@@ -489,7 +497,6 @@
             <p>Да, я даю гарантию результата: если за первые 4 занятия вы не увидите прогресса в понимании материала, я верну вам 50% стоимости этих занятий.</p>
           </div>
         </div>
-        
         <div class="faq-item">
           <div class="faq-question">
             <h4>Чем групповые занятия отличаются от индивидуальных?</h4>
@@ -499,7 +506,6 @@
             <p>В групповых занятиях вы получаете возможность обмена опытом с другими учениками, совместного решения задач и здоровой конкуренции. Индивидуальные занятия позволяют полностью адаптировать программу под ваши цели и прогрессировать в удобном вам темпе.</p>
           </div>
         </div>
-        
         <div class="faq-item">
           <div class="faq-question">
             <h4>Как записаться на занятие?</h4>
@@ -509,7 +515,6 @@
             <p>Вы можете записаться через WhatsApp или Telegram, нажав на соответствующую кнопку на сайте. Также вы можете оставить заявку через форму обратной связи.</p>
           </div>
         </div>
-        
         <div class="faq-item">
           <div class="faq-question">
             <h4>Что делать, если остались вопросы?</h4>
@@ -522,17 +527,15 @@
       </div>
     </div>
   </section>
-
+  
   <!-- Contact Section -->
-  <section class="section light-bg" id="contact">
+  <section class="section light-bg fade-in-up" id="contact">
     <div class="container">
       <h2>Свяжитесь со мной</h2>
-      
       <div class="contact-content">
         <div class="contact-info">
           <h3>Как записаться на занятие</h3>
           <p>Выберите удобный для вас способ связи:</p>
-          
           <div class="contact-methods">
             <div class="contact-method">
               <div class="contact-icon">
@@ -547,7 +550,6 @@
                 </a>
               </div>
             </div>
-            
             <div class="contact-method">
               <div class="contact-icon">
                 <i class="fab fa-telegram"></i>
@@ -560,7 +562,6 @@
                 </a>
               </div>
             </div>
-            
             <div class="contact-method">
               <div class="contact-icon">
                 <i class="fas fa-robot"></i>
@@ -574,26 +575,22 @@
               </div>
             </div>
           </div>
-          
           <div class="contact-note">
             <i class="fas fa-info-circle"></i>
             <p>Первое занятие бесплатное. Оплата последующих занятий — после каждого урока.</p>
           </div>
         </div>
-        
         <div class="contact-form">
           <h3>Оставить заявку</h3>
-          <form>
+          <form id="contactForm">
             <div class="form-group">
               <label for="name">Имя</label>
               <input type="text" id="name" placeholder="Ваше имя" required>
             </div>
-            
             <div class="form-group">
               <label for="phone">Телефон</label>
               <input type="tel" id="phone" placeholder="+7 (___) ___-__-__" required>
             </div>
-            
             <div class="form-group">
               <label for="course">Курс</label>
               <select id="course">
@@ -606,12 +603,10 @@
                 <option value="group">Групповые занятия</option>
               </select>
             </div>
-            
             <div class="form-group">
               <label for="message">Сообщение</label>
               <textarea id="message" rows="4" placeholder="Ваше сообщение"></textarea>
             </div>
-            
             <button type="submit" class="button primary large">
               Отправить заявку
             </button>
@@ -620,13 +615,12 @@
       </div>
     </div>
   </section>
-
+  
   <!-- CTA Section -->
-  <section class="section cta-section">
+  <section class="section cta-section fade-in-up">
     <div class="container">
       <h2>Готовы начать?</h2>
       <p>Запишитесь на бесплатное пробное занятие и оцените эффективность моего метода обучения</p>
-      
       <div class="cta-buttons">
         <a href="https://wa.me/79183455143?text=Здравствуйте!%20Хочу%20записаться%20на%20пробное%20занятие." 
            class="button primary large" target="_blank">
@@ -637,20 +631,18 @@
           <i class="fab fa-telegram"></i> Записаться через Telegram
         </a>
       </div>
-      
       <p class="small-note">Осталось <span style="color: var(--accent); font-weight: 600;">2</span> места на ближайшие даты</p>
     </div>
   </section>
-
+  
   <!-- Footer -->
-  <footer class="footer">
+  <footer class="footer fade-in-up">
     <div class="container">
       <div class="footer-content">
         <div class="footer-logo">
           <h3>Алексей Викулов</h3>
           <p>Индивидуальные уроки Python, Golang, Backend разработки и подготовки к ЕГЭ/ОГЭ по информатике</p>
         </div>
-        
         <div class="footer-links">
           <h4>Курсы</h4>
           <ul>
@@ -660,7 +652,6 @@
             <li><a href="https://avick23.github.io/my_thoughts/" target="_blank">Мои мысли об образовании</a></li>
           </ul>
         </div>
-        
         <div class="footer-links">
           <h4>Контакты</h4>
           <ul>
@@ -670,12 +661,10 @@
             <li><a href="https://t.me/avick_bot" target="_blank">Чат-бот @avick_bot</a></li>
           </ul>
         </div>
-        
         <div class="footer-contact">
           <h4>Свяжитесь со мной</h4>
           <p>+7 918 345-51-43</p>
           <p>vikulov2811@gmail.com</p>
-          
           <div class="social-icons">
             <a href="https://t.me/AVick23" target="_blank"><i class="fab fa-telegram"></i></a>
             <a href="https://wa.me/79183455143" target="_blank"><i class="fab fa-whatsapp"></i></a>
@@ -683,13 +672,12 @@
           </div>
         </div>
       </div>
-      
       <div class="footer-bottom">
         <p>© 2023-2024 Алексей Викулов. Все права защищены.</p>
       </div>
     </div>
   </footer>
-
+  
   <!-- Mobile CTA -->
   <div class="mobile-cta">
     <a href="https://wa.me/79183455143?text=Здравствуйте!%20Хочу%20записаться%20на%20занятие." 
@@ -697,9 +685,80 @@
       <i class="fab fa-whatsapp"></i> Записаться
     </a>
   </div>
-
+  
   <script>
     document.addEventListener("DOMContentLoaded", function() {
+      // Mobile menu toggle
+      const navbarToggle = document.getElementById('navbarToggle');
+      const navbarMenu = document.getElementById('navbarMenu');
+      
+      navbarToggle.addEventListener('click', () => {
+        navbarMenu.classList.toggle('active');
+        const icon = navbarToggle.querySelector('i');
+        icon.classList.toggle('fa-bars');
+        icon.classList.toggle('fa-times');
+      });
+      
+      // Close mobile menu when clicking a link
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+          navbarMenu.classList.remove('active');
+          const icon = navbarToggle.querySelector('i');
+          icon.classList.add('fa-bars');
+          icon.classList.remove('fa-times');
+        });
+      });
+      
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('.nav-link').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          if (!targetId || targetId === '#') return;
+          
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+      
+      // Sticky navbar on scroll
+      const navbar = document.querySelector('.navbar');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+        
+        // Highlight active navigation link
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        let currentSection = '';
+        
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.offsetHeight;
+          
+          if (pageYOffset >= sectionTop - 150 && pageYOffset < sectionTop + sectionHeight - 150) {
+            currentSection = section.getAttribute('id');
+          }
+        });
+        
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          const sectionId = link.getAttribute('href').substring(1);
+          
+          if (sectionId === currentSection && currentSection) {
+            link.classList.add('active');
+          }
+        });
+      });
+      
       // Toggle FAQ items
       const faqQuestions = document.querySelectorAll('.faq-question');
       faqQuestions.forEach(question => {
@@ -707,6 +766,16 @@
           const answer = question.nextElementSibling;
           const icon = question.querySelector('i');
           
+          // Close all other answers
+          document.querySelectorAll('.faq-answer').forEach(el => {
+            if (el !== answer) {
+              el.style.maxHeight = null;
+              el.previousElementSibling.querySelector('i').classList.remove('fa-chevron-up');
+              el.previousElementSibling.querySelector('i').classList.add('fa-chevron-down');
+            }
+          });
+          
+          // Toggle current answer
           if (answer.style.maxHeight) {
             answer.style.maxHeight = null;
             icon.classList.remove('fa-chevron-up');
@@ -720,6 +789,12 @@
       });
       
       // Intersection Observer for animations
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+      };
+      
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -727,25 +802,64 @@
             observer.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.1 });
-
-      document.querySelectorAll('.fade-in-up, .course-card, .testimonial-card, .portfolio-item, .faq-item, .pricing-card')
-        .forEach(el => observer.observe(el));
-        
+      }, observerOptions);
+      
+      // Observe all section elements and other animated elements
+      document.querySelectorAll('.fade-in-up, .course-card, .testimonial-card, .portfolio-item, .faq-item, .pricing-card').forEach(element => {
+        observer.observe(element);
+      });
+      
       // Form submission
-      const form = document.querySelector('form');
+      const form = document.getElementById('contactForm');
       if (form) {
         form.addEventListener('submit', function(e) {
           e.preventDefault();
-          
           // In a real implementation, you would send the form data to a server
           const name = document.getElementById('name').value;
           const phone = document.getElementById('phone').value;
-          
           alert(`Спасибо, ${name}! Ваша заявка принята. Я свяжусь с вами по номеру ${phone} в ближайшее время.`);
-          
           // Reset form
           form.reset();
+        });
+      }
+      
+      // Add scroll animation to stats
+      const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateStats();
+            statsObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      const statsSection = document.querySelector('.hero-stats');
+      if (statsSection) {
+        statsObserver.observe(statsSection);
+      }
+      
+      function animateStats() {
+        document.querySelectorAll('.stat-value').forEach(stat => {
+          const targetValue = stat.textContent;
+          let currentValue = 0;
+          const isPercentage = targetValue.includes('%');
+          
+          const incrementValue = isPercentage ? 
+            parseInt(targetValue) / 50 : 
+            parseInt(targetValue) / 30;
+          
+          const updateStat = () => {
+            currentValue += incrementValue;
+            if ((isPercentage && currentValue < parseInt(targetValue)) || 
+                (!isPercentage && currentValue < parseInt(targetValue))) {
+              stat.textContent = Math.round(currentValue) + (isPercentage ? '%' : '+');
+              requestAnimationFrame(updateStat);
+            } else {
+              stat.textContent = targetValue;
+            }
+          };
+          
+          updateStat();
         });
       }
     });
