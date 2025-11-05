@@ -743,211 +743,261 @@
   <script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
   
   <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      // Wait for Google script to load
-      function initCalendarButtons() {
+  document.addEventListener("DOMContentLoaded", function() {
+    // Функция для определения мобильного устройства
+    function isMobileDevice() {
+      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
+             window.innerWidth <= 768;
+    }
+
+    // Функция для показа подтверждения и перехода на мобильную версию календаря
+    function confirmMobileCalendarRedirect() {
+      const userConfirmed = confirm("Вы будете перенаправлены в Google Calendar для записи на занятие. Это официальный календарь преподавателя. Продолжить?");
+      if (userConfirmed) {
+        window.location.href = "https://calendar.app.google/ThpteAc5uqhxqnUA9";
+      }
+    }
+
+    // Модифицированная функция initCalendarButtons
+    function initCalendarButtons() {
+      const isMobile = isMobileDevice();
+      
+      if (isMobile) {
+        // Для мобильных устройств заменяем кнопки на кастомные
+        const calendarPlaceholders = [
+          'calendar-button-placeholder',
+          'calendar-button-contact',
+          'calendar-button-cta',
+          'calendar-button-mobile'
+        ];
+        
+        calendarPlaceholders.forEach(id => {
+          const placeholder = document.getElementById(id);
+          if (placeholder) {
+            // Очищаем контейнер
+            placeholder.innerHTML = '';
+            
+            // Создаем кнопку для мобильных устройств
+            const mobileButton = document.createElement('button');
+            mobileButton.className = 'button primary mobile-calendar-btn';
+            mobileButton.innerHTML = '<i class="fas fa-calendar-alt"></i> Записаться в Google Calendar';
+            mobileButton.style.width = '100%';
+            
+            // Добавляем обработчик клика с подтверждением
+            mobileButton.addEventListener('click', confirmMobileCalendarRedirect);
+            
+            // Добавляем кнопку в контейнер
+            placeholder.appendChild(mobileButton);
+          }
+        });
+      } else {
+        // Для десктопов оставляем текущую реализацию
         if (typeof calendar !== 'undefined' && calendar.schedulingButton) {
-          // Initialize all calendar buttons with the same configuration
           const config = {
             url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ3rcXNj-UEGWzDr6XeT4OdI4rDt6yHziAQlUCppL6nriQVz9tulfhokyt-8IXC48YrJcjO0_oqF?gv=true',
-            color: '#6a5ce8', // Using your site's accent color
+            color: '#6a5ce8',
             label: 'Записаться через Google Calendar'
           };
           
-          // Hero section button
-          calendar.schedulingButton.load({
-            ...config,
-            target: document.getElementById('calendar-button-placeholder')
-          });
-          
-          // Contact section button
-          calendar.schedulingButton.load({
-            ...config,
-            target: document.getElementById('calendar-button-contact')
-          });
-          
-          // CTA section button
-          calendar.schedulingButton.load({
-            ...config,
-            target: document.getElementById('calendar-button-cta')
-          });
-          
-          // Mobile CTA button
-          calendar.schedulingButton.load({
-            ...config,
-            target: document.getElementById('calendar-button-mobile')
+          // Инициализируем кнопки для десктопа
+          ['calendar-button-placeholder', 'calendar-button-contact', 'calendar-button-cta', 'calendar-button-mobile'].forEach(id => {
+            const element = document.getElementById(id);
+            if (element) {
+              calendar.schedulingButton.load({
+                ...config,
+                target: element
+              });
+            }
           });
         } else {
-          // If script hasn't loaded yet, try again after a short delay
           setTimeout(initCalendarButtons, 300);
         }
       }
-      
-      // Start initialization
-      initCalendarButtons();
-      
-      // Mobile menu toggle
-      const navbarToggle = document.getElementById('navbarToggle');
-      const navbarMenu = document.getElementById('navbarMenu');
-      navbarToggle.addEventListener('click', () => {
-        navbarMenu.classList.toggle('active');
-        const icon = navbarToggle.querySelector('i');
-        icon.classList.toggle('fa-bars');
-        icon.classList.toggle('fa-times');
-      });
-      
-      // Close mobile menu when clicking a link
-      document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', () => {
-          navbarMenu.classList.remove('active');
-          const icon = navbarToggle.querySelector('i');
-          icon.classList.add('fa-bars');
-          icon.classList.remove('fa-times');
-        });
-      });
-      
-      // Smooth scrolling for navigation links
-      document.querySelectorAll('.nav-link').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-          e.preventDefault();
-          const targetId = this.getAttribute('href');
-          if (!targetId || targetId === '#') return;
-          const targetElement = document.querySelector(targetId);
-          if (targetElement) {
-            window.scrollTo({
-              top: targetElement.offsetTop - 80,
-              behavior: 'smooth'
-            });
-          }
-        });
-      });
-      
-      // Sticky navbar on scroll
-      const navbar = document.querySelector('.navbar');
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 100) {
-          navbar.classList.add('scrolled');
-        } else {
-          navbar.classList.remove('scrolled');
-        }
-        // Highlight active navigation link
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('.nav-link');
-        let currentSection = '';
-        sections.forEach(section => {
-          const sectionTop = section.offsetTop;
-          const sectionHeight = section.offsetHeight;
-          if (pageYOffset >= sectionTop - 150 && pageYOffset < sectionTop + sectionHeight - 150) {
-            currentSection = section.getAttribute('id');
-          }
-        });
-        navLinks.forEach(link => {
-          link.classList.remove('active');
-          const sectionId = link.getAttribute('href').substring(1);
-          if (sectionId === currentSection && currentSection) {
-            link.classList.add('active');
-          }
-        });
-      });
-      
-      // Toggle FAQ items
-      const faqQuestions = document.querySelectorAll('.faq-question');
-      faqQuestions.forEach(question => {
-        question.addEventListener('click', () => {
-          const answer = question.nextElementSibling;
-          const icon = question.querySelector('i');
-          // Close all other answers
-          document.querySelectorAll('.faq-answer').forEach(el => {
-            if (el !== answer) {
-              el.style.maxHeight = null;
-              el.previousElementSibling.querySelector('i').classList.remove('fa-chevron-up');
-              el.previousElementSibling.querySelector('i').classList.add('fa-chevron-down');
-            }
-          });
-          // Toggle current answer
-          if (answer.style.maxHeight) {
-            answer.style.maxHeight = null;
-            icon.classList.remove('fa-chevron-up');
-            icon.classList.add('fa-chevron-down');
-          } else {
-            answer.style.maxHeight = answer.scrollHeight + "px";
-            icon.classList.remove('fa-chevron-down');
-            icon.classList.add('fa-chevron-up');
-          }
-        });
-      });
-      
-      // Intersection Observer for animations
-      const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-      };
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("animated");
-            observer.unobserve(entry.target);
-          }
-        });
-      }, observerOptions);
-      
-      // Observe all section elements and other animated elements
-      document.querySelectorAll('.fade-in-up, .course-card, .testimonial-card, .portfolio-item, .faq-item, .pricing-card').forEach(element => {
-        observer.observe(element);
-      });
-      
-      // Form submission
-      const form = document.getElementById('contactForm');
-      if (form) {
-        form.addEventListener('submit', function(e) {
-          e.preventDefault();
-          // In a real implementation, you would send the form data to a server
-          const name = document.getElementById('name').value;
-          const phone = document.getElementById('phone').value;
-          alert(`Спасибо, ${name}! Ваша заявка принята. Я свяжусь с вами по номеру ${phone} в ближайшее время.`);
-          // Reset form
-          form.reset();
-        });
-      }
-      
-      // Add scroll animation to stats
-      const statsObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            animateStats();
-            statsObserver.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1 });
-      
-      const statsSection = document.querySelector('.hero-stats');
-      if (statsSection) {
-        statsObserver.observe(statsSection);
-      }
-      
-      function animateStats() {
-        document.querySelectorAll('.stat-value').forEach(stat => {
-          const targetValue = stat.textContent;
-          let currentValue = 0;
-          const isPercentage = targetValue.includes('%');
-          const incrementValue = isPercentage ? 
-            parseInt(targetValue) / 50 : 
-            parseInt(targetValue) / 30;
-          const updateStat = () => {
-            currentValue += incrementValue;
-            if ((isPercentage && currentValue < parseInt(targetValue)) || 
-                (!isPercentage && currentValue < parseInt(targetValue))) {
-              stat.textContent = Math.round(currentValue) + (isPercentage ? '%' : '+');
-              requestAnimationFrame(updateStat);
-            } else {
-              stat.textContent = targetValue;
-            }
-          };
-          updateStat();
-        });
-      }
+    }
+
+    // Start initialization
+    initCalendarButtons();
+    
+    // Mobile menu toggle
+    const navbarToggle = document.getElementById('navbarToggle');
+    const navbarMenu = document.getElementById('navbarMenu');
+    navbarToggle.addEventListener('click', () => {
+      navbarMenu.classList.toggle('active');
+      const icon = navbarToggle.querySelector('i');
+      icon.classList.toggle('fa-bars');
+      icon.classList.toggle('fa-times');
     });
-  </script>
+    
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        navbarMenu.classList.remove('active');
+        const icon = navbarToggle.querySelector('i');
+        icon.classList.add('fa-bars');
+        icon.classList.remove('fa-times');
+      });
+    });
+    
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('.nav-link').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        if (!targetId || targetId === '#') return;
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+    
+    // Sticky navbar on scroll
+    const navbar = document.querySelector('.navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+      // Highlight active navigation link
+      const sections = document.querySelectorAll('section');
+      const navLinks = document.querySelectorAll('.nav-link');
+      let currentSection = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        if (pageYOffset >= sectionTop - 150 && pageYOffset < sectionTop + sectionHeight - 150) {
+          currentSection = section.getAttribute('id');
+        }
+      });
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        const sectionId = link.getAttribute('href').substring(1);
+        if (sectionId === currentSection && currentSection) {
+          link.classList.add('active');
+        }
+      });
+    });
+    
+    // Toggle FAQ items
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    faqQuestions.forEach(question => {
+      question.addEventListener('click', () => {
+        const answer = question.nextElementSibling;
+        const icon = question.querySelector('i');
+        // Close all other answers
+        document.querySelectorAll('.faq-answer').forEach(el => {
+          if (el !== answer) {
+            el.style.maxHeight = null;
+            el.previousElementSibling.querySelector('i').classList.remove('fa-chevron-up');
+            el.previousElementSibling.querySelector('i').classList.add('fa-chevron-down');
+          }
+        });
+        // Toggle current answer
+        if (answer.style.maxHeight) {
+          answer.style.maxHeight = null;
+          icon.classList.remove('fa-chevron-up');
+          icon.classList.add('fa-chevron-down');
+        } else {
+          answer.style.maxHeight = answer.scrollHeight + "px";
+          icon.classList.remove('fa-chevron-down');
+          icon.classList.add('fa-chevron-up');
+        }
+      });
+    });
+    
+    // Intersection Observer for animations
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animated");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+    // Observe all section elements and other animated elements
+    document.querySelectorAll('.fade-in-up, .course-card, .testimonial-card, .portfolio-item, .faq-item, .pricing-card').forEach(element => {
+      observer.observe(element);
+    });
+    
+    // Form submission with Telegram integration
+    const form = document.getElementById('contactForm');
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const name = document.getElementById('name').value;
+        const phone = document.getElementById('phone').value;
+        const courseSelect = document.getElementById('course');
+        const course = courseSelect.options[courseSelect.selectedIndex].text;
+        const message = document.getElementById('message').value || 'Сообщение не указано';
+        
+        // Формируем сообщение для Telegram
+        let text = `🔔 НОВАЯ ЗАЯВКА С САЙТА!\n\n`;
+        text += `👤 Имя: ${name}\n`;
+        text += `📞 Телефон: ${phone}\n`;
+        text += `📚 Курс: ${course}\n`;
+        text += `💬 Сообщение: ${message}\n\n`;
+        text += `⏰ Дата: ${new Date().toLocaleString()}`;
+        
+        // Кодируем текст для URL
+        const encodedText = encodeURIComponent(text);
+        
+        // Открываем Telegram с предзаполненным сообщением
+        window.open(`https://t.me/AVick23?text=${encodedText}`, '_blank');
+        
+        // Показываем сообщение пользователю
+        alert(`Спасибо, ${name}! Ваша заявка отправлена в Telegram. Я свяжусь с вами по номеру ${phone} в ближайшее время.`);
+        
+        // Сбрасываем форму
+        form.reset();
+      });
+    }
+    
+    // Add scroll animation to stats
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateStats();
+          statsObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    const statsSection = document.querySelector('.hero-stats');
+    if (statsSection) {
+      statsObserver.observe(statsSection);
+    }
+    
+    function animateStats() {
+      document.querySelectorAll('.stat-value').forEach(stat => {
+        const targetValue = stat.textContent;
+        let currentValue = 0;
+        const isPercentage = targetValue.includes('%');
+        const incrementValue = isPercentage ? 
+          parseInt(targetValue) / 50 : 
+          parseInt(targetValue) / 30;
+        const updateStat = () => {
+          currentValue += incrementValue;
+          if ((isPercentage && currentValue < parseInt(targetValue)) || 
+              (!isPercentage && currentValue < parseInt(targetValue))) {
+            stat.textContent = Math.round(currentValue) + (isPercentage ? '%' : '+');
+            requestAnimationFrame(updateStat);
+          } else {
+            stat.textContent = targetValue;
+          }
+        };
+        updateStat();
+      });
+    }
+  });
+</script>
 </body>
 </html>
