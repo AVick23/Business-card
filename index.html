@@ -7,8 +7,52 @@
   <meta name="description" content="Индивидуальные уроки Python, Golang, Backend разработки и подготовка к ЕГЭ/ОГЭ по информатике.">
   <link rel="stylesheet" href="styles.css" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href=" https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css ">
+  <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
+  
+  <!-- Google Calendar Appointment Styling -->
+  <style>
+    .calendar-button-container {
+      display: inline-block;
+      margin: 5px 0;
+    }
+    
+    #scheduling-button {
+      background: var(--accent) !important;
+      color: #0f0f1a !important;
+      border-radius: var(--border-radius) !important;
+      font-weight: 600 !important;
+      padding: 14px 24px !important;
+      font-size: 1.1rem !important;
+      border: none !important;
+      box-shadow: var(--shadow-light) !important;
+      transition: var(--transition) !important;
+      width: 100% !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 8px !important;
+      max-width: 350px !important;
+    }
+    
+    #scheduling-button:hover {
+      background: #5a4cd0 !important;
+      transform: translateY(-2px) !important;
+      box-shadow: var(--shadow-strong) !important;
+    }
+    
+    .calendar-icon {
+      font-size: 1.2rem !important;
+    }
+    
+    @media (max-width: 768px) {
+      #scheduling-button {
+        max-width: 100% !important;
+        padding: 12px 20px !important;
+      }
+    }
+  </style>
 </head>
 <body>
   <!-- Navigation Bar -->
@@ -36,7 +80,7 @@
              class="button primary small nav-cta-btn" target="_blank">
             <i class="fab fa-whatsapp"></i> WhatsApp
           </a>
-          <a href="https://t.me/avick_bot" 
+          <a href=" https://t.me/avick_bot " 
              class="button secondary small nav-cta-btn" target="_blank">
             <i class="fab fa-telegram"></i> Telegram-Bot
           </a>
@@ -44,7 +88,6 @@
       </div>
     </div>
   </nav>
-
   <!-- Hero Section - с фото и кнопками записи -->
   <header class="hero fade-in-up">
     <div class="container">
@@ -60,16 +103,20 @@
                    class="button primary large" target="_blank">
                   <i class="fab fa-whatsapp"></i> Записаться через WhatsApp
                 </a>
-                <a href="https://t.me/AVick23" 
+                <a href=" https://t.me/AVick23 " 
                    class="button secondary large" target="_blank">
                   <i class="fab fa-telegram"></i> Записаться через Telegram
                 </a>
+                <!-- Google Calendar Button Container -->
+                <div class="calendar-button-container">
+                  <div id="calendar-button-placeholder"></div>
+                </div>
               </div>
               <div class="social-links">
-                <a href="https://t.me/AVick23" target="_blank"><i class="fab fa-telegram"></i></a>
-                <a href="https://wa.me/79183455143" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://t.me/AVick23 " target="_blank"><i class="fab fa-telegram"></i></a>
+                <a href="https://wa.me/79183455143 " target="_blank"><i class="fab fa-whatsapp"></i></a>
                 <a href="mailto:vikulov2811@gmail.com"><i class="fas fa-envelope"></i></a>
-                <a href="https://t.me/avick_bot" target="_blank"><i class="fas fa-robot"></i></a>
+                <a href="https://t.me/avick_bot " target="_blank"><i class="fas fa-robot"></i></a>
               </div>
             </div>
           </div>
@@ -93,7 +140,6 @@
       </div>
     </div>
   </header>
-  
   <!-- About Me Section -->
   <section class="section fade-in-up" id="about">
     <div class="container">
@@ -157,7 +203,6 @@
       </div>
     </div>
   </section>
-  
   <!-- Courses Section -->
   <section class="section light-bg fade-in-up" id="courses">
     <div class="container">
@@ -173,7 +218,7 @@
             <span><i class="fas fa-clock"></i> 24 ак. часа</span>
             <span><i class="fas fa-user-graduate"></i> Для начинающих</span>
           </div>
-          <a href="https://avick23.github.io/python/" class="button primary small" target="_blank">Подробнее</a>
+          <a href="https://avick23.github.io/python/ " class="button primary small" target="_blank">Подробнее</a>
         </div>
         <div class="course-card">
           <div class="course-icon">
@@ -197,7 +242,7 @@
             <span><i class="fas fa-clock"></i> 48 ак. часов</span>
             <span><i class="fas fa-user-graduate"></i> Продвинутый</span>
           </div>
-          <a href="https://avick23.github.io/roadmap_backend/" class="button primary small" target="_blank">Подробнее</a>
+          <a href="https://avick23.github.io/roadmap_backend/ " class="button primary small" target="_blank">Подробнее</a>
         </div>
         <div class="course-card">
           <div class="course-icon">
@@ -214,7 +259,6 @@
       </div>
     </div>
   </section>
-  
   <!-- Pricing Section -->
   <section class="section fade-in-up" id="pricing">
     <div class="container">
@@ -273,7 +317,7 @@
               <p>Дружеская атмосфера</p>
             </div>
           </div>
-          <a href="https://t.me/AVick23?text=Хочу%20записаться%20в%20группу." 
+          <a href=" https://t.me/AVick23?text=Хочу%20записаться%20в%20группу." 
              class="button primary" target="_blank">
             Записаться в группу
           </a>
@@ -285,7 +329,6 @@
       </div>
     </div>
   </section>
-  
   <!-- Methodology Section -->
   <section class="section light-bg fade-in-up" id="methodology">
     <div class="container">
@@ -350,12 +393,11 @@
           </div>
         </div>
       </div>
-      <a href="https://avick23.github.io/method/" class="button primary large" target="_blank" style="margin-top: 2rem; display: inline-block;">
+      <a href=" https://avick23.github.io/method/ " class="button primary large" target="_blank" style="margin-top: 2rem; display: inline-block;">
         Подробнее о методе
       </a>
     </div>
   </section>
-  
   <!-- Testimonials Section -->
   <section class="section fade-in-up" id="testimonials">
     <div class="container">
@@ -415,7 +457,6 @@
       </div>
     </div>
   </section>
-  
   <!-- Portfolio Section -->
   <section class="section light-bg fade-in-up" id="portfolio">
     <div class="container">
@@ -431,7 +472,7 @@
           <div class="portfolio-content">
             <h3>Python для начинающих</h3>
             <p>Полный курс по Python с нуля до создания реальных приложений</p>
-            <a href="https://avick23.github.io/python/" class="button primary small" target="_blank">Посмотреть</a>
+            <a href="https://avick23.github.io/python/ " class="button primary small" target="_blank">Посмотреть</a>
           </div>
         </div>
         <div class="portfolio-item">
@@ -443,7 +484,7 @@
           <div class="portfolio-content">
             <h3>Роудмап Backend разработчика</h3>
             <p>8 этапов от основ программирования до Senior Backend разработчика</p>
-            <a href="https://avick23.github.io/roadmap_backend/" class="button primary small" target="_blank">Посмотреть</a>
+            <a href="https://avick23.github.io/roadmap_backend/ " class="button primary small" target="_blank">Посмотреть</a>
           </div>
         </div>
         <div class="portfolio-item">
@@ -455,7 +496,7 @@
           <div class="portfolio-content">
             <h3>Метод выстраданного познания</h3>
             <p>Универсальная методика активного обучения через самостоятельный поиск</p>
-            <a href="https://avick23.github.io/method/" class="button primary small" target="_blank">Посмотреть</a>
+            <a href="https://avick23.github.io/method/ " class="button primary small" target="_blank">Посмотреть</a>
           </div>
         </div>
         <div class="portfolio-item">
@@ -467,13 +508,12 @@
           <div class="portfolio-content">
             <h3>Мои мысли об образовании</h3>
             <p>Эксперименты в образовании и педагогике будущего</p>
-            <a href="https://avick23.github.io/my_thoughts/" class="button primary small" target="_blank">Посмотреть</a>
+            <a href="https://avick23.github.io/my_thoughts/ " class="button primary small" target="_blank">Посмотреть</a>
           </div>
         </div>
       </div>
     </div>
   </section>
-  
   <!-- FAQ Section -->
   <section class="section fade-in-up" id="faq">
     <div class="container">
@@ -521,13 +561,12 @@
             <i class="fas fa-chevron-down"></i>
           </div>
           <div class="faq-answer">
-            <p>Напишите в нашего чат-бота <a href="https://t.me/avick_bot" class="link" target="_blank">@avick_bot</a> в Telegram. Он ответит на все частые вопросы по расписанию, программе обучения и техническим моментам.</p>
+            <p>Напишите в нашего чат-бота <a href="https://t.me/avick_bot " class="link" target="_blank">@avick_bot</a> в Telegram. Он ответит на все частые вопросы по расписанию, программе обучения и техническим моментам.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
-  
   <!-- Contact Section -->
   <section class="section light-bg fade-in-up" id="contact">
     <div class="container">
@@ -557,7 +596,7 @@
               <div>
                 <h4>Telegram</h4>
                 <p>@AVick23</p>
-                <a href="https://t.me/AVick23" target="_blank" class="button primary small">
+                <a href=" https://t.me/AVick23 " target="_blank" class="button primary small">
                   Написать в Telegram
                 </a>
               </div>
@@ -569,9 +608,22 @@
               <div>
                 <h4>Чат-бот</h4>
                 <p>@avick_bot</p>
-                <a href="https://t.me/avick_bot" target="_blank" class="button primary small">
+                <a href="https://t.me/avick_bot " target="_blank" class="button primary small">
                   Задать вопрос боту
                 </a>
+              </div>
+            </div>
+            <!-- Google Calendar Button in Contact Section -->
+            <div class="contact-method">
+              <div class="contact-icon">
+                <i class="fas fa-calendar-alt"></i>
+              </div>
+              <div>
+                <h4>Google Calendar</h4>
+                <p>Записаться через календарь</p>
+                <div class="calendar-button-container" style="margin-top: 10px;">
+                  <div id="calendar-button-contact"></div>
+                </div>
               </div>
             </div>
           </div>
@@ -615,7 +667,6 @@
       </div>
     </div>
   </section>
-  
   <!-- CTA Section -->
   <section class="section cta-section fade-in-up">
     <div class="container">
@@ -626,15 +677,18 @@
            class="button primary large" target="_blank">
           <i class="fab fa-whatsapp"></i> Записаться через WhatsApp
         </a>
-        <a href="https://t.me/AVick23" 
+        <a href=" https://t.me/AVick23 " 
            class="button secondary large" target="_blank">
           <i class="fab fa-telegram"></i> Записаться через Telegram
         </a>
+        <!-- Google Calendar Button in CTA Section -->
+        <div class="calendar-button-container">
+          <div id="calendar-button-cta"></div>
+        </div>
       </div>
       <p class="small-note">Осталось <span style="color: var(--accent); font-weight: 600;">2</span> места на ближайшие даты</p>
     </div>
   </section>
-  
   <!-- Footer -->
   <footer class="footer fade-in-up">
     <div class="container">
@@ -646,19 +700,19 @@
         <div class="footer-links">
           <h4>Курсы</h4>
           <ul>
-            <li><a href="https://avick23.github.io/python/" target="_blank">Python для начинающих</a></li>
-            <li><a href="https://avick23.github.io/roadmap_backend/" target="_blank">Backend разработка</a></li>
-            <li><a href="https://avick23.github.io/method/" target="_blank">Метод выстраданного познания</a></li>
-            <li><a href="https://avick23.github.io/my_thoughts/" target="_blank">Мои мысли об образовании</a></li>
+            <li><a href="https://avick23.github.io/python/ " target="_blank">Python для начинающих</a></li>
+            <li><a href="https://avick23.github.io/roadmap_backend/ " target="_blank">Backend разработка</a></li>
+            <li><a href="https://avick23.github.io/method/ " target="_blank">Метод выстраданного познания</a></li>
+            <li><a href="https://avick23.github.io/my_thoughts/ " target="_blank">Мои мысли об образовании</a></li>
           </ul>
         </div>
         <div class="footer-links">
           <h4>Контакты</h4>
           <ul>
-            <li><a href="https://wa.me/79183455143" target="_blank">WhatsApp</a></li>
-            <li><a href="https://t.me/AVick23" target="_blank">Telegram</a></li>
+            <li><a href="https://wa.me/79183455143 " target="_blank">WhatsApp</a></li>
+            <li><a href="https://t.me/AVick23 " target="_blank">Telegram</a></li>
             <li><a href="mailto:vikulov2811@gmail.com">Email</a></li>
-            <li><a href="https://t.me/avick_bot" target="_blank">Чат-бот @avick_bot</a></li>
+            <li><a href="https://t.me/avick_bot " target="_blank">Чат-бот @avick_bot</a></li>
           </ul>
         </div>
         <div class="footer-contact">
@@ -666,8 +720,8 @@
           <p>+7 918 345-51-43</p>
           <p>vikulov2811@gmail.com</p>
           <div class="social-icons">
-            <a href="https://t.me/AVick23" target="_blank"><i class="fab fa-telegram"></i></a>
-            <a href="https://wa.me/79183455143" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://t.me/AVick23 " target="_blank"><i class="fab fa-telegram"></i></a>
+            <a href="https://wa.me/79183455143 " target="_blank"><i class="fab fa-whatsapp"></i></a>
             <a href="mailto:vikulov2811@gmail.com"><i class="fas fa-envelope"></i></a>
           </div>
         </div>
@@ -677,21 +731,64 @@
       </div>
     </div>
   </footer>
-  
   <!-- Mobile CTA -->
   <div class="mobile-cta">
-    <a href="https://wa.me/79183455143?text=Здравствуйте!%20Хочу%20записаться%20на%20занятие." 
-       class="button primary pulse" target="_blank" rel="noopener">
-      <i class="fab fa-whatsapp"></i> Записаться
-    </a>
+    <div class="calendar-button-container">
+      <div id="calendar-button-mobile"></div>
+    </div>
   </div>
+
+  <!-- Google Calendar Scheduling Button Scripts -->
+  
+  <script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
   
   <script>
     document.addEventListener("DOMContentLoaded", function() {
+      // Wait for Google script to load
+      function initCalendarButtons() {
+        if (typeof calendar !== 'undefined' && calendar.schedulingButton) {
+          // Initialize all calendar buttons with the same configuration
+          const config = {
+            url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ3rcXNj-UEGWzDr6XeT4OdI4rDt6yHziAQlUCppL6nriQVz9tulfhokyt-8IXC48YrJcjO0_oqF?gv=true',
+            color: '#6a5ce8', // Using your site's accent color
+            label: 'Записаться через Google Calendar'
+          };
+          
+          // Hero section button
+          calendar.schedulingButton.load({
+            ...config,
+            target: document.getElementById('calendar-button-placeholder')
+          });
+          
+          // Contact section button
+          calendar.schedulingButton.load({
+            ...config,
+            target: document.getElementById('calendar-button-contact')
+          });
+          
+          // CTA section button
+          calendar.schedulingButton.load({
+            ...config,
+            target: document.getElementById('calendar-button-cta')
+          });
+          
+          // Mobile CTA button
+          calendar.schedulingButton.load({
+            ...config,
+            target: document.getElementById('calendar-button-mobile')
+          });
+        } else {
+          // If script hasn't loaded yet, try again after a short delay
+          setTimeout(initCalendarButtons, 300);
+        }
+      }
+      
+      // Start initialization
+      initCalendarButtons();
+      
       // Mobile menu toggle
       const navbarToggle = document.getElementById('navbarToggle');
       const navbarMenu = document.getElementById('navbarMenu');
-      
       navbarToggle.addEventListener('click', () => {
         navbarMenu.classList.toggle('active');
         const icon = navbarToggle.querySelector('i');
@@ -715,7 +812,6 @@
           e.preventDefault();
           const targetId = this.getAttribute('href');
           if (!targetId || targetId === '#') return;
-          
           const targetElement = document.querySelector(targetId);
           if (targetElement) {
             window.scrollTo({
@@ -734,25 +830,20 @@
         } else {
           navbar.classList.remove('scrolled');
         }
-        
         // Highlight active navigation link
         const sections = document.querySelectorAll('section');
         const navLinks = document.querySelectorAll('.nav-link');
         let currentSection = '';
-        
         sections.forEach(section => {
           const sectionTop = section.offsetTop;
           const sectionHeight = section.offsetHeight;
-          
           if (pageYOffset >= sectionTop - 150 && pageYOffset < sectionTop + sectionHeight - 150) {
             currentSection = section.getAttribute('id');
           }
         });
-        
         navLinks.forEach(link => {
           link.classList.remove('active');
           const sectionId = link.getAttribute('href').substring(1);
-          
           if (sectionId === currentSection && currentSection) {
             link.classList.add('active');
           }
@@ -765,7 +856,6 @@
         question.addEventListener('click', () => {
           const answer = question.nextElementSibling;
           const icon = question.querySelector('i');
-          
           // Close all other answers
           document.querySelectorAll('.faq-answer').forEach(el => {
             if (el !== answer) {
@@ -774,7 +864,6 @@
               el.previousElementSibling.querySelector('i').classList.add('fa-chevron-down');
             }
           });
-          
           // Toggle current answer
           if (answer.style.maxHeight) {
             answer.style.maxHeight = null;
@@ -794,7 +883,6 @@
         rootMargin: '0px',
         threshold: 0.1
       };
-      
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -843,11 +931,9 @@
           const targetValue = stat.textContent;
           let currentValue = 0;
           const isPercentage = targetValue.includes('%');
-          
           const incrementValue = isPercentage ? 
             parseInt(targetValue) / 50 : 
             parseInt(targetValue) / 30;
-          
           const updateStat = () => {
             currentValue += incrementValue;
             if ((isPercentage && currentValue < parseInt(targetValue)) || 
@@ -858,7 +944,6 @@
               stat.textContent = targetValue;
             }
           };
-          
           updateStat();
         });
       }
