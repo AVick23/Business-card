@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Метод обучения: Выстраданное познание | Алексей Викулов</title>
+  <meta name="description" content="Метод 'выстраданного познания' — практика через реальные задачи, как в R&D-команде. 92% учеников получают офферы. Бесплатный пробный урок.">
+  <link rel="stylesheet" href="assests/css/styles.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
+  
+  <!-- Google Calendar Styling: Adapted to phi/spacing -->
+  <style>
+    .calendar-button-container { 
+      display: inline-block; 
+      margin: var(--phi-spacing-small) 0; 
+    }
+    #scheduling-button { 
+      background: var(--accent) !important; 
+      color: #0a0a0f !important; 
+      border-radius: var(--border-radius) !important; 
+      font-weight: 600 !important; 
+      padding: var(--phi-spacing-small) var(--phi-spacing-medium) !important; 
+      font-size: var(--phi-scale-1) !important; 
+      border: none !important; 
+      box-shadow: var(--shadow-light) !important; 
+      transition: var(--transition) !important; 
+      width: 100% !important; 
+      display: flex !important; 
+      align-items: center !important; 
+      justify-content: center !important; 
+      gap: var(--phi-spacing-small) !important; 
+      max-width: calc(350px / var(--phi)) !important; /* ~216px */
+    }
+    #scheduling-button:hover { 
+      background: color-mix(in srgb, var(--accent) 90%, #5a4cd0) !important; 
+      transform: translateY(var(--phi-spacing-small)) !important; 
+      box-shadow: var(--shadow-medium) !important; 
+      animation: lift-glow 0.3s forwards !important;
+    }
+    .calendar-icon { 
+      font-size: var(--phi-scale-1) !important; 
+    }
+    @media (max-width: 768px) { 
+      #scheduling-button { 
+        max-width: 100% !important; 
+        padding: var(--phi-spacing-small) var(--phi-spacing-small) !important; 
+      } 
+    }
+    
+    /* Дополнительные стили для страницы обучения */
+    .methodology-details {
+      background: var(--card-bg-light);
+      border-radius: var(--border-radius);
+      padding: var(--phi-spacing-medium);
+      margin: var(--phi-spacing-medium) 0;
+    }
+    
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: var(--phi-spacing-medium) 0;
+    }
+    
+    .comparison-table th,
+    .comparison-table td {
+      padding: var(--phi-spacing-small);
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .comparison-table th {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    
+    .comparison-table .check {
+      color: var(--success);
+    }
+    
+    .comparison-table .cross {
+      color: var(--danger);
+    }
+    
+    .process-steps {
+      margin: var(--phi-spacing-large) 0;
+    }
+    
+    .step-item {
+      display: flex;
+      margin-bottom: var(--phi-spacing-medium);
+      align-items: flex-start;
+    }
+    
+    .step-number {
+      background: var(--accent);
+      color: var(--bg);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      margin-right: var(--phi-spacing-medium);
+      flex-shrink: 0;
+    }
+    
+    .step-content {
+      flex: 1;
+      background: var(--card-bg);
+      padding: var(--phi-spacing-medium);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-light);
+    }
+    
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--phi-spacing-medium);
+      margin: var(--phi-spacing-large) 0;
+    }
+    
+    .result-item {
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      padding: var(--phi-spacing-medium);
+      text-align: center;
+      box-shadow: var(--shadow-light);
+      transition: var(--transition);
+    }
+    
+    .result-item:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-medium);
+    }
+    
+    .result-icon {
+      font-size: 2.5rem;
+      color: var(--accent);
+      margin-bottom: var(--phi-spacing-small);
+    }
+    
+    @media (max-width: 768px) {
+      .step-item {
+        flex-direction: column;
+      }
+      
+      .step-number {
+        margin-bottom: var(--phi-spacing-small);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-brand">
+        <h3>Алексей Викулов</h3>
+      </div>
+      <div class="navbar-toggler" id="navbarToggle">
+        <i class="fas fa-bars"></i>
+      </div>
+      <div class="navbar-menu" id="navbarMenu">
+        <ul class="navbar-links">
+          <li><a href="index.html" class="nav-link">Главная</a></li>
+          <li><a href="about.html" class="nav-link">Обо мне</a></li>
+          <li><a href="courses.html" class="nav-link">Курсы</a></li>
+          <li><a href="learning.html" class="nav-link active">Обучение</a></li>
+          <li><a href="prices.html" class="nav-link">Цены</a></li>
+          <li><a href="contact.html" class="nav-link">Контакты</a></li>
+        </ul>
+        <div class="navbar-cta">
+          <a href="https://wa.me/79183455143?text=Здравствуйте!%20Хочу%20записаться%20на%20занятие." 
+             class="button primary small nav-cta-btn" target="_blank">
+            <i class="fab fa-whatsapp"></i> WhatsApp
+          </a>
+          <a href="https://t.me/avick_bot" 
+             class="button secondary small nav-cta-btn" target="_blank">
+            <i class="fab fa-telegram"></i> Telegram-Bot
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section for Learning -->
+  <header class="hero fade-in-up">
+    <div class="container">
+      <div class="hero-content" style="grid-template-columns: 1fr; text-align: center;">
+        <div class="hero-text">
+          <h1>Метод "выстраданного познания"</h1>
+          <p class="subtitle">Почему 92% моих учеников получают офферы или 89+ на ЕГЭ за 2–3 месяца? Потому что я учу не теорию, а практику — через реальные задачи, как в R&D-команде.</p>
+          <div class="hero-pitch">
+            <p><strong>Проблема традиционного обучения:</strong> Студенты заучивают теорию, но не могут применить её на практике. Они знают, как работает цикл for, но не могут написать работающий скрипт для автоматизации.</p>
+            <p><strong>Моё решение:</strong> Метод "выстраданного познания" — ты учишься через решение реальных задач, сталкиваешься с ошибками, находишь решения с моей поддержкой. Как в Apple: итерации, фидбек, совершенство.</p>
+          </div>
+          <div class="hero-stats fade-in-up">
+            <div class="stats-grid">
+              <div class="stat-item">
+                <span class="stat-value">92</span>
+                <span class="stat-label">Успех на экзаменах/офферах</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-value">70/30</span>
+                <span class="stat-label">Практика/Теория</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-value">2–3</span>
+                <span class="stat-label">Месяца до junior</span>
+              </div>
+            </div>
+          </div>
+          <div class="hero-cta">
+            <a href="#methodology" class="button primary large">
+              <i class="fas fa-brain"></i> Узнать о методе
+            </a>
+            <a href="https://wa.me/79183455143?text=Хочу%20узнать%20о%20методе%20обучения!" 
+               class="button secondary large" target="_blank">
+              <i class="fab fa-whatsapp"></i> Консультация
+            </a>
+            <!-- Google Calendar -->
+            <div class="calendar-button-container">
+              <div id="calendar-button-placeholder"></div>
+            </div>
+          </div>
+          <div class="social-links">
+            <a href="https://t.me/AVick23" target="_blank"><i class="fab fa-telegram"></i></a>
+            <a href="https://wa.me/79183455143" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="mailto:vikulov2811@gmail.com"><i class="fas fa-envelope"></i></a>
+            <a href="https://t.me/avick_bot" target="_blank"><i class="fas fa-robot"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Methodology Section -->
+  <section class="section fade-in-up" id="methodology">
+    <div class="container">
+      <h2>Что такое "выстраданное познание"?</h2>
+      <p class="section-description">Это не просто обучение — это трансформация. Ты не слушаешь лекции, а решаешь реальные задачи, сталкиваешься с проблемами и находишь решения с моей поддержкой.</p>
+      
+      <div class="methodology-content">
+        <div class="about-text">
+          <h3>Почему это работает?</h3>
+          <p>Мозг запоминает не то, что легко даётся, а то, что требует усилий. Когда ты самостоятельно находишь решение через ошибки, ты создаёшь прочные нейронные связи. Это как в спорте: мышцы растут от нагрузки, а не от наблюдения.</p>
+          <p>Мой метод основан на принципах когнитивной психологии и опыте лучших IT-компаний. Я не даю готовые ответы — я задаю вопросы, которые направляют тебя к решению.</p>
+        </div>
+        
+        <div class="methodology-details">
+          <h4>Ключевые принципы метода:</h4>
+          <ul class="methodology-features">
+            <li><i class="fas fa-check"></i> <strong>70/30 правило:</strong> 70% времени — практика, 30% — теория</li>
+            <li><i class="fas fa-check"></i> <strong>Реальные задачи:</strong> Не абстрактные примеры, а проекты из индустрии</li>
+            <li><i class="fas fa-check"></i> <strong>Ошибки как ресурс:</strong> Каждая ошибка — шаг к пониманию</li>
+            <li><i class="fas fa-check"></i> <strong>Постоянный фидбек:</strong> Не раз в неделю, а в реальном времени</li>
+            <li><i class="fas fa-check"></i> <strong>Индивидуальный подход:</strong> Программа под твои цели и темп</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="process-steps">
+        <h3>Как проходит обучение?</h3>
+        <div class="step-item fade-in-up">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h4>Диагностика и постановка целей</h4>
+            <p>Мы определяем твой текущий уровень, цели и сроки. Создаём индивидуальный план обучения с чёткими вехами.</p>
+          </div>
+        </div>
+        <div class="step-item fade-in-up">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h4>Практика через реальные задачи</h4>
+            <p>Ты получаешь задачу из реального проекта. Не теоретическое упражнение, а код, который решает конкретную проблему.</p>
+          </div>
+        </div>
+        <div class="step-item fade-in-up">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h4>Самостоятельное решение и ошибки</h4>
+            <p>Ты пробуешь решить задачу самостоятельно. Сталкиваешься с трудностями — это нормально и необходимо.</p>
+          </div>
+        </div>
+        <div class="step-item fade-in-up">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h4>Направляющий фидбек</h4>
+            <p>Я не даю готовый ответ, а задаю вопросы, которые направляют тебя к решению. Ты сам находишь ответ — это создаёт прочные знания.</p>
+          </div>
+        </div>
+        <div class="step-item fade-in-up">
+          <div class="step-number">5</div>
+          <div class="step-content">
+            <h4>Закрепление и рефлексия</h4>
+            <p>Мы анализируем, что ты узнал, какие ошибки совершил и как их избежать в будущем. Закрепляем знания через новые задачи.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Me Section -->
+  <section class="section light-bg fade-in-up">
+    <div class="container">
+      <h2>Почему выбирают меня?</h2>
+      <p class="section-description">В отличие от большинства репетиторов и онлайн-курсов, я предлагаю не просто знания, а трансформацию мышления.</p>
+      
+      <div class="comparison-container">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Критерий</th>
+              <th>Обычные курсы</th>
+              <th>Мой метод</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Фокус</td>
+              <td class="cross">Теория и синтетические примеры</td>
+              <td class="check">Практика и реальные задачи</td>
+            </tr>
+            <tr>
+              <td>Подход к ошибкам</td>
+              <td class="cross">Исправление преподавателем</td>
+              <td class="check">Использование как инструмента обучения</td>
+            </tr>
+            <tr>
+              <td>Темп обучения</td>
+              <td class="cross">Фиксированный для всех</td>
+              <td class="check">Индивидуальный под каждого</td>
+            </tr>
+            <tr>
+              <td>Поддержка</td>
+              <td class="cross">Ограниченная (чаты, форумы)</td>
+              <td class="check">Персональная 24/7 в чате</td>
+            </tr>
+            <tr>
+              <td>Результат</td>
+              <td class="cross">Знание теории</td>
+              <td class="check">Умение решать реальные задачи</td>
+            </tr>
+            <tr>
+              <td>Гарантия</td>
+              <td class="cross">Отсутствует или формальная</td>
+              <td class="check">Возврат при отсутствии прогресса</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <div class="results-grid">
+        <div class="result-item fade-in-up">
+          <div class="result-icon">
+            <i class="fas fa-rocket"></i>
+          </div>
+          <h4>Скорость обучения</h4>
+          <p>От нуля до junior за 2–3 месяца вместо 6–12 на традиционных курсах</p>
+        </div>
+        <div class="result-item fade-in-up">
+          <div class="result-icon">
+            <i class="fas fa-briefcase"></i>
+          </div>
+          <h4>Трудоустройство</h4>
+          <p>92% учеников получают офферы или переходят на новый уровень в карьере</p>
+        </div>
+        <div class="result-item fade-in-up">
+          <div class="result-icon">
+            <i class="fas fa-graduation-cap"></i>
+          </div>
+          <h4>Результаты ЕГЭ</h4>
+          <p>89+ баллов на ЕГЭ по информатике у 85% учеников</p>
+        </div>
+        <div class="result-item fade-in-up">
+          <div class="result-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h4>Гарантия</h4>
+          <p>Возврат 50% оплаты, если нет прогресса после 4 занятий</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="section fade-in-up">
+    <div class="container">
+      <h2>Что говорят ученики</h2>
+      <p class="section-description">Реальные отзывы от тех, кто прошёл обучение по методу "выстраданного познания".</p>
+      
+      <div class="testimonials-grid">
+        <div class="testimonial-card fade-in-up">
+          <div class="testimonial-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="testimonial-text">"Пришёл с нулевыми знаниями Python. Через 3 месяца получил оффер junior-разработчика. Метод Алексея — это больно, но эффективно. Каждая ошибка — это шаг вперёд."</p>
+          <div class="testimonial-author">
+            <div>
+              <h4>Дмитрий, 24 года</h4>
+              <p>Junior Python Developer</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial-card fade-in-up">
+          <div class="testimonial-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="testimonial-text">"Сдала ЕГЭ по информатике на 94 балла. Алексей не просто объяснял теорию, а учил думать как программист. Задачи решала интуитивно, понимая логику, а не зазубривая."</p>
+          <div class="testimonial-author">
+            <div>
+              <h4>Анна, 17 лет</h4>
+              <p>Студентка МГТУ им. Баумана</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial-card fade-in-up">
+          <div class="testimonial-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="testimonial-text">"Перешёл с PHP на Golang за 2 месяца. Алексей не давал готовых решений, а направлял к ним. Теперь понимаю не только как писать код, но и почему он работает именно так."</p>
+          <div class="testimonial-author">
+            <div>
+              <h4>Сергей, 29 лет</h4>
+              <p>Backend Developer</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section light-bg fade-in-up">
+    <div class="container">
+      <h2>Частые вопросы</h2>
+      <p class="section-description">Ответы на самые популярные вопросы о методе обучения.</p>
+      
+      <div class="faq-container">
+        <div class="faq-item fade-in-up">
+          <div class="faq-question">
+            <h4>Подойдёт ли метод для полных новичков?</h4>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Да, особенно для новичков! Метод "выстраданного познания" формирует правильное мышление программиста с самого начала. Ты учишься не просто писать код, а решать проблемы — это ключевой навык в IT.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item fade-in-up">
+          <div class="faq-question">
+            <h4>Что если я не успеваю за темпом?</h4>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Темп полностью индивидуален. Мы двигаемся так быстро, как ты можешь усваивать материал. Главное — не скорость, а качество понимания. Если нужно, мы возвращаемся к сложным темам, пока ты не освоишь их полностью.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item fade-in-up">
+          <div class="faq-question">
+            <h4>Чем метод отличается от менторства в компаниях?</h4>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>В компаниях менторство часто формальное — тебе показывают, как делать. В моём методе ты сам находишь решения через направляющие вопросы. Это формирует не просто навык, а мышление, которое позволяет решать любые задачи, а не только те, с которыми ты уже сталкивался.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item fade-in-up">
+          <div class="faq-question">
+            <h4>Как гарантия возврата работает на практике?</h4>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Если после 4 занятий ты не видишь прогресса (не можешь решать задачи того уровня, который был определён в начале), я возвращаю 50% оплаты. На практике этого почти никогда не происходит — метод работает для всех, кто готов прилагать усилия.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Финальный CTA -->
+  <section class="section cta-section fade-in-up">
+    <div class="container">
+      <h2>Готов испытать метод на себе?</h2>
+      <p>Запишись на бесплатный пробный урок и почувствуй разницу. Без обязательств, только практика и результат.</p>
+      <div class="cta-buttons">
+        <a href="https://wa.me/79183455143?text=Хочу%20попробовать%20метод%20выстраданного%20познания!" 
+           class="button primary large" target="_blank">
+          <i class="fab fa-whatsapp"></i> Пробный урок в WhatsApp
+        </a>
+        <a href="https://t.me/AVick23" 
+           class="button secondary large" target="_blank">
+          <i class="fab fa-telegram"></i> В Telegram
+        </a>
+        <div class="calendar-button-container">
+          <div id="calendar-button-cta"></div>
+        </div>
+      </div>
+      <p class="small-note pulse">Осталось <span id="slots-left">2</span> места на пробные уроки на этой неделе</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer fade-in-up">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <h3>Алексей Викулов</h3>
+          <p>Backend-репетитор: Python, Golang, ЕГЭ</p>
+        </div>
+        <div class="footer-links">
+          <h4>Разделы</h4>
+          <ul>
+            <li><a href="about.html">Обо мне</a></li>
+            <li><a href="courses.html">Курсы</a></li>
+            <li><a href="learning.html">Обучение</a></li>
+            <li><a href="prices.html">Цены</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Контакты</h4>
+          <p>+7 918 345-51-43</p>
+          <p>vikulov2811@gmail.com</p>
+          <div class="social-icons">
+            <a href="https://t.me/AVick23" target="_blank"><i class="fab fa-telegram"></i></a>
+            <a href="https://wa.me/79183455143" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="mailto:vikulov2811@gmail.com"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2023-2025 Алексей Викулов. Все права защищены.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile CTA -->
+  <div class="mobile-cta">
+    <div class="calendar-button-container">
+      <div id="calendar-button-mobile"></div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
+  
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // Mobile Calendar Redirect
+    function isMobileDevice() {
+      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
+             window.innerWidth <= 768;
+    }
+
+    function confirmMobileCalendarRedirect() {
+      const userConfirmed = confirm("Вы будете перенаправлены в Google Calendar для записи. Продолжить?");
+      if (userConfirmed) {
+        window.location.href = "https://calendar.app.google/ThpteAc5uqhxqnUA9";
+      }
+    }
+
+    function initCalendarButtons() {
+      const isMobile = isMobileDevice();
+      
+      if (isMobile) {
+        const calendarPlaceholders = [
+          'calendar-button-placeholder',
+          'calendar-button-cta',
+          'calendar-button-mobile'
+        ];
+        
+        calendarPlaceholders.forEach(id => {
+          const placeholder = document.getElementById(id);
+          if (placeholder) {
+            placeholder.innerHTML = '';
+            const mobileButton = document.createElement('button');
+            mobileButton.className = 'button primary mobile-calendar-btn';
+            mobileButton.innerHTML = '<i class="fas fa-calendar-alt"></i> Записаться в Google Calendar';
+            mobileButton.style.width = '100%';
+            mobileButton.addEventListener('click', confirmMobileCalendarRedirect);
+            placeholder.appendChild(mobileButton);
+          }
+        });
+      } else {
+        if (typeof calendar !== 'undefined' && calendar.schedulingButton) {
+          const config = {
+            url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ3rcXNj-UEGWzDr6XeT4OdI4rDt6yHziAQlUCppL6nriQVz9tulfhokyt-8IXC48YrJcjO0_oqF?gv=true',
+            color: '#6a5ce8',
+            label: 'Записаться через Google Calendar'
+          };
+          
+          ['calendar-button-placeholder', 'calendar-button-cta', 'calendar-button-mobile'].forEach(id => {
+            const element = document.getElementById(id);
+            if (element) {
+              calendar.schedulingButton.load({
+                ...config,
+                target: element
+              });
+            }
+          });
+        } else {
+          setTimeout(initCalendarButtons, 300);
+        }
+      }
+    }
+
+    initCalendarButtons();
+    
+    // Navbar Toggle
+    const navbarToggle = document.getElementById('navbarToggle');
+    const navbarMenu = document.getElementById('navbarMenu');
+    if (navbarToggle && navbarMenu) {
+      navbarToggle.addEventListener('click', () => {
+        navbarMenu.classList.toggle('active');
+        const icon = navbarToggle.querySelector('i');
+        icon.classList.toggle('fa-bars');
+        icon.classList.toggle('fa-times');
+      });
+    }
+
+    // Close mobile menu on link click
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 768) {
+          navbarMenu.classList.remove('active');
+          const icon = navbarToggle.querySelector('i');
+          icon.classList.add('fa-bars');
+          icon.classList.remove('fa-times');
+        }
+      });
+    });
+
+    // FAQ Accordion
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', () => {
+        const answer = question.nextElementSibling;
+        const icon = question.querySelector('i');
+        
+        // Toggle current answer
+        if (answer.style.maxHeight) {
+          answer.style.maxHeight = null;
+          icon.classList.remove('fa-chevron-up');
+          icon.classList.add('fa-chevron-down');
+        } else {
+          answer.style.maxHeight = answer.scrollHeight + "px";
+          icon.classList.remove('fa-chevron-down');
+          icon.classList.add('fa-chevron-up');
+        }
+      });
+    });
+
+    // Smooth scrolling and active nav (Adjusted offset for new navbar height)
+    document.querySelectorAll('.nav-link').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        if (!targetId || targetId === '#') return;
+        if (targetId.startsWith('http')) {
+          window.open(targetId, '_blank');
+          return;
+        }
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          e.preventDefault();
+          window.scrollTo({
+            top: targetElement.offsetTop - parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--navbar-height')) - 20,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Set active nav on load
+    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(link => {
+      if (link.getAttribute('href') === currentPath) {
+        link.classList.add('active');
+      }
+    });
+
+    // Sticky navbar
+    const navbar = document.querySelector('.navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--space-8'))) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Urgency: Счётчик слотов
+    function updateSlots() {
+      const slots = document.getElementById('slots-left');
+      if (slots) {
+        let count = 2; // Уменьшай вручную или по API
+        slots.textContent = count;
+        if (count <= 0) slots.textContent = '0 — запишись срочно!';
+      }
+    }
+    updateSlots();
+
+    // Animate stats
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateStats();
+          statsObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    const statsSection = document.querySelector('.hero-stats');
+    if (statsSection) {
+      statsObserver.observe(statsSection);
+    }
+
+    function animateStats() {
+      document.querySelectorAll('.stat-value').forEach(stat => {
+        const targetValue = stat.textContent;
+        let currentValue = 0;
+        const isPercentage = targetValue.includes('%');
+        const targetNum = parseInt(targetValue.replace(/[^\d]/g, ''));
+        const incrementValue = isPercentage ? targetNum / 50 : targetNum / 30;
+        const updateStat = () => {
+          currentValue += incrementValue;
+          if (currentValue < targetNum) {
+            stat.textContent = Math.round(currentValue) + (isPercentage ? '%' : '');
+            requestAnimationFrame(updateStat);
+          } else {
+            stat.textContent = targetValue;
+          }
+        };
+        updateStat();
+      });
+    }
+
+    // Intersection Observer for animations
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animated");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+    document.querySelectorAll('.fade-in-up, .step-item, .result-item, .testimonial-card, .faq-item').forEach(element => {
+      observer.observe(element);
+    });
+  });
+  </script>
+</body>
+</html>

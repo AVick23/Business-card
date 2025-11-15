@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Обо мне: Алексей Викулов | Репетитор ОГЭ/ЕГЭ и Backend-разработчик</title>
+  <meta name="description" content="Репетитор ОГЭ/ЕГЭ по информатике и физике, Backend-разработчик Python/Golang. 6+ лет опыта, 120+ учеников. Метод 'выстраданного познания' — от теории к практике.">
+  <link rel="stylesheet" href="assests/css/styles.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
+  
+  <!-- Additional Styles for About Page -->
+  <style>
+    .hero-text h1 {
+      font-size: var(--phi-scale-4);
+      line-height: 1.1;
+      margin-bottom: var(--phi-spacing-small);
+    }
+    .hero-text .subtitle {
+      font-size: var(--phi-scale-2);
+      margin-bottom: var(--phi-spacing-medium);
+      line-height: 1.6;
+    }
+    .avatar-large {
+      transition: var(--transition);
+    }
+    .avatar-large:hover {
+      transform: scale(1.02);
+    }
+    .methodology-features {
+      list-style: none;
+      margin-top: 2rem;
+    }
+    .methodology-features li {
+      padding: var(--phi-spacing-small) 0;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: var(--phi-spacing-small);
+    }
+    .methodology-features i {
+      color: var(--success);
+      width: var(--phi-scale-1);
+      min-width: var(--phi-scale-1);
+      text-align: center;
+    }
+    .specialization-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--phi-spacing-medium);
+      margin: var(--phi-spacing-large) 0;
+    }
+    .specialization-card {
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      padding: var(--phi-spacing-medium);
+      text-align: center;
+      transition: var(--transition);
+    }
+    .specialization-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-medium);
+    }
+    .specialization-icon {
+      font-size: 2.5rem;
+      color: var(--accent);
+      margin-bottom: var(--phi-spacing-small);
+    }
+    @media (max-width: 768px) {
+      .methodology-features {
+        margin-top: var(--phi-spacing-medium);
+      }
+      .specialization-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-brand">
+        <h3>Алексей Викулов</h3>
+      </div>
+      <div class="navbar-toggler" id="navbarToggle">
+        <i class="fas fa-bars"></i>
+      </div>
+      <div class="navbar-menu" id="navbarMenu">
+        <ul class="navbar-links">
+          <li><a href="index.html" class="nav-link">Главная</a></li>
+          <li><a href="about.html" class="nav-link active">Обо мне</a></li>
+          <li><a href="courses.html" class="nav-link">Курсы</a></li>
+          <li><a href="learning.html" class="nav-link">Обучение</a></li>
+          <li><a href="prices.html" class="nav-link">Цены</a></li>
+          <li><a href="contact.html" class="nav-link">Контакты</a></li>
+        </ul>
+        <div class="navbar-cta">
+          <a href="https://wa.me/79183455143?text=Здравствуйте!%20Хочу%20записаться%20на%20занятие." 
+             class="button primary small nav-cta-btn" target="_blank">
+            <i class="fab fa-whatsapp"></i> WhatsApp
+          </a>
+          <a href="https://t.me/avick_bot" 
+             class="button secondary small nav-cta-btn" target="_blank">
+            <i class="fab fa-telegram"></i> Telegram-Bot
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero fade-in-up">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>Привет, я Алексей</h1>
+          <p class="subtitle">Репетитор ОГЭ/ЕГЭ по информатике и физике, Backend-разработчик с 6+ годами опыта в Python и Golang. Помогаю школьникам сдать экзамены на 85+ баллов и начинающим разработчикам освоить профессию за 2-3 месяца.</p>
+          <div class="hero-stats fade-in-up">
+            <div class="stats-grid">
+              <div class="stat-item">
+                <span class="stat-value">6+</span>
+                <span class="stat-label">Лет в IT</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-value">120+</span>
+                <span class="stat-label">Учеников</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-value">94%</span>
+                <span class="stat-label">Успех на экзаменах</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-image">
+          <img src="professional-avatar.jpg" alt="Алексей Викулов" class="avatar-large">
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <section class="section fade-in-up">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-text">
+          <h3>Мой путь в IT и преподавании</h3>
+          <p>С 2019 года я погрузился в мир IT, начав с самостоятельного изучения Python и основ веб-разработки. Путь от новичка до backend-разработчика в fintech-стартапах научил меня главному: настоящие знания приходят через практику и преодоление трудностей.</p>
+          <p>В 2022 году я начал совмещать разработку с преподаванием, помогая школьникам готовиться к ОГЭ и ЕГЭ по информатике и физике. Обнаружил, что принципы качественного кодинга и эффективной подготовки к экзаменам удивительно похожи: глубокое понимание вместо зубрежки, решение реальных задач вместо абстрактных примеров.</p>
+          <p>К 2025 году через мои занятия прошло 120+ учеников. 94% из них сдали экзамены на высокие баллы или получили офферы в IT. Я продолжаю работать над проектами на Python и Golang, что позволяет мне делиться с учениками самыми актуальными знаниями из индустрии.</p>
+        </div>
+        <div>
+          <h3>Мои специализации</h3>
+          <div class="specialization-grid">
+            <div class="specialization-card fade-in-up">
+              <div class="specialization-icon">
+                <i class="fas fa-laptop-code"></i>
+              </div>
+              <h4>ОГЭ/ЕГЭ по информатике</h4>
+              <p>Полный разбор заданий 1-27, программирование на Python, алгоритмы и стратегии решения. Средний балл учеников: 87+</p>
+            </div>
+            <div class="specialization-card fade-in-up">
+              <div class="specialization-icon">
+                <i class="fas fa-atom"></i>
+              </div>
+              <h4>ОГЭ/ЕГЭ по физике</h4>
+              <p>От механики до квантовой физики. Учу решать задачи через понимание процессов, а не заучивание формул.</p>
+            </div>
+            <div class="specialization-card fade-in-up">
+              <div class="specialization-icon">
+                <i class="fab fa-python"></i>
+              </div>
+              <h4>Backend на Python</h4>
+              <p>Django, FastAPI, базы данных, асинхронное программирование. От основ до продвинутых тем за 2-3 месяца.</p>
+            </div>
+            <div class="specialization-card fade-in-up">
+              <div class="specialization-icon">
+                <i class="fab fa-golang"></i>
+              </div>
+              <h4>Backend на Golang</h4>
+              <p>Горутины, каналы, высоконагруженные системы. Идеально для тех, кто хочет работать в серьезных проектах.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline Section -->
+  <section class="section light-bg fade-in-up" id="timeline">
+    <div class="container">
+      <h2>Эволюция преподавателя и разработчика</h2>
+      <p class="section-description">Как я совмещаю разработку и преподавание, создавая уникальный подход к обучению.</p>
+      <div class="timeline">
+        <div class="timeline-item fade-in-up">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">2019</div>
+          <div class="timeline-title">Старт в IT: Самообучение</div>
+          <p class="timeline-desc">Изучил Python, основы алгоритмов и веб-разработки. Создал первые проекты — от Telegram-ботов до простых веб-приложений.</p>
+        </div>
+        <div class="timeline-item fade-in-up">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">2020-2022</div>
+          <div class="timeline-title">Профессиональный рост в разработке</div>
+          <p class="timeline-desc">Backend-разработчик в fintech и e-commerce. Освоил Golang, микросервисную архитектуру, высоконагруженные системы. Параллельно начал помогать друзьям с основами программирования.</p>
+        </div>
+        <div class="timeline-item fade-in-up">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">2023</div>
+          <div class="timeline-title">Начало преподавательской практики</div>
+          <p class="timeline-desc">Первый опыт подготовки к ЕГЭ по информатике. Разработал метод "выстраданного познания", объединив принципы качественной разработки и эффективного обучения.</p>
+        </div>
+        <div class="timeline-item fade-in-up">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">2024</div>
+          <div class="timeline-title">Расширение специализации</div>
+          <p class="timeline-desc">Добавил подготовку к ЕГЭ по физике и курсы по Golang. 80+ учеников, 92% успешных результатов. Начал вести корпоративные тренинги по backend-разработке.</p>
+        </div>
+        <div class="timeline-item fade-in-up">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">2025-наст.</div>
+          <div class="timeline-title">Совмещение практики и преподавания</div>
+          <p class="timeline-desc">120+ учеников, 94% успеха на экзаменах и в трудоустройстве. Активно работаю над коммерческими проектами на Python и Golang, интегрируя реальный опыт в обучение.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Philosophy Section -->
+  <section class="section fade-in-up">
+    <div class="container">
+      <div class="methodology-content">
+        <div class="about-text">
+          <h3>Философия обучения: от экзаменов к профессии</h3>
+          <p>Я не просто готовлю к экзаменам или учу программированию — я помогаю построить системное мышление, необходимое и для высоких баллов на ЕГЭ, и для успешной карьеры в IT.</p>
+          <p><strong>Для школьников:</strong> Учу не запоминать шаблоны решений, а понимать логику предмета. Информатика и физика — это не набор формул, а инструменты для описания и преобразования мира.</p>
+          <p><strong>Для будущих разработчиков:</strong> Даю не просто синтаксис языка, а архитектурное мышление. Показываю, как создаются надежные и масштабируемые системы, с которыми работают в современных IT-компаниях.</p>
+        </div>
+        <ul class="methodology-features">
+          <li><i class="fas fa-check"></i> Интеграция реального опыта разработки в подготовку к экзаменам</li>
+          <li><i class="fas fa-check"></i> Единая методология для ОГЭ/ЕГЭ и профессионального обучения</li>
+          <li><i class="fas fa-check"></i> Акцент на понимание вместо механического запоминания</li>
+          <li><i class="fas fa-check"></i> Поддержка 24/7 в Telegram для всех учеников</li>
+          <li><i class="fas fa-check"></i> Гарантированный результат или возврат средств</li>
+          <li><i class="fas fa-check"></i> Постоянное обновление материалов в соответствии с изменениями в ЕГЭ и IT-индустрии</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section cta-section fade-in-up">
+    <div class="container">
+      <h2>Готовы начать движение к цели?</h2>
+      <p>Неважно, готовитесь ли вы к экзаменам или планируете карьеру в IT — я помогу построить эффективный путь к результату.</p>
+      <div class="cta-buttons">
+        <a href="https://wa.me/79183455143?text=Здравствуйте!%20Интересует%20подготовка%20к%20ОГЭ/ЕГЭ%20или%20обучение%20программированию." 
+           class="button primary large" target="_blank">
+          <i class="fab fa-whatsapp"></i> Обсудить цели в WhatsApp
+        </a>
+        <a href="https://t.me/AVick23" 
+           class="button secondary large" target="_blank">
+          <i class="fab fa-telegram"></i> Написать в Telegram
+        </a>
+        <div class="calendar-button-container">
+          <div id="calendar-button-cta"></div>
+        </div>
+      </div>
+      <p class="small-note pulse">Осталось <span id="slots-left">3</span> места на пробные уроки на этой неделе</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer fade-in-up">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <h3>Алексей Викулов</h3>
+          <p>Репетитор ОГЭ/ЕГЭ и Backend-разработчик</p>
+        </div>
+        <div class="footer-links">
+          <h4>Разделы</h4>
+          <ul>
+            <li><a href="about.html">Обо мне</a></li>
+            <li><a href="courses.html">Курсы</a></li>
+            <li><a href="learning.html">Обучение</a></li>
+            <li><a href="prices.html">Цены</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Контакты</h4>
+          <p>+7 918 345-51-43</p>
+          <p>vikulov2811@gmail.com</p>
+          <div class="social-icons">
+            <a href="https://t.me/AVick23" target="_blank"><i class="fab fa-telegram"></i></a>
+            <a href="https://wa.me/79183455143" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="mailto:vikulov2811@gmail.com"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2023-2025 Алексей Викулов. Все права защищены.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile CTA -->
+  <div class="mobile-cta">
+    <div class="calendar-button-container">
+      <div id="calendar-button-mobile"></div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
+  
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // Mobile Calendar Redirect
+    function isMobileDevice() {
+      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
+             window.innerWidth <= 768;
+    }
+
+    function confirmMobileCalendarRedirect() {
+      const userConfirmed = confirm("Вы будете перенаправлены в Google Calendar для записи. Продолжить?");
+      if (userConfirmed) {
+        window.location.href = "https://calendar.app.google/ThpteAc5uqhxqnUA9";
+      }
+    }
+
+    function initCalendarButtons() {
+      const isMobile = isMobileDevice();
+      
+      if (isMobile) {
+        const calendarPlaceholders = [
+          'calendar-button-cta',
+          'calendar-button-mobile'
+        ];
+        
+        calendarPlaceholders.forEach(id => {
+          const placeholder = document.getElementById(id);
+          if (placeholder) {
+            placeholder.innerHTML = '';
+            const mobileButton = document.createElement('button');
+            mobileButton.className = 'button primary mobile-calendar-btn';
+            mobileButton.innerHTML = '<i class="fas fa-calendar-alt"></i> Записаться в Google Calendar';
+            mobileButton.style.width = '100%';
+            mobileButton.addEventListener('click', confirmMobileCalendarRedirect);
+            placeholder.appendChild(mobileButton);
+          }
+        });
+      } else {
+        if (typeof calendar !== 'undefined' && calendar.schedulingButton) {
+          const config = {
+            url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ3rcXNj-UEGWzDr6XeT4OdI4rDt6yHziAQlUCppL6nriQVz9tulfhokyt-8IXC48YrJcjO0_oqF?gv=true',
+            color: '#6a5ce8',
+            label: 'Записаться через Google Calendar'
+          };
+          
+          ['calendar-button-cta', 'calendar-button-mobile'].forEach(id => {
+            const element = document.getElementById(id);
+            if (element) {
+              calendar.schedulingButton.load({
+                ...config,
+                target: element
+              });
+            }
+          });
+        } else {
+          setTimeout(initCalendarButtons, 300);
+        }
+      }
+    }
+
+    initCalendarButtons();
+    
+    // Navbar Toggle
+    const navbarToggle = document.getElementById('navbarToggle');
+    const navbarMenu = document.getElementById('navbarMenu');
+    if (navbarToggle && navbarMenu) {
+      navbarToggle.addEventListener('click', () => {
+        navbarMenu.classList.toggle('active');
+        const icon = navbarToggle.querySelector('i');
+        icon.classList.toggle('fa-bars');
+        icon.classList.toggle('fa-times');
+      });
+    }
+
+    // Close mobile menu on link click
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 768) {
+          navbarMenu.classList.remove('active');
+          const icon = navbarToggle.querySelector('i');
+          icon.classList.add('fa-bars');
+          icon.classList.remove('fa-times');
+        }
+      });
+    });
+
+    // Smooth scrolling and active nav
+    document.querySelectorAll('.nav-link').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        if (!targetId || targetId === '#') return;
+        if (targetId.startsWith('http')) {
+          window.open(targetId, '_blank');
+          return;
+        }
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          e.preventDefault();
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+        // Close mobile menu
+        if (window.innerWidth <= 768) {
+          navbarMenu.classList.remove('active');
+          const icon = navbarToggle.querySelector('i');
+          icon.classList.add('fa-bars');
+          icon.classList.remove('fa-times');
+        }
+      });
+    });
+
+    // Set active nav on load
+    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(link => {
+      if (link.getAttribute('href') === currentPath) {
+        link.classList.add('active');
+      }
+    });
+
+    // Sticky navbar
+    const navbar = document.querySelector('.navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Urgency: Счётчик слотов
+    function updateSlots() {
+      const slots = document.getElementById('slots-left');
+      if (slots) {
+        let count = 3;
+        slots.textContent = count;
+        if (count <= 0) slots.textContent = '0 — запишись срочно!';
+      }
+    }
+    updateSlots();
+
+    // Animate stats
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateStats();
+          statsObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    const statsSection = document.querySelector('.hero-stats');
+    if (statsSection) {
+      statsObserver.observe(statsSection);
+    }
+
+    function animateStats() {
+      document.querySelectorAll('.stat-value').forEach(stat => {
+        const targetValue = stat.textContent;
+        let currentValue = 0;
+        const isPercentage = targetValue.includes('%');
+        const targetNum = parseInt(targetValue.replace(/[^\d]/g, ''));
+        const incrementValue = isPercentage ? targetNum / 50 : targetNum / 30;
+        const updateStat = () => {
+          currentValue += incrementValue;
+          if (currentValue < targetNum) {
+            stat.textContent = Math.round(currentValue) + (isPercentage ? '%' : '');
+            requestAnimationFrame(updateStat);
+          } else {
+            stat.textContent = targetValue;
+          }
+        };
+        updateStat();
+      });
+    }
+
+    // Intersection Observer for animations
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animated");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+    document.querySelectorAll('.fade-in-up, .timeline-item, .specialization-card').forEach(element => {
+      observer.observe(element);
+    });
+  });
+  </script>
+</body>
+</html>

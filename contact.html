@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Контакты: Алексей Викулов | Репетитор Python, Golang, Backend</title>
+  <meta name="description" content="Свяжитесь с Алексеем Викуловым для записи на уроки Python, Golang, Backend и ЕГЭ. WhatsApp, Telegram, email. Бесплатный пробный урок.">
+  <link rel="stylesheet" href="assests/css/styles.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
+  
+  <!-- Google Calendar Styling: Adapted to phi/spacing -->
+  <style>
+    .calendar-button-container { 
+      display: inline-block; 
+      margin: var(--phi-spacing-small) 0; 
+    }
+    #scheduling-button { 
+      background: var(--accent) !important; 
+      color: #0a0a0f !important; 
+      border-radius: var(--border-radius) !important; 
+      font-weight: 600 !important; 
+      padding: var(--phi-spacing-small) var(--phi-spacing-medium) !important; 
+      font-size: var(--phi-scale-1) !important; 
+      border: none !important; 
+      box-shadow: var(--shadow-light) !important; 
+      transition: var(--transition) !important; 
+      width: 100% !important; 
+      display: flex !important; 
+      align-items: center !important; 
+      justify-content: center !important; 
+      gap: var(--phi-spacing-small) !important; 
+      max-width: calc(350px / var(--phi)) !important; /* ~216px */
+    }
+    #scheduling-button:hover { 
+      background: color-mix(in srgb, var(--accent) 90%, #5a4cd0) !important; 
+      transform: translateY(var(--phi-spacing-small)) !important; 
+      box-shadow: var(--shadow-medium) !important; 
+      animation: lift-glow 0.3s forwards !important;
+    }
+    .calendar-icon { 
+      font-size: var(--phi-scale-1) !important; 
+    }
+    @media (max-width: 768px) { 
+      #scheduling-button { 
+        max-width: 100% !important; 
+        padding: var(--phi-spacing-small) var(--phi-spacing-small) !important; 
+      } 
+    }
+    
+    /* Дополнительные стили для страницы контактов */
+    .contact-methods {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--phi-spacing-medium);
+      margin: var(--phi-spacing-large) 0;
+    }
+    
+    .contact-method {
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      padding: var(--phi-spacing-medium);
+      display: flex;
+      align-items: flex-start;
+      gap: var(--phi-spacing-medium);
+      transition: var(--transition);
+      box-shadow: var(--shadow-light);
+    }
+    
+    .contact-method:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-medium);
+    }
+    
+    .contact-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: var(--card-bg-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-size: var(--phi-scale-2);
+      flex-shrink: 0;
+    }
+    
+    .contact-details h3 {
+      margin-bottom: var(--phi-spacing-small);
+      color: var(--text);
+    }
+    
+    .contact-details p {
+      margin-bottom: var(--phi-spacing-small);
+      color: var(--text-muted);
+    }
+    
+    .contact-link {
+      display: inline-block;
+      margin-top: var(--phi-spacing-small);
+      color: var(--accent);
+      font-weight: 500;
+      transition: var(--transition);
+    }
+    
+    .contact-link:hover {
+      color: var(--accent-light);
+      transform: translateX(5px);
+    }
+    
+    .contact-form-container {
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      padding: var(--phi-spacing-large);
+      box-shadow: var(--shadow-light);
+      margin-top: var(--phi-spacing-large);
+    }
+    
+    .form-group {
+      margin-bottom: var(--phi-spacing-medium);
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: var(--phi-spacing-small);
+      font-weight: 500;
+      color: var(--text);
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: var(--phi-spacing-small) var(--phi-spacing-medium);
+      border-radius: var(--border-radius);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: var(--phi-scale-1);
+      transition: var(--transition);
+    }
+    
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(106, 92, 232, 0.3);
+    }
+    
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--phi-spacing-medium);
+    }
+    
+    @media (max-width: 768px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+      
+      .contact-methods {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .response-time {
+      background: var(--card-bg-light);
+      border-radius: var(--border-radius);
+      padding: var(--phi-spacing-medium);
+      margin-top: var(--phi-spacing-large);
+      display: flex;
+      align-items: flex-start;
+      gap: var(--phi-spacing-medium);
+    }
+    
+    .response-time i {
+      color: var(--accent);
+      font-size: var(--phi-scale-2);
+      margin-top: var(--phi-spacing-small);
+    }
+    
+    .faq-contact {
+      margin-top: var(--phi-spacing-large);
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-brand">
+        <h3>Алексей Викулов</h3>
+      </div>
+      <div class="navbar-toggler" id="navbarToggle">
+        <i class="fas fa-bars"></i>
+      </div>
+      <div class="navbar-menu" id="navbarMenu">
+        <ul class="navbar-links">
+          <li><a href="index.html" class="nav-link">Главная</a></li>
+          <li><a href="about.html" class="nav-link">Обо мне</a></li>
+          <li><a href="courses.html" class="nav-link">Курсы</a></li>
+          <li><a href="learning.html" class="nav-link">Обучение</a></li>
+          <li><a href="prices.html" class="nav-link">Цены</a></li>
+          <li><a href="contact.html" class="nav-link active">Контакты</a></li>
+        </ul>
+        <div class="navbar-cta">
+          <a href="https://wa.me/79183455143?text=Здравствуйте!%20Хочу%20записаться%20на%20занятие." 
+             class="button primary small nav-cta-btn" target="_blank">
+            <i class="fab fa-whatsapp"></i> WhatsApp
+          </a>
+          <a href="https://t.me/avick_bot" 
+             class="button secondary small nav-cta-btn" target="_blank">
+            <i class="fab fa-telegram"></i> Telegram-Bot
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section for Contact -->
+  <header class="hero fade-in-up">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>Свяжитесь со мной</h1>
+          <p class="subtitle">Готов начать обучение? Выбери удобный способ связи — WhatsApp, Telegram, email или запишись через календарь. Отвечаю в течение 2 часов.</p>
+          <div class="hero-pitch">
+            <p><strong>Бесплатный пробный урок:</strong> Обсудим твои цели, определим уровень и составим индивидуальный план. Без обязательств, только практика.</p>
+            <p>Работаю онлайн — из любой точки мира. Удобное время для занятий: пн-пт 9:00-21:00, сб-вс 10:00-18:00 (по МСК).</p>
+          </div>
+          <div class="hero-stats fade-in-up">
+            <div class="stats-grid">
+              <div class="stat-item">
+                <span class="stat-value">2</span>
+                <span class="stat-label">Часа на ответ</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-value">24/7</span>
+                <span class="stat-label">Запись через бота</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-value">100%</span>
+                <span class="stat-label">Бесплатный пробный</span>
+              </div>
+            </div>
+          </div>
+          <div class="hero-cta">
+            <a href="https://wa.me/79183455143?text=Здравствуйте!%20Хочу%20записаться%20на%20бесплатный%20пробный%20урок." 
+               class="button primary large" target="_blank">
+              <i class="fab fa-whatsapp"></i> Написать в WhatsApp
+            </a>
+            <a href="https://t.me/AVick23" 
+               class="button secondary large" target="_blank">
+              <i class="fab fa-telegram"></i> Написать в Telegram
+            </a>
+            <!-- Google Calendar -->
+            <div class="calendar-button-container">
+              <div id="calendar-button-placeholder"></div>
+            </div>
+          </div>
+          <div class="social-links">
+            <a href="https://t.me/AVick23" target="_blank"><i class="fab fa-telegram"></i></a>
+            <a href="https://wa.me/79183455143" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="mailto:vikulov2811@gmail.com"><i class="fas fa-envelope"></i></a>
+            <a href="https://t.me/avick_bot" target="_blank"><i class="fas fa-robot"></i></a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <div class="profile-card">
+            <img src="professional-avatar.jpg" alt="Алексей Викулов" class="avatar-large">
+            <div class="profile-info">
+              <h3>Алексей Викулов</h3>
+              <p>Backend-репетитор: Python, Golang, ЕГЭ</p>
+              <p>4+ года опыта, 50+ учеников</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Contact Methods Section -->
+  <section class="section fade-in-up">
+    <div class="container">
+      <h2>Способы связи</h2>
+      <p class="section-description">Выбери удобный способ — я на связи в мессенджерах, почте и через бота для записи.</p>
+      
+      <div class="contact-methods">
+        <div class="contact-method fade-in-up">
+          <div class="contact-icon">
+            <i class="fab fa-whatsapp"></i>
+          </div>
+          <div class="contact-details">
+            <h3>WhatsApp</h3>
+            <p>Быстрый ответ, обсуждение деталей, отправка материалов</p>
+            <p><strong>+7 918 345-51-43</strong></p>
+            <a href="https://wa.me/79183455143?text=Здравствуйте!%20Хочу%20записаться%20на%20занятие." class="contact-link" target="_blank">
+              Написать в WhatsApp <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div class="contact-method fade-in-up">
+          <div class="contact-icon">
+            <i class="fab fa-telegram"></i>
+          </div>
+          <div class="contact-details">
+            <h3>Telegram</h3>
+            <p>Личные сообщения, обсуждение проектов, код-ревью</p>
+            <p><strong>@AVick23</strong></p>
+            <a href="https://t.me/AVick23" class="contact-link" target="_blank">
+              Написать в Telegram <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div class="contact-method fade-in-up">
+          <div class="contact-icon">
+            <i class="fas fa-robot"></i>
+          </div>
+          <div class="contact-details">
+            <h3>Telegram Bot</h3>
+            <p>Автоматическая запись на занятия, информация о курсах</p>
+            <p><strong>@avick_bot</strong></p>
+            <a href="https://t.me/avick_bot" class="contact-link" target="_blank">
+              Открыть бота <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div class="contact-method fade-in-up">
+          <div class="contact-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div class="contact-details">
+            <h3>Email</h3>
+            <p>Подробные вопросы, отправка документов, резюме</p>
+            <p><strong>vikulov2811@gmail.com</strong></p>
+            <a href="mailto:vikulov2811@gmail.com" class="contact-link">
+              Написать письмо <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="response-time">
+        <i class="fas fa-clock"></i>
+        <div>
+          <h4>Время ответа</h4>
+          <p>Отвечаю в течение 2 часов в рабочее время (пн-пт 9:00-21:00, сб-вс 10:00-18:00 по МСК). В нерабочее время — на следующий день.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form Section -->
+  <section class="section light-bg fade-in-up">
+    <div class="container">
+      <h2>Форма обратной связи</h2>
+      <p class="section-description">Заполни форму, и я свяжусь с тобой в удобное время. Укажи предпочтительный способ связи.</p>
+      
+      <div class="contact-form-container">
+        <form id="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Имя *</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email *</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="phone">Телефон (опционально)</label>
+              <input type="tel" id="phone" name="phone">
+            </div>
+            <div class="form-group">
+              <label for="preferred-contact">Предпочтительный способ связи</label>
+              <select id="preferred-contact" name="preferred-contact">
+                <option value="whatsapp">WhatsApp</option>
+                <option value="telegram">Telegram</option>
+                <option value="email">Email</option>
+                <option value="phone">Телефонный звонок</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="course">Интересующий курс</label>
+            <select id="course" name="course">
+              <option value="">Выберите курс</option>
+              <option value="python">Python для начинающих</option>
+              <option value="golang">Golang для разработки</option>
+              <option value="backend">Backend разработка</option>
+              <option value="ege">ЕГЭ/ОГЭ по информатике</option>
+              <option value="physics">Физика для ЕГЭ</option>
+              <option value="other">Другое</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="message">Сообщение *</label>
+            <textarea id="message" name="message" rows="5" required placeholder="Расскажите о ваших целях, текущем уровне и пожеланиях к обучению..."></textarea>
+          </div>
+          
+          <button type="submit" class="button primary large" style="width: 100%;">
+            <i class="fas fa-paper-plane"></i> Отправить сообщение
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Contact Section -->
+  <section class="section fade-in-up">
+    <div class="container">
+      <h2>Частые вопросы о записи</h2>
+      <p class="section-description">Ответы на популярные вопросы о процессе записи и начале обучения.</p>
+      
+      <div class="faq-contact">
+        <div class="faq-item fade-in-up">
+          <div class="faq-question">
+            <h4>Как проходит пробный урок?</h4>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Пробный урок длится 45-60 минут. Мы знакомимся, определяем твой уровень, обсуждаем цели и составляем индивидуальный план обучения. Ты получаешь практическое задание и понимаешь, как строится обучение. Это бесплатно и без обязательств.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item fade-in-up">
+          <div class="faq-question">
+            <h4>Нужна ли предоплата за пробный урок?</h4>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Нет, пробный урок полностью бесплатный. Оплата начинается только после того, как ты решишь продолжить обучение. Первое платное занятие оплачивается после его проведения.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item fade-in-up">
+          <div class="faq-question">
+            <h4>Можно ли поменять время занятия?</h4>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Да, время занятия можно перенести, если сообщить об этом за 24 часа. В экстренных случаях — за 6 часов. Это позволяет мне предложить это время другому ученику.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item fade-in-up">
+          <div class="faq-question">
+            <h4>Какое оборудование нужно для занятий?</h4>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Достаточно компьютера с доступом в интернет, микрофоном и камерой. Мы занимаемся через Zoom, Discord или другую удобную для тебя платформу. Для программирования понадобится установить Python, Go или другую необходимую среду — я помогу с настройкой.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Финальный CTA -->
+  <section class="section cta-section fade-in-up">
+    <div class="container">
+      <h2>Готов начать?</h2>
+      <p>Выбери удобный способ связи и запишись на бесплатный пробный урок. Отвечаю в течение 2 часов.</p>
+      <div class="cta-buttons">
+        <a href="https://wa.me/79183455143?text=Здравствуйте!%20Хочу%20записаться%20на%20бесплатный%20пробный%20урок." 
+           class="button primary large" target="_blank">
+          <i class="fab fa-whatsapp"></i> WhatsApp
+        </a>
+        <a href="https://t.me/AVick23" 
+           class="button secondary large" target="_blank">
+          <i class="fab fa-telegram"></i> Telegram
+        </a>
+        <div class="calendar-button-container">
+          <div id="calendar-button-cta"></div>
+        </div>
+      </div>
+      <p class="small-note pulse">Осталось <span id="slots-left">2</span> места на пробные уроки на этой неделе</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer fade-in-up">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <h3>Алексей Викулов</h3>
+          <p>Backend-репетитор: Python, Golang, ЕГЭ</p>
+        </div>
+        <div class="footer-links">
+          <h4>Разделы</h4>
+          <ul>
+            <li><a href="about.html">Обо мне</a></li>
+            <li><a href="courses.html">Курсы</a></li>
+            <li><a href="learning.html">Обучение</a></li>
+            <li><a href="prices.html">Цены</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Контакты</h4>
+          <p>+7 918 345-51-43</p>
+          <p>vikulov2811@gmail.com</p>
+          <div class="social-icons">
+            <a href="https://t.me/AVick23" target="_blank"><i class="fab fa-telegram"></i></a>
+            <a href="https://wa.me/79183455143" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="mailto:vikulov2811@gmail.com"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2023-2025 Алексей Викулов. Все права защищены.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile CTA -->
+  <div class="mobile-cta">
+    <div class="calendar-button-container">
+      <div id="calendar-button-mobile"></div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
+  
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // Mobile Calendar Redirect
+    function isMobileDevice() {
+      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
+             window.innerWidth <= 768;
+    }
+
+    function confirmMobileCalendarRedirect() {
+      const userConfirmed = confirm("Вы будете перенаправлены в Google Calendar для записи. Продолжить?");
+      if (userConfirmed) {
+        window.location.href = "https://calendar.app.google/ThpteAc5uqhxqnUA9";
+      }
+    }
+
+    function initCalendarButtons() {
+      const isMobile = isMobileDevice();
+      
+      if (isMobile) {
+        const calendarPlaceholders = [
+          'calendar-button-placeholder',
+          'calendar-button-cta',
+          'calendar-button-mobile'
+        ];
+        
+        calendarPlaceholders.forEach(id => {
+          const placeholder = document.getElementById(id);
+          if (placeholder) {
+            placeholder.innerHTML = '';
+            const mobileButton = document.createElement('button');
+            mobileButton.className = 'button primary mobile-calendar-btn';
+            mobileButton.innerHTML = '<i class="fas fa-calendar-alt"></i> Записаться в Google Calendar';
+            mobileButton.style.width = '100%';
+            mobileButton.addEventListener('click', confirmMobileCalendarRedirect);
+            placeholder.appendChild(mobileButton);
+          }
+        });
+      } else {
+        if (typeof calendar !== 'undefined' && calendar.schedulingButton) {
+          const config = {
+            url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ3rcXNj-UEGWzDr6XeT4OdI4rDt6yHziAQlUCppL6nriQVz9tulfhokyt-8IXC48YrJcjO0_oqF?gv=true',
+            color: '#6a5ce8',
+            label: 'Записаться через Google Calendar'
+          };
+          
+          ['calendar-button-placeholder', 'calendar-button-cta', 'calendar-button-mobile'].forEach(id => {
+            const element = document.getElementById(id);
+            if (element) {
+              calendar.schedulingButton.load({
+                ...config,
+                target: element
+              });
+            }
+          });
+        } else {
+          setTimeout(initCalendarButtons, 300);
+        }
+      }
+    }
+
+    initCalendarButtons();
+    
+    // Navbar Toggle
+    const navbarToggle = document.getElementById('navbarToggle');
+    const navbarMenu = document.getElementById('navbarMenu');
+    if (navbarToggle && navbarMenu) {
+      navbarToggle.addEventListener('click', () => {
+        navbarMenu.classList.toggle('active');
+        const icon = navbarToggle.querySelector('i');
+        icon.classList.toggle('fa-bars');
+        icon.classList.toggle('fa-times');
+      });
+    }
+
+    // Close mobile menu on link click
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 768) {
+          navbarMenu.classList.remove('active');
+          const icon = navbarToggle.querySelector('i');
+          icon.classList.add('fa-bars');
+          icon.classList.remove('fa-times');
+        }
+      });
+    });
+
+    // FAQ Accordion
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', () => {
+        const answer = question.nextElementSibling;
+        const icon = question.querySelector('i');
+        
+        // Toggle current answer
+        if (answer.style.maxHeight) {
+          answer.style.maxHeight = null;
+          icon.classList.remove('fa-chevron-up');
+          icon.classList.add('fa-chevron-down');
+        } else {
+          answer.style.maxHeight = answer.scrollHeight + "px";
+          icon.classList.remove('fa-chevron-down');
+          icon.classList.add('fa-chevron-up');
+        }
+      });
+    });
+
+    // Contact Form Handling
+// Contact Form Handling
+const contactForm = document.getElementById('contact-form');
+if (contactForm) {
+  contactForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Simple form validation
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+    
+    if (!name || !email || !message) {
+      alert('Пожалуйста, заполните все обязательные поля (имя, email и сообщение).');
+      return;
+    }
+    
+    const phone = document.getElementById('phone').value;
+    const contactMethod = document.getElementById('preferred-contact').value;
+    const course = document.getElementById('course').value;
+    
+    // Формируем сообщение для Telegram
+    const telegramMessage = `🎯 Новая заявка с сайта:
+
+👤 Имя: ${name}
+📧 Email: ${email}
+📞 Телефон: ${phone || 'не указан'}
+📱 Предпочтительный способ связи: ${contactMethod}
+🎓 Курс: ${course || 'не выбран'}
+
+💬 Сообщение:
+${message}`;
+
+    // Кодируем сообщение для URL
+    const encodedMessage = encodeURIComponent(telegramMessage);
+    
+    // Создаем ссылку для Telegram
+    const telegramUrl = `https://t.me/AVick23?text=${encodedMessage}`;
+    
+    // Открываем Telegram в новом окне/вкладке
+    window.open(telegramUrl, '_blank');
+    
+    // Показываем подтверждение и сбрасываем форму
+    alert('Открываю Telegram с готовым сообщением. Вам осталось только нажать "Отправить".');
+    contactForm.reset();
+  });
+}
+
+    // Smooth scrolling and active nav (Adjusted offset for new navbar height)
+    document.querySelectorAll('.nav-link').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        if (!targetId || targetId === '#') return;
+        if (targetId.startsWith('http')) {
+          window.open(targetId, '_blank');
+          return;
+        }
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          e.preventDefault();
+          window.scrollTo({
+            top: targetElement.offsetTop - parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--navbar-height')) - 20,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Set active nav on load
+    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(link => {
+      if (link.getAttribute('href') === currentPath) {
+        link.classList.add('active');
+      }
+    });
+
+    // Sticky navbar
+    const navbar = document.querySelector('.navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--space-8'))) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Urgency: Счётчик слотов
+    function updateSlots() {
+      const slots = document.getElementById('slots-left');
+      if (slots) {
+        let count = 2; // Уменьшай вручную или по API
+        slots.textContent = count;
+        if (count <= 0) slots.textContent = '0 — запишись срочно!';
+      }
+    }
+    updateSlots();
+
+    // Animate stats
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateStats();
+          statsObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    const statsSection = document.querySelector('.hero-stats');
+    if (statsSection) {
+      statsObserver.observe(statsSection);
+    }
+
+    function animateStats() {
+      document.querySelectorAll('.stat-value').forEach(stat => {
+        const targetValue = stat.textContent;
+        let currentValue = 0;
+        const isPercentage = targetValue.includes('%');
+        const targetNum = parseInt(targetValue.replace(/[^\d]/g, ''));
+        const incrementValue = isPercentage ? targetNum / 50 : targetNum / 30;
+        const updateStat = () => {
+          currentValue += incrementValue;
+          if (currentValue < targetNum) {
+            stat.textContent = Math.round(currentValue) + (isPercentage ? '%' : '');
+            requestAnimationFrame(updateStat);
+          } else {
+            stat.textContent = targetValue;
+          }
+        };
+        updateStat();
+      });
+    }
+
+    // Intersection Observer for animations
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animated");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+    document.querySelectorAll('.fade-in-up, .contact-method, .faq-item').forEach(element => {
+      observer.observe(element);
+    });
+  });
+  </script>
+</body>
+</html>
