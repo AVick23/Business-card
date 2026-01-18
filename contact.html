@@ -5,72 +5,450 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Контакты: Алексей Викулов | Репетитор Python, Golang, Backend</title>
   <meta name="description" content="Свяжитесь с Алексеем Викуловым для записи на уроки Python, Golang, Backend и ЕГЭ. WhatsApp, Telegram, email. Бесплатный пробный урок.">
-  <link rel="stylesheet" href="assests/css/styles.css" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
   
-  <!-- Google Calendar Styling: Adapted to phi/spacing -->
   <style>
-    .calendar-button-container { 
-      display: inline-block; 
-      margin: var(--phi-spacing-small) 0; 
-    }
-    #scheduling-button { 
-      background: var(--accent) !important; 
-      color: #0a0a0f !important; 
-      border-radius: var(--border-radius) !important; 
-      font-weight: 600 !important; 
-      padding: var(--phi-spacing-small) var(--phi-spacing-medium) !important; 
-      font-size: var(--phi-scale-1) !important; 
-      border: none !important; 
-      box-shadow: var(--shadow-light) !important; 
-      transition: var(--transition) !important; 
-      width: 100% !important; 
-      display: flex !important; 
-      align-items: center !important; 
-      justify-content: center !important; 
-      gap: var(--phi-spacing-small) !important; 
-      max-width: calc(350px / var(--phi)) !important; /* ~216px */
-    }
-    #scheduling-button:hover { 
-      background: color-mix(in srgb, var(--accent) 90%, #5a4cd0) !important; 
-      transform: translateY(var(--phi-spacing-small)) !important; 
-      box-shadow: var(--shadow-medium) !important; 
-      animation: lift-glow 0.3s forwards !important;
-    }
-    .calendar-icon { 
-      font-size: var(--phi-scale-1) !important; 
-    }
-    @media (max-width: 768px) { 
-      #scheduling-button { 
-        max-width: 100% !important; 
-        padding: var(--phi-spacing-small) var(--phi-spacing-small) !important; 
-      } 
+    :root {
+      /* Цветовая палитра - Тёмная тема */
+      --bg-primary: #000000;
+      --bg-secondary: #0a0a0f;
+      --bg-tertiary: #111118;
+      --text-primary: #ffffff;
+      --text-secondary: #b0b0c0;
+      --text-tertiary: #88889a;
+      --accent-primary: #6a5ce8;
+      --accent-secondary: #ff5c8d;
+      --accent-tertiary: #00d4ff;
+      --glass-bg: rgba(30, 30, 40, 0.6);
+      --glass-border: rgba(255, 255, 255, 0.1);
+      --success: #00ff88;
+      
+      /* Размеры */
+      --navbar-height: 80px;
+      --container-max: 1200px;
+      --border-radius: 16px;
+      --border-radius-lg: 24px;
+      --border-radius-sm: 12px;
+      
+      /* Тени и эффекты */
+      --shadow-light: 0 4px 20px rgba(0, 0, 0, 0.3);
+      --shadow-medium: 0 8px 32px rgba(106, 92, 232, 0.3);
+      --shadow-heavy: 0 16px 48px rgba(0, 0, 0, 0.5);
+      --glow-primary: 0 0 20px rgba(106, 92, 232, 0.4);
+      --glow-secondary: 0 0 20px rgba(255, 92, 141, 0.3);
+      
+      /* Анимации */
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     }
     
-    /* Дополнительные стили для страницы контактов */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+      background: radial-gradient(circle at 20% 30%, rgba(106, 92, 232, 0.1) 0%, transparent 40%),
+                  radial-gradient(circle at 80% 70%, rgba(255, 92, 141, 0.1) 0%, transparent 40%),
+                  var(--bg-primary);
+    }
+    
+    .container {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Навигация - Glass Morphism */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: var(--navbar-height);
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--glass-border);
+      z-index: 1000;
+      transition: var(--transition);
+    }
+    
+    .navbar.scrolled {
+      box-shadow: var(--shadow-heavy);
+      background: rgba(10, 10, 15, 0.9);
+    }
+    
+    .navbar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
+    }
+    
+    .navbar-brand h3 {
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+    
+    .navbar-toggler {
+      display: none;
+      cursor: pointer;
+      font-size: 1.5rem;
+      color: var(--text-primary);
+    }
+    
+    .navbar-menu {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+    
+    .navbar-links {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+    }
+    
+    .nav-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      position: relative;
+      padding: 5px 0;
+      transition: var(--transition);
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+      transition: var(--transition);
+    }
+    
+    .nav-link:hover {
+      color: var(--text-primary);
+    }
+    
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+    
+    .nav-link.active {
+      color: var(--text-primary);
+    }
+    
+    .navbar-cta {
+      display: flex;
+      gap: 15px;
+    }
+    
+    /* Кнопки */
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 24px;
+      border-radius: var(--border-radius);
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+    
+    .button.primary {
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      color: white;
+      box-shadow: var(--shadow-light);
+    }
+    
+    .button.primary:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-medium);
+    }
+    
+    .button.secondary {
+      background: transparent;
+      color: var(--text-primary);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(10px);
+    }
+    
+    .button.secondary:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: var(--accent-primary);
+      box-shadow: var(--glow-primary);
+    }
+    
+    .button.small {
+      padding: 8px 16px;
+      font-size: 0.85rem;
+    }
+    
+    .button.large {
+      padding: 16px 32px;
+      font-size: 1.1rem;
+    }
+    
+    /* Hero секция */
+    .hero {
+      padding: 180px 0 100px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 50% 50%, rgba(106, 92, 232, 0.15) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    
+    .hero-text h1 {
+      font-size: 4.5rem;
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, var(--text-primary), var(--accent-tertiary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+    }
+    
+    .subtitle {
+      font-size: 1.3rem;
+      color: var(--text-secondary);
+      margin-bottom: 30px;
+      line-height: 1.5;
+    }
+    
+    .hero-pitch {
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--border-radius);
+      padding: 25px;
+      margin-bottom: 40px;
+    }
+    
+    .hero-pitch p {
+      margin-bottom: 15px;
+      color: var(--text-secondary);
+    }
+    
+    .hero-pitch p:last-child {
+      margin-bottom: 0;
+    }
+    
+    .hero-pitch strong {
+      color: var(--text-primary);
+    }
+    
+    .hero-stats {
+      margin: 40px 0;
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    
+    .stat-item {
+      text-align: center;
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--border-radius);
+      padding: 20px;
+    }
+    
+    .stat-value {
+      display: block;
+      font-size: 3rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .stat-label {
+      display: block;
+      font-size: 0.9rem;
+      color: var(--text-tertiary);
+      margin-top: 5px;
+    }
+    
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin: 40px 0;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 20px;
+      margin-top: 30px;
+    }
+    
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 50%;
+      color: var(--text-primary);
+      font-size: 1.2rem;
+      transition: var(--transition);
+    }
+    
+    .social-links a:hover {
+      background: var(--accent-primary);
+      transform: translateY(-3px);
+      box-shadow: var(--glow-primary);
+    }
+    
+    .hero-image {
+      position: relative;
+    }
+    
+    .profile-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--border-radius-lg);
+      padding: 25px;
+      box-shadow: var(--shadow-heavy);
+    }
+    
+    .avatar-large {
+      width: 100%;
+      border-radius: var(--border-radius);
+      display: block;
+      margin-bottom: 20px;
+    }
+    
+    .profile-info h3 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-tertiary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .profile-info p {
+      color: var(--text-secondary);
+      margin-bottom: 5px;
+      font-size: 0.95rem;
+    }
+    
+    /* Секции */
+    .section {
+      padding: 100px 0;
+    }
+    
+    .section.light-bg {
+      background: var(--bg-secondary);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .section.light-bg::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent-primary), transparent);
+    }
+    
+    h2 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, var(--text-primary), var(--accent-primary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-align: center;
+    }
+    
+    .section-description {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      margin-bottom: 50px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+    
+    /* Способы связи */
     .contact-methods {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: var(--phi-spacing-medium);
-      margin: var(--phi-spacing-large) 0;
+      gap: 30px;
+      margin: 50px 0;
     }
     
     .contact-method {
-      background: var(--card-bg);
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border);
       border-radius: var(--border-radius);
-      padding: var(--phi-spacing-medium);
+      padding: 30px;
       display: flex;
       align-items: flex-start;
-      gap: var(--phi-spacing-medium);
+      gap: 20px;
       transition: var(--transition);
       box-shadow: var(--shadow-light);
     }
     
     .contact-method:hover {
-      transform: translateY(-5px);
+      transform: translateY(-10px);
       box-shadow: var(--shadow-medium);
     }
     
@@ -78,68 +456,118 @@
       width: 60px;
       height: 60px;
       border-radius: 50%;
-      background: var(--card-bg-light);
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--accent);
-      font-size: var(--phi-scale-2);
+      color: white;
+      font-size: 1.5rem;
       flex-shrink: 0;
     }
     
     .contact-details h3 {
-      margin-bottom: var(--phi-spacing-small);
-      color: var(--text);
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      color: var(--text-primary);
     }
     
     .contact-details p {
-      margin-bottom: var(--phi-spacing-small);
-      color: var(--text-muted);
+      margin-bottom: 10px;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    
+    .contact-details strong {
+      color: var(--text-primary);
     }
     
     .contact-link {
-      display: inline-block;
-      margin-top: var(--phi-spacing-small);
-      color: var(--accent);
-      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 10px;
+      color: var(--accent-tertiary);
+      font-weight: 600;
+      text-decoration: none;
       transition: var(--transition);
     }
     
     .contact-link:hover {
-      color: var(--accent-light);
+      color: var(--text-primary);
       transform: translateX(5px);
     }
     
-    .contact-form-container {
-      background: var(--card-bg);
+    /* Время ответа */
+    .response-time {
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border);
       border-radius: var(--border-radius);
-      padding: var(--phi-spacing-large);
+      padding: 30px;
+      margin-top: 50px;
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+    }
+    
+    .response-time i {
+      color: var(--accent-tertiary);
+      font-size: 2rem;
+      margin-top: 5px;
+    }
+    
+    .response-time h4 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      color: var(--text-primary);
+    }
+    
+    .response-time p {
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    
+    /* Форма обратной связи */
+    .contact-form-container {
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--border-radius);
+      padding: 40px;
       box-shadow: var(--shadow-light);
-      margin-top: var(--phi-spacing-large);
+      margin-top: 50px;
+    }
+    
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 20px;
     }
     
     .form-group {
-      margin-bottom: var(--phi-spacing-medium);
+      margin-bottom: 20px;
     }
     
     .form-group label {
       display: block;
-      margin-bottom: var(--phi-spacing-small);
+      margin-bottom: 8px;
       font-weight: 500;
-      color: var(--text);
+      color: var(--text-primary);
     }
     
     .form-group input,
     .form-group select,
     .form-group textarea {
       width: 100%;
-      padding: var(--phi-spacing-small) var(--phi-spacing-medium);
+      padding: 12px 16px;
       border-radius: var(--border-radius);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      background: var(--bg);
-      color: var(--text);
+      border: 1px solid var(--glass-border);
+      background: rgba(10, 10, 15, 0.6);
+      color: var(--text-primary);
       font-family: 'Inter', sans-serif;
-      font-size: var(--phi-scale-1);
+      font-size: 1rem;
       transition: var(--transition);
     }
     
@@ -147,49 +575,413 @@
     .form-group select:focus,
     .form-group textarea:focus {
       outline: none;
-      border-color: var(--accent);
+      border-color: var(--accent-primary);
       box-shadow: 0 0 0 3px rgba(106, 92, 232, 0.3);
     }
     
-    .form-row {
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+    
+    /* FAQ */
+    .faq-contact {
+      max-width: 800px;
+      margin: 50px auto 0;
+    }
+    
+    .faq-item {
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--border-radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    
+    .faq-question {
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    
+    .faq-question:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
+    
+    .faq-question h4 {
+      margin-bottom: 0;
+      font-size: 1.2rem;
+      color: var(--text-primary);
+    }
+    
+    .faq-question i {
+      transition: var(--transition);
+    }
+    
+    .faq-answer {
+      padding: 0 20px;
+      max-height: 0;
+      overflow: hidden;
+      transition: var(--transition);
+    }
+    
+    .faq-answer p {
+      padding: 20px 0;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    
+    .faq-item.active .faq-question {
+      background: rgba(255, 255, 255, 0.05);
+    }
+    
+    .faq-item.active .faq-answer {
+      max-height: 500px;
+    }
+    
+    .faq-item.active .faq-question i {
+      transform: rotate(180deg);
+    }
+    
+    /* CTA секция */
+    .cta-section {
+      text-align: center;
+      background: linear-gradient(135deg, rgba(106, 92, 232, 0.1), rgba(255, 92, 141, 0.1));
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><linearGradient id="a" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%236a5ce8;stop-opacity:0.1"/><stop offset="100%" style="stop-color:%23ff5c8d;stop-opacity:0.1"/></linearGradient></defs><rect width="100%" height="100%" fill="url(%23a)"/></svg>');
+      opacity: 0.5;
+    }
+    
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin: 40px 0;
+    }
+    
+    .small-note {
+      font-size: 0.9rem;
+      color: var(--text-tertiary);
+      margin-top: 20px;
+    }
+    
+    .pulse {
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% { opacity: 1; }
+      50% { opacity: 0.7; }
+      100% { opacity: 1; }
+    }
+    
+    /* Футер */
+    .footer {
+      background: var(--bg-secondary);
+      padding: 80px 0 40px;
+      position: relative;
+    }
+    
+    .footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent-primary), transparent);
+    }
+    
+    .footer-content {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--phi-spacing-medium);
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 60px;
+      margin-bottom: 60px;
+    }
+    
+    .footer-logo h3 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 15px;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .footer-logo p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+    
+    .footer-links h4,
+    .footer-contact h4 {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      color: var(--text-primary);
+    }
+    
+    .footer-links ul {
+      list-style: none;
+    }
+    
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+    
+    .footer-links a,
+    .footer-contact p {
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: var(--transition);
+      font-size: 0.95rem;
+    }
+    
+    .footer-links a:hover {
+      color: var(--accent-tertiary);
+    }
+    
+    .social-icons {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .social-icons a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 50%;
+      color: var(--text-primary);
+      transition: var(--transition);
+    }
+    
+    .social-icons a:hover {
+      background: var(--accent-primary);
+      transform: translateY(-3px);
+    }
+    
+    .footer-bottom {
+      text-align: center;
+      padding-top: 40px;
+      border-top: 1px solid var(--glass-border);
+      color: var(--text-tertiary);
+      font-size: 0.9rem;
+    }
+    
+    /* Mobile CTA */
+    .mobile-cta {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+      z-index: 999;
+    }
+    
+    /* Календарь */
+    .calendar-button-container {
+      display: inline-block;
+      margin: 10px 0;
+    }
+    
+    #scheduling-button {
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary)) !important;
+      color: white !important;
+      border-radius: var(--border-radius) !important;
+      font-weight: 600 !important;
+      padding: 16px 32px !important;
+      font-size: 1rem !important;
+      border: none !important;
+      box-shadow: var(--shadow-light) !important;
+      transition: var(--transition) !important;
+      width: 100% !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 10px !important;
+    }
+    
+    #scheduling-button:hover {
+      transform: translateY(-3px) !important;
+      box-shadow: var(--shadow-medium) !important;
+    }
+    
+    /* Анимации появления */
+    .fade-in-up {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+    
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Адаптивность */
+    @media (max-width: 1024px) {
+      .hero-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      
+      .hero-text h1 {
+        font-size: 3.5rem;
+      }
+      
+      h2 {
+        font-size: 2.8rem;
+      }
+      
+      .contact-methods {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      }
+      
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer-content {
+        grid-template-columns: 1fr 1fr;
+      }
     }
     
     @media (max-width: 768px) {
-      .form-row {
+      .navbar-toggler {
+        display: block;
+      }
+      
+      .navbar-menu {
+        position: fixed;
+        top: var(--navbar-height);
+        left: 0;
+        right: 0;
+        background: rgba(10, 10, 15, 0.95);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        padding: 30px;
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: var(--transition-slow);
+      }
+      
+      .navbar-menu.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+      
+      .navbar-links {
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+      }
+      
+      .navbar-cta {
+        flex-direction: column;
+        width: 100%;
+      }
+      
+      .hero {
+        padding: 140px 0 60px;
+      }
+      
+      .hero-text h1 {
+        font-size: 2.8rem;
+      }
+      
+      .subtitle {
+        font-size: 1.1rem;
+      }
+      
+      .stats-grid {
         grid-template-columns: 1fr;
+        gap: 15px;
+      }
+      
+      .hero-cta,
+      .cta-buttons {
+        flex-direction: column;
+      }
+      
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      
+      .section {
+        padding: 60px 0;
+      }
+      
+      .mobile-cta {
+        display: block;
       }
       
       .contact-methods {
         grid-template-columns: 1fr;
       }
+      
+      .contact-form-container {
+        padding: 30px 20px;
+      }
+      
+      .response-time {
+        flex-direction: column;
+        gap: 15px;
+      }
     }
     
-    .response-time {
-      background: var(--card-bg-light);
-      border-radius: var(--border-radius);
-      padding: var(--phi-spacing-medium);
-      margin-top: var(--phi-spacing-large);
-      display: flex;
-      align-items: flex-start;
-      gap: var(--phi-spacing-medium);
-    }
-    
-    .response-time i {
-      color: var(--accent);
-      font-size: var(--phi-scale-2);
-      margin-top: var(--phi-spacing-small);
-    }
-    
-    .faq-contact {
-      margin-top: var(--phi-spacing-large);
+    @media (max-width: 480px) {
+      .hero-text h1 {
+        font-size: 2.2rem;
+      }
+      
+      h2 {
+        font-size: 2rem;
+      }
+      
+      .button.large {
+        padding: 14px 24px;
+        font-size: 1rem;
+      }
+      
+      .stat-value {
+        font-size: 2.5rem;
+      }
+      
+      .contact-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.3rem;
+      }
     }
   </style>
 </head>
 <body>
-  <!-- Navigation Bar -->
+  <!-- Навигация -->
   <nav class="navbar">
     <div class="container">
       <div class="navbar-brand">
@@ -221,7 +1013,7 @@
     </div>
   </nav>
 
-  <!-- Hero Section for Contact -->
+  <!-- Hero секция -->
   <header class="hero fade-in-up">
     <div class="container">
       <div class="hero-content">
@@ -283,7 +1075,7 @@
     </div>
   </header>
 
-  <!-- Contact Methods Section -->
+  <!-- Способы связи -->
   <section class="section fade-in-up">
     <div class="container">
       <h2>Способы связи</h2>
@@ -357,7 +1149,7 @@
     </div>
   </section>
 
-  <!-- Contact Form Section -->
+  <!-- Форма обратной связи -->
   <section class="section light-bg fade-in-up">
     <div class="container">
       <h2>Форма обратной связи</h2>
@@ -418,7 +1210,7 @@
     </div>
   </section>
 
-  <!-- FAQ Contact Section -->
+  <!-- FAQ по записи -->
   <section class="section fade-in-up">
     <div class="container">
       <h2>Частые вопросы о записи</h2>
@@ -468,7 +1260,7 @@
     </div>
   </section>
 
-  <!-- Финальный CTA -->
+  <!-- CTA секция -->
   <section class="section cta-section fade-in-up">
     <div class="container">
       <h2>Готов начать?</h2>
@@ -490,7 +1282,7 @@
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- Футер -->
   <footer class="footer fade-in-up">
     <div class="container">
       <div class="footer-content">
@@ -524,81 +1316,22 @@
     </div>
   </footer>
 
-  <!-- Mobile CTA -->
+  <!-- Мобильный CTA -->
   <div class="mobile-cta">
     <div class="calendar-button-container">
       <div id="calendar-button-mobile"></div>
     </div>
   </div>
 
-  <!-- Scripts -->
+  <!-- Скрипты -->
   <script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
   
   <script>
   document.addEventListener("DOMContentLoaded", function() {
-    // Mobile Calendar Redirect
-    function isMobileDevice() {
-      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
-             window.innerWidth <= 768;
-    }
-
-    function confirmMobileCalendarRedirect() {
-      const userConfirmed = confirm("Вы будете перенаправлены в Google Calendar для записи. Продолжить?");
-      if (userConfirmed) {
-        window.location.href = "https://calendar.app.google/ThpteAc5uqhxqnUA9";
-      }
-    }
-
-    function initCalendarButtons() {
-      const isMobile = isMobileDevice();
-      
-      if (isMobile) {
-        const calendarPlaceholders = [
-          'calendar-button-placeholder',
-          'calendar-button-cta',
-          'calendar-button-mobile'
-        ];
-        
-        calendarPlaceholders.forEach(id => {
-          const placeholder = document.getElementById(id);
-          if (placeholder) {
-            placeholder.innerHTML = '';
-            const mobileButton = document.createElement('button');
-            mobileButton.className = 'button primary mobile-calendar-btn';
-            mobileButton.innerHTML = '<i class="fas fa-calendar-alt"></i> Записаться в Google Calendar';
-            mobileButton.style.width = '100%';
-            mobileButton.addEventListener('click', confirmMobileCalendarRedirect);
-            placeholder.appendChild(mobileButton);
-          }
-        });
-      } else {
-        if (typeof calendar !== 'undefined' && calendar.schedulingButton) {
-          const config = {
-            url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ3rcXNj-UEGWzDr6XeT4OdI4rDt6yHziAQlUCppL6nriQVz9tulfhokyt-8IXC48YrJcjO0_oqF?gv=true',
-            color: '#6a5ce8',
-            label: 'Записаться через Google Calendar'
-          };
-          
-          ['calendar-button-placeholder', 'calendar-button-cta', 'calendar-button-mobile'].forEach(id => {
-            const element = document.getElementById(id);
-            if (element) {
-              calendar.schedulingButton.load({
-                ...config,
-                target: element
-              });
-            }
-          });
-        } else {
-          setTimeout(initCalendarButtons, 300);
-        }
-      }
-    }
-
-    initCalendarButtons();
-    
-    // Navbar Toggle
+    // Навигация
     const navbarToggle = document.getElementById('navbarToggle');
     const navbarMenu = document.getElementById('navbarMenu');
+    
     if (navbarToggle && navbarMenu) {
       navbarToggle.addEventListener('click', () => {
         navbarMenu.classList.toggle('active');
@@ -608,7 +1341,7 @@
       });
     }
 
-    // Close mobile menu on link click
+    // Закрытие меню при клике на ссылку
     document.querySelectorAll('.nav-link').forEach(link => {
       link.addEventListener('click', () => {
         if (window.innerWidth <= 768) {
@@ -620,48 +1353,104 @@
       });
     });
 
-    // FAQ Accordion
-    document.querySelectorAll('.faq-question').forEach(question => {
-      question.addEventListener('click', () => {
-        const answer = question.nextElementSibling;
-        const icon = question.querySelector('i');
-        
-        // Toggle current answer
-        if (answer.style.maxHeight) {
-          answer.style.maxHeight = null;
-          icon.classList.remove('fa-chevron-up');
-          icon.classList.add('fa-chevron-down');
-        } else {
-          answer.style.maxHeight = answer.scrollHeight + "px";
-          icon.classList.remove('fa-chevron-down');
-          icon.classList.add('fa-chevron-up');
+    // Липкая навигация
+    const navbar = document.querySelector('.navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Плавная прокрутка
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
         }
       });
     });
 
-    // Contact Form Handling
-// Contact Form Handling
-const contactForm = document.getElementById('contact-form');
-if (contactForm) {
-  contactForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    // Simple form validation
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const message = document.getElementById('message').value;
-    
-    if (!name || !email || !message) {
-      alert('Пожалуйста, заполните все обязательные поля (имя, email и сообщение).');
-      return;
+    // Календарь
+    function initCalendarButtons() {
+      if (typeof calendar !== 'undefined' && calendar.schedulingButton) {
+        const config = {
+          url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ3rcXNj-UEGWzDr6XeT4OdI4rDt6yHziAQlUCppL6nriQVz9tulfhokyt-8IXC48YrJcjO0_oqF?gv=true',
+          color: '#6a5ce8',
+          label: 'Записаться через Google Calendar'
+        };
+        
+        ['calendar-button-placeholder', 'calendar-button-cta', 'calendar-button-mobile'].forEach(id => {
+          const element = document.getElementById(id);
+          if (element) {
+            calendar.schedulingButton.load({
+              ...config,
+              target: element
+            });
+          }
+        });
+      } else {
+        setTimeout(initCalendarButtons, 300);
+      }
     }
     
-    const phone = document.getElementById('phone').value;
-    const contactMethod = document.getElementById('preferred-contact').value;
-    const course = document.getElementById('course').value;
-    
-    // Формируем сообщение для Telegram
-    const telegramMessage = `🎯 Новая заявка с сайта:
+    initCalendarButtons();
+
+    // FAQ аккордеон
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', () => {
+        const item = question.parentElement;
+        const answer = question.nextElementSibling;
+        
+        // Закрыть другие открытые ответы
+        document.querySelectorAll('.faq-item.active').forEach(activeItem => {
+          if (activeItem !== item) {
+            activeItem.classList.remove('active');
+            const activeAnswer = activeItem.querySelector('.faq-answer');
+            activeAnswer.style.maxHeight = null;
+          }
+        });
+        
+        // Переключить текущий элемент
+        item.classList.toggle('active');
+        if (item.classList.contains('active')) {
+          answer.style.maxHeight = answer.scrollHeight + "px";
+        } else {
+          answer.style.maxHeight = null;
+        }
+      });
+    });
+
+    // Обработка формы
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+      contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Простая валидация формы
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+        
+        if (!name || !email || !message) {
+          alert('Пожалуйста, заполните все обязательные поля (имя, email и сообщение).');
+          return;
+        }
+        
+        const phone = document.getElementById('phone').value;
+        const contactMethod = document.getElementById('preferred-contact').value;
+        const course = document.getElementById('course').value;
+        
+        // Формируем сообщение для Telegram
+        const telegramMessage = `🎯 Новая заявка с сайта:
 
 👤 Имя: ${name}
 📧 Email: ${email}
@@ -672,121 +1461,104 @@ if (contactForm) {
 💬 Сообщение:
 ${message}`;
 
-    // Кодируем сообщение для URL
-    const encodedMessage = encodeURIComponent(telegramMessage);
-    
-    // Создаем ссылку для Telegram
-    const telegramUrl = `https://t.me/AVick23?text=${encodedMessage}`;
-    
-    // Открываем Telegram в новом окне/вкладке
-    window.open(telegramUrl, '_blank');
-    
-    // Показываем подтверждение и сбрасываем форму
-    alert('Открываю Telegram с готовым сообщением. Вам осталось только нажать "Отправить".');
-    contactForm.reset();
-  });
-}
-
-    // Smooth scrolling and active nav (Adjusted offset for new navbar height)
-    document.querySelectorAll('.nav-link').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        const targetId = this.getAttribute('href');
-        if (!targetId || targetId === '#') return;
-        if (targetId.startsWith('http')) {
-          window.open(targetId, '_blank');
-          return;
-        }
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-          e.preventDefault();
-          window.scrollTo({
-            top: targetElement.offsetTop - parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--navbar-height')) - 20,
-            behavior: 'smooth'
-          });
-        }
+        // Кодируем сообщение для URL
+        const encodedMessage = encodeURIComponent(telegramMessage);
+        
+        // Создаем ссылку для Telegram
+        const telegramUrl = `https://t.me/AVick23?text=${encodedMessage}`;
+        
+        // Открываем Telegram в новом окне/вкладке
+        window.open(telegramUrl, '_blank');
+        
+        // Показываем подтверждение и сбрасываем форму
+        alert('Открываю Telegram с готовым сообщением. Вам осталось только нажать "Отправить".');
+        contactForm.reset();
       });
-    });
-
-    // Set active nav on load
-    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
-    document.querySelectorAll('.nav-link').forEach(link => {
-      if (link.getAttribute('href') === currentPath) {
-        link.classList.add('active');
-      }
-    });
-
-    // Sticky navbar
-    const navbar = document.querySelector('.navbar');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--space-8'))) {
-        navbar.classList.add('scrolled');
-      } else {
-        navbar.classList.remove('scrolled');
-      }
-    });
-
-    // Urgency: Счётчик слотов
-    function updateSlots() {
-      const slots = document.getElementById('slots-left');
-      if (slots) {
-        let count = 2; // Уменьшай вручную или по API
-        slots.textContent = count;
-        if (count <= 0) slots.textContent = '0 — запишись срочно!';
-      }
-    }
-    updateSlots();
-
-    // Animate stats
-    const statsObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          animateStats();
-          statsObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-    const statsSection = document.querySelector('.hero-stats');
-    if (statsSection) {
-      statsObserver.observe(statsSection);
     }
 
-    function animateStats() {
-      document.querySelectorAll('.stat-value').forEach(stat => {
-        const targetValue = stat.textContent;
-        let currentValue = 0;
-        const isPercentage = targetValue.includes('%');
-        const targetNum = parseInt(targetValue.replace(/[^\d]/g, ''));
-        const incrementValue = isPercentage ? targetNum / 50 : targetNum / 30;
-        const updateStat = () => {
-          currentValue += incrementValue;
-          if (currentValue < targetNum) {
-            stat.textContent = Math.round(currentValue) + (isPercentage ? '%' : '');
-            requestAnimationFrame(updateStat);
-          } else {
-            stat.textContent = targetValue;
+    // Счётчик слотов
+    const slotsElement = document.getElementById('slots-left');
+    if (slotsElement) {
+      let slots = 2;
+      const updateSlots = () => {
+        slotsElement.textContent = slots;
+        if (slots <= 0) {
+          slotsElement.textContent = '0 — запись закрыта!';
+          slotsElement.style.color = '#ff5c8d';
+        }
+      };
+      updateSlots();
+    }
+
+    // Анимация статистики
+    const animateStats = () => {
+      const statValues = document.querySelectorAll('.stat-value');
+      statValues.forEach(stat => {
+        const finalValue = stat.textContent;
+        const isPercent = finalValue.includes('%');
+        const numericValue = parseInt(finalValue.replace(/[^\d]/g, ''));
+        
+        let current = 0;
+        const increment = numericValue / 50;
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= numericValue) {
+            current = numericValue;
+            clearInterval(timer);
           }
-        };
-        updateStat();
+          stat.textContent = Math.floor(current) + (isPercent ? '%' : '');
+        }, 30);
       });
-    }
-
-    // Intersection Observer for animations
-    const observerOptions = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.1
     };
+
+    // Запуск анимации статистики при скролле
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add("animated");
+          animateStats();
           observer.unobserve(entry.target);
         }
       });
-    }, observerOptions);
-    document.querySelectorAll('.fade-in-up, .contact-method, .faq-item').forEach(element => {
-      observer.observe(element);
+    }, { threshold: 0.5 });
+
+    const statsSection = document.querySelector('.hero-stats');
+    if (statsSection) {
+      observer.observe(statsSection);
+    }
+
+    // Анимация появления элементов
+    const fadeElements = document.querySelectorAll('.fade-in-up');
+    const fadeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const delay = entry.target.dataset.delay || '0.2s';
+          entry.target.style.animationDelay = delay;
+          entry.target.classList.add('animated');
+          fadeObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    // Назначить задержки для элементов
+    fadeElements.forEach((el, index) => {
+      el.dataset.delay = `${index * 0.1}s`;
+      fadeObserver.observe(el);
     });
+    
+    // Анимация способов связи
+    const contactMethods = document.querySelectorAll('.contact-method');
+    const methodObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const index = Array.from(contactMethods).indexOf(entry.target);
+          entry.target.style.animationDelay = `${index * 0.1}s`;
+          entry.target.classList.add('animated');
+          methodObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    contactMethods.forEach(method => methodObserver.observe(method));
   });
   </script>
 </body>
