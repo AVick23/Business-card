@@ -1,1618 +1,1212 @@
 <!DOCTYPE html>
 <html lang="ru" data-theme="dark">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Алексей Викулов: Репетитор Python, Golang, Backend | Бесплатный пробный урок</title>
-  <meta name="description" content="Индивидуальные уроки Python, Golang, Backend и ЕГЭ по информатике. Метод 'выстраданного познания'. Запишись на бесплатный урок — 92% учеников получают офферы.">
-  <meta name="keywords" content="Python, Golang, Backend, ЕГЭ информатика, репетитор, программирование, обучение">
-  
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  
-  <style>
-    /* ============================================
-       APPLE-STYLE DESIGN SYSTEM
-       Полная система дизайна в стиле Apple
-       ============================================ */
-
-    /* ============================================
-       1. ПЕРЕМЕННЫЕ - ТЕМНАЯ ТЕМА (по умолчанию)
-       ============================================ */
-    :root {
-      /* Цветовая схема - Dark Mode */
-      --bg-primary: #000000;
-      --bg-secondary: #111111;
-      --bg-tertiary: #1a1a1a;
-      --bg-card: #1c1c1c;
-      --bg-elevated: #2c2c2c;
-      
-      /* Текст */
-      --text-primary: #ffffff;
-      --text-secondary: #cccccc;
-      --text-tertiary: #999999;
-      --text-disabled: #666666;
-      
-      /* Акценты */
-      --accent-primary: #0a84ff;
-      --accent-primary-hover: #409cff;
-      --accent-secondary: #30d158;
-      --accent-tertiary: #ff9f0a;
-      --accent-error: #ff3b30;
-      
-      /* Границы */
-      --border-primary: #333333;
-      --border-secondary: #2a2a2a;
-      --border-tertiary: #222222;
-      
-      /* Тени */
-      --shadow-1: 0 2px 8px rgba(0, 0, 0, 0.3);
-      --shadow-2: 0 4px 16px rgba(0, 0, 0, 0.4);
-      --shadow-3: 0 8px 32px rgba(0, 0, 0, 0.5);
-      --shadow-4: 0 12px 48px rgba(0, 0, 0, 0.6);
-      
-      /* Прозрачность */
-      --glass-bg: rgba(28, 28, 30, 0.8);
-      --overlay-bg: rgba(0, 0, 0, 0.4);
-      
-      /* Размеры шрифтов (iOS-style) */
-      --text-xs: 12px;
-      --text-sm: 14px;
-      --text-base: 16px;
-      --text-lg: 18px;
-      --text-xl: 20px;
-      --text-2xl: 24px;
-      --text-3xl: 30px;
-      --text-4xl: 38px;
-      --text-5xl: 48px;
-      --text-6xl: 64px;
-      --text-7xl: 80px;
-      
-      /* Веса шрифтов */
-      --font-light: 300;
-      --font-regular: 400;
-      --font-medium: 500;
-      --font-semibold: 600;
-      --font-bold: 700;
-      --font-extrabold: 800;
-      --font-black: 900;
-      
-      /* Межстрочное расстояние */
-      --leading-tight: 1.2;
-      --leading-snug: 1.35;
-      --leading-normal: 1.5;
-      --leading-loose: 1.8;
-      
-      /* Трекинг */
-      --tracking-tight: -0.02em;
-      --tracking-normal: 0;
-      --tracking-wide: 0.02em;
-      
-      /* Система отступов (8pt grid) */
-      --space-1: 4px;
-      --space-2: 8px;
-      --space-3: 12px;
-      --space-4: 16px;
-      --space-5: 20px;
-      --space-6: 24px;
-      --space-7: 28px;
-      --space-8: 32px;
-      --space-9: 36px;
-      --space-10: 40px;
-      --space-12: 48px;
-      --space-14: 56px;
-      --space-16: 64px;
-      --space-20: 80px;
-      --space-24: 96px;
-      --space-28: 112px;
-      --space-32: 128px;
-      
-      /* Радиусы скругления */
-      --radius-sm: 8px;
-      --radius-md: 12px;
-      --radius-lg: 16px;
-      --radius-xl: 20px;
-      --radius-2xl: 24px;
-      --radius-full: 9999px;
-      
-      /* Навигация */
-      --navbar-height: 64px;
-      
-      /* Контейнер */
-      --container-max: 1200px;
-      
-      /* Анимации */
-      --duration-fast: 0.15s;
-      --duration-normal: 0.3s;
-      --duration-slow: 0.5s;
-      --ease-in: cubic-bezier(0.4, 0, 1, 1);
-      --ease-out: cubic-bezier(0, 0, 0.2, 1);
-      --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
-      --spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-
-    /* ============================================
-       2. СВЕТЛАЯ ТЕМА
-       ============================================ */
-    [data-theme="light"] {
-      --bg-primary: #ffffff;
-      --bg-secondary: #f5f5f7;
-      --bg-tertiary: #e5e5ea;
-      --bg-card: #ffffff;
-      --bg-elevated: #ffffff;
-      
-      --text-primary: #1d1d1f;
-      --text-secondary: #424245;
-      --text-tertiary: #6e6e73;
-      --text-disabled: #a5a5a8;
-      
-      --accent-primary: #0071e3;
-      --accent-primary-hover: #0077ed;
-      --accent-secondary: #30d158;
-      --accent-tertiary: #ff9f0a;
-      --accent-error: #ff375f;
-      
-      --border-primary: #d1d1d6;
-      --border-secondary: #e5e5ea;
-      --border-tertiary: #f5f5f7;
-      
-      --shadow-1: 0 2px 8px rgba(0, 0, 0, 0.08);
-      --shadow-2: 0 4px 16px rgba(0, 0, 0, 0.12);
-      --shadow-3: 0 8px 32px rgba(0, 0, 0, 0.15);
-      --shadow-4: 0 12px 48px rgba(0, 0, 0, 0.18);
-      
-      --glass-bg: rgba(255, 255, 255, 0.8);
-      --overlay-bg: rgba(0, 0, 0, 0.2);
-    }
-
-    /* ============================================
-       3. СБРОС СТИЛЕЙ
-       ============================================ */
-    *, *::before, *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      text-rendering: optimizeLegibility;
-    }
-
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', sans-serif;
-      font-size: var(--text-base);
-      font-weight: var(--font-regular);
-      line-height: var(--leading-normal);
-      color: var(--text-primary);
-      background-color: var(--bg-primary);
-      overflow-x: hidden;
-      min-height: 100vh;
-    }
-
-    /* ============================================
-       4. ТИПОГРАФИКА
-       ============================================ */
-    h1, h2, h3, h4, h5, h6 {
-      font-weight: var(--font-bold);
-      line-height: var(--leading-tight);
-      letter-spacing: var(--tracking-tight);
-      color: var(--text-primary);
-    }
-
-    h1 {
-      font-size: var(--text-6xl);
-      font-weight: var(--font-black);
-    }
-
-    h2 {
-      font-size: var(--text-4xl);
-    }
-
-    h3 {
-      font-size: var(--text-2xl);
-    }
-
-    h4 {
-      font-size: var(--text-xl);
-    }
-
-    h5 {
-      font-size: var(--text-lg);
-    }
-
-    h6 {
-      font-size: var(--text-base);
-      font-weight: var(--font-semibold);
-    }
-
-    p {
-      color: var(--text-secondary);
-      line-height: var(--leading-normal);
-    }
-
-    a {
-      color: var(--accent-primary);
-      text-decoration: none;
-      transition: color var(--duration-fast) var(--ease-out);
-    }
-
-    a:hover {
-      color: var(--accent-primary-hover);
-    }
-
-    strong, b {
-      font-weight: var(--font-semibold);
-      color: var(--text-primary);
-    }
-
-    /* ============================================
-       5. БАЗОВЫЕ КОМПОНЕНТЫ
-       ============================================ */
-
-    /* Контейнер */
-    .container {
-      max-width: var(--container-max);
-      margin: 0 auto;
-      padding: 0 var(--space-6);
-    }
-
-    /* Кнопки */
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: var(--space-2);
-      padding: var(--space-3) var(--space-6);
-      border-radius: var(--radius-lg);
-      font-size: var(--text-base);
-      font-weight: var(--font-semibold);
-      font-family: inherit;
-      text-align: center;
-      cursor: pointer;
-      transition: all var(--duration-normal) var(--ease-out);
-      border: none;
-      position: relative;
-      overflow: hidden;
-      white-space: nowrap;
-    }
-
-    .button.primary {
-      background-color: var(--accent-primary);
-      color: white;
-      box-shadow: var(--shadow-2);
-    }
-
-    .button.primary:hover {
-      background-color: var(--accent-primary-hover);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-3);
-    }
-
-    .button.primary:active {
-      transform: translateY(0) scale(0.98);
-    }
-
-    .button.secondary {
-      background-color: transparent;
-      color: var(--accent-primary);
-      border: 1px solid var(--border-primary);
-    }
-
-    .button.secondary:hover {
-      background-color: var(--bg-secondary);
-      border-color: var(--accent-primary);
-    }
-
-    .button.tertiary {
-      background-color: transparent;
-      color: var(--text-primary);
-    }
-
-    .button.tertiary:hover {
-      background-color: var(--bg-secondary);
-    }
-
-    .button.small {
-      padding: var(--space-2) var(--space-4);
-      font-size: var(--text-sm);
-      border-radius: var(--radius-md);
-    }
-
-    .button.large {
-      padding: var(--space-4) var(--space-8);
-      font-size: var(--text-lg);
-    }
-
-    /* Карточки */
-    .card {
-      background-color: var(--bg-card);
-      border-radius: var(--radius-xl);
-      padding: var(--space-6);
-      box-shadow: var(--shadow-2);
-      border: 1px solid var(--border-secondary);
-      transition: all var(--duration-normal) var(--ease-out);
-      position: relative;
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-3);
-      border-color: var(--border-primary);
-    }
-
-    /* ============================================
-       6. НАВИГАЦИЯ (macOS-style)
-       ============================================ */
-    .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: var(--navbar-height);
-      background-color: var(--glass-bg);
-      backdrop-filter: blur(20px) saturate(180%);
-      -webkit-backdrop-filter: blur(20px) saturate(180%);
-      border-bottom: 1px solid var(--border-secondary);
-      z-index: 1000;
-      transition: all var(--duration-normal) var(--ease-out);
-    }
-
-    .navbar.scrolled {
-      box-shadow: var(--shadow-2);
-    }
-
-    .navbar .container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 100%;
-    }
-
-    .navbar-brand {
-      font-size: var(--text-xl);
-      font-weight: var(--font-bold);
-      color: var(--text-primary);
-      display: flex;
-      align-items: center;
-      gap: var(--space-3);
-    }
-
-    .navbar-toggle {
-      display: none;
-      align-items: center;
-      justify-content: center;
-      width: 44px;
-      height: 44px;
-      border-radius: var(--radius-md);
-      background: transparent;
-      border: none;
-      cursor: pointer;
-      color: var(--text-primary);
-      transition: all var(--duration-fast) var(--ease-out);
-    }
-
-    .navbar-toggle:hover {
-      background-color: var(--bg-secondary);
-    }
-
-    .navbar-menu {
-      display: flex;
-      align-items: center;
-      gap: var(--space-8);
-    }
-
-    .navbar-links {
-      display: flex;
-      list-style: none;
-      gap: var(--space-2);
-    }
-
-    .nav-link {
-      color: var(--text-secondary);
-      text-decoration: none;
-      font-size: var(--text-base);
-      font-weight: var(--font-medium);
-      padding: var(--space-2) var(--space-3);
-      border-radius: var(--radius-sm);
-      transition: all var(--duration-fast) var(--ease-out);
-    }
-
-    .nav-link:hover,
-    .nav-link.active {
-      color: var(--text-primary);
-      background-color: var(--bg-secondary);
-    }
-
-    .nav-link.active {
-      font-weight: var(--font-semibold);
-    }
-
-    .navbar-cta {
-      display: flex;
-      gap: var(--space-3);
-    }
-
-    /* Тема переключатель */
-    .theme-toggle {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      border-radius: var(--radius-md);
-      background: transparent;
-      border: none;
-      cursor: pointer;
-      color: var(--text-secondary);
-      transition: all var(--duration-fast) var(--ease-out);
-    }
-
-    .theme-toggle:hover {
-      background-color: var(--bg-secondary);
-      color: var(--text-primary);
-    }
-
-    /* ============================================
-       7. HERO СЕКЦИЯ (Apple-style)
-       ============================================ */
-    .hero {
-      padding: calc(var(--navbar-height) + var(--space-24)) 0 var(--space-24);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-content {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-12);
-      align-items: center;
-    }
-
-    .hero-title {
-      font-size: var(--text-7xl);
-      font-weight: var(--font-black);
-      line-height: 1.05;
-      margin-bottom: var(--space-6);
-      letter-spacing: -0.03em;
-    }
-
-    .hero-title-accent {
-      background: linear-gradient(135deg, var(--accent-primary), var(--accent-tertiary));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .hero-subtitle {
-      font-size: var(--text-xl);
-      color: var(--text-secondary);
-      margin-bottom: var(--space-8);
-      line-height: var(--leading-normal);
-      max-width: 540px;
-    }
-
-    .hero-pitch {
-      background-color: var(--bg-card);
-      border: 1px solid var(--border-secondary);
-      border-radius: var(--radius-xl);
-      padding: var(--space-6);
-      margin-bottom: var(--space-8);
-    }
-
-    .hero-pitch p {
-      margin-bottom: var(--space-3);
-    }
-
-    .hero-pitch p:last-child {
-      margin-bottom: 0;
-    }
-
-    /* Статистика */
-    .hero-stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-4);
-      margin: var(--space-8) 0;
-    }
-
-    .stat-item {
-      text-align: center;
-      padding: var(--space-5);
-      background-color: var(--bg-card);
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border-secondary);
-    }
-
-    .stat-value {
-      font-size: var(--text-4xl);
-      font-weight: var(--font-bold);
-      color: var(--accent-primary);
-      display: block;
-      line-height: 1;
-    }
-
-    .stat-label {
-      font-size: var(--text-sm);
-      color: var(--text-tertiary);
-      display: block;
-      margin-top: var(--space-2);
-    }
-
-    /* CTA кнопки */
-    .hero-cta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-4);
-      margin: var(--space-8) 0;
-    }
-
-    /* Социальные ссылки */
-    .social-links {
-      display: flex;
-      gap: var(--space-3);
-      margin-top: var(--space-6);
-    }
-
-    .social-link {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 48px;
-      height: 48px;
-      background-color: var(--bg-card);
-      border: 1px solid var(--border-secondary);
-      border-radius: var(--radius-md);
-      color: var(--text-primary);
-      font-size: var(--text-xl);
-      transition: all var(--duration-normal) var(--ease-out);
-    }
-
-    .social-link:hover {
-      background-color: var(--accent-primary);
-      border-color: var(--accent-primary);
-      transform: translateY(-2px);
-      color: white;
-    }
-
-    /* Изображение */
-    .hero-image {
-      position: relative;
-    }
-
-    .profile-card {
-      background-color: var(--bg-card);
-      border: 1px solid var(--border-secondary);
-      border-radius: var(--radius-2xl);
-      padding: var(--space-5);
-      box-shadow: var(--shadow-4);
-      animation: float 6s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-15px); }
-    }
-
-    .avatar-large {
-      width: 100%;
-      border-radius: var(--radius-xl);
-      display: block;
-    }
-
-    /* ============================================
-       8. СЕКЦИЯ КУРСОВ (App Store style)
-       ============================================ */
-    .section {
-      padding: var(--space-24) 0;
-    }
-
-    .section-bg {
-      background-color: var(--bg-secondary);
-      position: relative;
-    }
-
-    .section-bg::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--border-primary), transparent);
-    }
-
-    .section-header {
-      margin-bottom: var(--space-12);
-    }
-
-    .section-title {
-      font-size: var(--text-5xl);
-      font-weight: var(--font-bold);
-      margin-bottom: var(--space-4);
-    }
-
-    .section-description {
-      font-size: var(--text-xl);
-      color: var(--text-secondary);
-      max-width: 640px;
-    }
-
-    .link {
-      color: var(--accent-primary);
-      font-weight: var(--font-medium);
-    }
-
-    .link:hover {
-      text-decoration: underline;
-    }
-
-    /* Карточки курсов */
-    .courses-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: var(--space-6);
-      margin-top: var(--space-8);
-    }
-
-    .course-card {
-      background-color: var(--bg-card);
-      border-radius: var(--radius-xl);
-      padding: var(--space-6);
-      border: 1px solid var(--border-secondary);
-      transition: all var(--duration-normal) var(--ease-out);
-      position: relative;
-    }
-
-    .course-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-3);
-      border-color: var(--border-primary);
-    }
-
-    .course-icon {
-      font-size: var(--text-4xl);
-      margin-bottom: var(--space-4);
-      color: var(--accent-primary);
-    }
-
-    .course-icon svg {
-      width: 40px;
-      height: 40px;
-    }
-
-    .course-title {
-      font-size: var(--text-xl);
-      font-weight: var(--font-bold);
-      margin-bottom: var(--space-3);
-      color: var(--text-primary);
-    }
-
-    .course-description {
-      color: var(--text-secondary);
-      margin-bottom: var(--space-5);
-      line-height: var(--leading-normal);
-    }
-
-    /* ============================================
-       9. CTA СЕКЦИЯ
-       ============================================ */
-    .cta-section {
-      padding: var(--space-20) 0;
-      text-align: center;
-      background-color: var(--bg-secondary);
-      position: relative;
-    }
-
-    .cta-section::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--border-primary), transparent);
-    }
-
-    .cta-title {
-      font-size: var(--text-4xl);
-      font-weight: var(--font-bold);
-      margin-bottom: var(--space-4);
-    }
-
-    .cta-description {
-      font-size: var(--text-xl);
-      color: var(--text-secondary);
-      margin-bottom: var(--space-8);
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .cta-buttons {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: var(--space-4);
-    }
-
-    .small-note {
-      font-size: var(--text-sm);
-      color: var(--text-tertiary);
-      margin-top: var(--space-6);
-    }
-
-    .pulse {
-      animation: pulse 2s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.6; }
-    }
-
-    /* ============================================
-       10. ФУТЕР (Apple-style)
-       ============================================ */
-    .footer {
-      background-color: var(--bg-secondary);
-      padding: var(--space-16) 0 var(--space-8);
-      position: relative;
-    }
-
-    .footer::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--border-primary), transparent);
-    }
-
-    .footer-content {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      gap: var(--space-12);
-      margin-bottom: var(--space-12);
-    }
-
-    .footer-brand {
-      max-width: 320px;
-    }
-
-    .footer-logo {
-      font-size: var(--text-xl);
-      font-weight: var(--font-bold);
-      margin-bottom: var(--space-3);
-      color: var(--text-primary);
-    }
-
-    .footer-tagline {
-      color: var(--text-secondary);
-      font-size: var(--text-base);
-    }
-
-    .footer-column h4 {
-      font-size: var(--text-base);
-      font-weight: var(--font-semibold);
-      margin-bottom: var(--space-4);
-      color: var(--text-primary);
-    }
-
-    .footer-links {
-      list-style: none;
-    }
-
-    .footer-links li {
-      margin-bottom: var(--space-2);
-    }
-
-    .footer-links a {
-      color: var(--text-secondary);
-      font-size: var(--text-base);
-      transition: color var(--duration-fast) var(--ease-out);
-    }
-
-    .footer-links a:hover {
-      color: var(--accent-primary);
-    }
-
-    .footer-contact p {
-      margin-bottom: var(--space-2);
-      color: var(--text-secondary);
-    }
-
-    .social-icons {
-      display: flex;
-      gap: var(--space-3);
-      margin-top: var(--space-4);
-    }
-
-    .social-icon {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      background-color: var(--bg-card);
-      border: 1px solid var(--border-secondary);
-      border-radius: var(--radius-md);
-      color: var(--text-primary);
-      transition: all var(--duration-normal) var(--ease-out);
-    }
-
-    .social-icon:hover {
-      background-color: var(--accent-primary);
-      border-color: var(--accent-primary);
-      transform: translateY(-2px);
-    }
-
-    .footer-bottom {
-      text-align: center;
-      padding-top: var(--space-8);
-      border-top: 1px solid var(--border-secondary);
-      color: var(--text-tertiary);
-      font-size: var(--text-sm);
-    }
-
-    /* ============================================
-       11. АНИМАЦИИ
-       ============================================ */
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    @keyframes slideUp {
-      from { 
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to { 
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes slideDown {
-      from {
-        opacity: 0;
-        transform: translateY(-20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .fade-in {
-      animation: fadeIn var(--duration-normal) var(--ease-out);
-    }
-
-    .slide-up {
-      animation: slideUp var(--duration-normal) var(--ease-out);
-    }
-
-    /* ============================================
-       12. АДАПТИВНОСТЬ
-       ============================================ */
-
-    /* Планшеты */
-    @media (max-width: 1024px) {
-      :root {
-        --text-7xl: 56px;
-        --text-6xl: 44px;
-        --text-5xl: 36px;
-        --text-4xl: 30px;
-      }
-      
-      .hero-content {
-        grid-template-columns: 1fr;
-        gap: var(--space-10);
-        text-align: center;
-      }
-      
-      .hero-subtitle {
-        margin-left: auto;
-        margin-right: auto;
-      }
-      
-      .hero-stats {
-        max-width: 400px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      
-      .hero-cta {
-        justify-content: center;
-      }
-      
-      .social-links {
-        justify-content: center;
-      }
-      
-      .hero-image {
-        max-width: 400px;
-        margin: 0 auto;
-      }
-      
-      .footer-content {
-        grid-template-columns: 1fr 1fr;
-        gap: var(--space-8);
-      }
-      
-      .footer-brand {
-        grid-column: 1 / -1;
-        max-width: none;
-        text-align: center;
-      }
-    }
-
-    /* Мобильные устройства */
-    @media (max-width: 768px) {
-      :root {
-        --text-7xl: 40px;
-        --text-6xl: 32px;
-        --text-5xl: 28px;
-        --text-4xl: 24px;
-        --text-3xl: 22px;
-        --navbar-height: 56px;
-      }
-      
-      .navbar-toggle {
-        display: flex;
-      }
-      
-      .navbar-menu {
-        position: fixed;
-        top: var(--navbar-height);
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: var(--bg-primary);
-        flex-direction: column;
-        padding: var(--space-6);
-        transform: translateX(100%);
-        opacity: 0;
-        visibility: hidden;
-        transition: all var(--duration-normal) var(--ease-out);
-        overflow-y: auto;
-      }
-      
-      .navbar-menu.active {
-        transform: translateX(0);
-        opacity: 1;
-        visibility: visible;
-      }
-      
-      .navbar-links {
-        flex-direction: column;
-        width: 100%;
-        gap: var(--space-2);
-      }
-      
-      .nav-link {
-        padding: var(--space-3) var(--space-4);
-        font-size: var(--text-lg);
-      }
-      
-      .navbar-cta {
-        flex-direction: column;
-        width: 100%;
-        margin-top: var(--space-6);
-      }
-      
-      .navbar-cta .button {
-        width: 100%;
-        justify-content: center;
-      }
-      
-      .hero {
-        padding: calc(var(--navbar-height) + var(--space-16)) 0 var(--space-16);
-      }
-      
-      .hero-title {
-        font-size: var(--text-5xl);
-      }
-      
-      .hero-pitch {
-        padding: var(--space-5);
-      }
-      
-      .hero-stats {
-        grid-template-columns: 1fr;
-        max-width: 300px;
-      }
-      
-      .stat-item {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        text-align: left;
-        padding: var(--space-4);
-      }
-      
-      .stat-value {
-        font-size: var(--text-2xl);
-      }
-      
-      .stat-label {
-        margin-top: 0;
-        text-align: right;
-      }
-      
-      .hero-cta,
-      .cta-buttons {
-        flex-direction: column;
-        align-items: stretch;
-      }
-      
-      .hero-cta .button,
-      .cta-buttons .button {
-        width: 100%;
-        justify-content: center;
-      }
-      
-      .social-links {
-        justify-content: center;
-      }
-      
-      .section {
-        padding: var(--space-16) 0;
-      }
-      
-      .courses-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .footer-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-      
-      .footer-brand {
-        text-align: center;
-      }
-      
-      .footer-column {
-        text-align: center;
-      }
-      
-      .social-icons {
-        justify-content: center;
-      }
-      
-      .theme-toggle-desktop {
-        display: none !important;
-      }
-    }
-
-    /* Очень маленькие экраны */
-    @media (max-width: 375px) {
-      :root {
-        --text-5xl: 32px;
-        --text-4xl: 24px;
-      }
-      
-      .container {
-        padding: 0 var(--space-4);
-      }
-    }
-
-    /* Скроллбар */
-    ::-webkit-scrollbar {
-      width: 8px;
-      height: 8px;
-    }
-
-    ::-webkit-scrollbar-track {
-      background: var(--bg-secondary);
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: var(--border-primary);
-      border-radius: var(--radius-full);
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-      background: var(--text-tertiary);
-    }
-
-    /* Выделение текста */
-    ::selection {
-      background-color: var(--accent-primary);
-      color: white;
-    }
-
-    /* Фокус для доступности */
-    *:focus-visible {
-      outline: 2px solid var(--accent-primary);
-      outline-offset: 2px;
-    }
-
-    /* Отключенные состояния */
-    *:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-
-    /* Мобильный переключатель темы */
-    .theme-toggle-mobile {
-      display: none;
-    }
-
-    @media (max-width: 768px) {
-      .theme-toggle-mobile {
-        display: flex;
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        z-index: 1000;
-        box-shadow: var(--shadow-3);
-        background-color: var(--bg-card);
-      }
-    }
-
-    /* Иконки */
-    .icon {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .icon svg {
-      width: 1em;
-      height: 1em;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Алексей Викулов — Backend-репетитор Python, Golang, ЕГЭ. Метод выстраданного познания — от нуля до junior за 2–3 месяца.">
+    <title>Алексей Викулов — Backend-репетитор Python, Golang, ЕГЭ</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Навигация -->
-  <nav class="navbar" id="navbar">
-    <div class="container">
-      <div class="navbar-brand">
-        <span>Алексей Викулов</span>
-      </div>
-      
-      <button class="navbar-toggle" id="navbarToggle" aria-label="Toggle menu">
-        <svg class="icon menu-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="3" y1="12" x2="21" y2="12"></line>
-          <line x1="3" y1="6" x2="21" y2="6"></line>
-          <line x1="3" y1="18" x2="21" y2="18"></line>
-        </svg>
-        <svg class="icon close-icon" style="display:none" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="18" y1="6" x2="6" y2="18"></line>
-          <line x1="6" y1="6" x2="18" y2="18"></line>
-        </svg>
-      </button>
-      
-      <div class="navbar-menu" id="navbarMenu">
-        <ul class="navbar-links">
-          <li><a href="index.html" class="nav-link active">Главная</a></li>
-          <li><a href="about.html" class="nav-link">Обо мне</a></li>
-          <li><a href="courses.html" class="nav-link">Курсы</a></li>
-          <li><a href="learning.html" class="nav-link">Обучение</a></li>
-          <li><a href="prices.html" class="nav-link">Цены</a></li>
-          <li><a href="contact.html" class="nav-link">Контакты</a></li>
-        </ul>
-        <div class="navbar-cta">
-          <a href="https://wa.me/79183455143?text=Здравствуйте!%20Хочу%20записаться%20на%20занятие." class="button primary small" target="_blank" rel="noopener noreferrer">
-            <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-            </svg>
-            WhatsApp
-          </a>
-          <a href="https://t.me/avick_bot" class="button secondary small" target="_blank" rel="noopener noreferrer">
-            <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
-            </svg>
-            Telegram-Bot
-          </a>
-        </div>
-      </div>
-      
-      <button class="theme-toggle theme-toggle-desktop" id="themeToggle" aria-label="Toggle theme">
-        <svg class="icon sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="5"></circle>
-          <line x1="12" y1="1" x2="12" y2="3"></line>
-          <line x1="12" y1="21" x2="12" y2="23"></line>
-          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-          <line x1="1" y1="12" x2="3" y2="12"></line>
-          <line x1="21" y1="12" x2="23" y2="12"></line>
-          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-        </svg>
-        <svg class="icon moon-icon" style="display:none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-        </svg>
-      </button>
-    </div>
-  </nav>
-
-  <!-- Hero секция -->
-  <header class="hero">
-    <div class="container">
-      <div class="hero-content">
-        <div class="hero-text">
-          <h1 class="hero-title">
-            <span class="hero-title-accent">Алексей</span> Викулов
-          </h1>
-          <p class="hero-subtitle">
-            Backend-репетитор: Python, Golang, ЕГЭ. Метод «выстраданного познания» — от нуля до junior за 2–3 месяца.
-          </p>
-          
-          <div class="hero-pitch">
-            <p>
-              <strong>Почему ко мне?</strong> Учу не теорию, а практику: решай реальные задачи, как в R&D-команде. 
-              Бесплатный пробный урок + гарантия возврата, если нет прогресса за 4 занятия.
-            </p>
-            <p>Готов к IT? Выбери курс ниже и запишись — слоты на неделю ограничены.</p>
-          </div>
-          
-          <div class="hero-stats">
-            <div class="stat-item">
-              <span class="stat-value" data-value="92" data-suffix="%">0%</span>
-              <span class="stat-label">Успех на экзаменах/офферах</span>
+    <!-- Top App Bar -->
+    <header class="top-app-bar" id="top-app-bar">
+        <div class="container">
+            <div class="app-bar-content">
+                <a href="#home" class="brand">
+                    <span class="material-symbols-outlined">code</span>
+                    <h1>Алексей Викулов</h1>
+                </a>
+                
+                <nav class="nav-desktop">
+                    <a href="#home" class="nav-link active">Главная</a>
+                    <a href="#about" class="nav-link">Обо мне</a>
+                    <a href="#courses" class="nav-link">Курсы</a>
+                    <a href="#prices" class="nav-link">Цены</a>
+                    <a href="#contact" class="nav-link">Контакты</a>
+                </nav>
+                
+                <div class="app-bar-actions">
+                    <button class="icon-btn" id="theme-toggle" aria-label="Переключить тему">
+                        <span class="material-symbols-outlined" id="theme-icon">dark_mode</span>
+                    </button>
+                    <a href="https://wa.me/79183455143?text=Здравствуйте!%20Хочу%20записаться%20на%20занятие." class="btn-filled btn-small nav-cta">
+                        <span class="material-symbols-outlined">event_available</span>
+                        Записаться
+                    </a>
+                </div>
+                
+                <button class="icon-btn menu-btn" id="menu-btn" aria-label="Открыть меню">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
             </div>
-            <div class="stat-item">
-              <span class="stat-value" data-value="4" data-suffix="+">0+</span>
-              <span class="stat-label">Года опыта</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-value" data-value="50" data-suffix="+">0+</span>
-              <span class="stat-label">Учеников</span>
-            </div>
-          </div>
-          
-          <div class="hero-cta">
-            <a href="https://wa.me/79183455143?text=Хочу%20бесплатный%20пробный%20урок!" class="button primary large" target="_blank" rel="noopener noreferrer">
-              <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-              </svg>
-              Бесплатный урок
-            </a>
-            <a href="https://t.me/AVick23" class="button secondary large" target="_blank" rel="noopener noreferrer">
-              <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
-              </svg>
-              Написать в Telegram
-            </a>
-          </div>
-          
-          <div class="social-links">
-            <a href="https://t.me/AVick23" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Telegram">
-              <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
-              </svg>
-            </a>
-            <a href="https://wa.me/79183455143" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="WhatsApp">
-              <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-              </svg>
-            </a>
-            <a href="mailto:vikulov2811@gmail.com" class="social-link" aria-label="Email">
-              <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                <polyline points="22,6 12,13 2,6"></polyline>
-              </svg>
-            </a>
-            <a href="https://t.me/avick_bot" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Telegram Bot">
-              <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="11" width="18" height="10" rx="2"></rect>
-                <circle cx="12" cy="5" r="2"></circle>
-                <path d="M12 7v4"></path>
-                <line x1="8" y1="16" x2="8" y2="16"></line>
-                <line x1="16" y1="16" x2="16" y2="16"></line>
-              </svg>
-            </a>
-          </div>
         </div>
-        
-        <div class="hero-image">
-          <div class="profile-card">
-            <img src="professional-avatar.jpg" alt="Алексей Викулов" class="avatar-large">
-          </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="nav-drawer-overlay" id="drawer-overlay"></div>
+    <aside class="nav-drawer" id="nav-drawer" aria-label="Навигация">
+        <div class="drawer-header">
+            <div class="brand">
+                <span class="material-symbols-outlined">code</span>
+                <h2>Алексей Викулов</h2>
+            </div>
+            <button class="icon-btn" id="close-drawer" aria-label="Закрыть меню">
+                <span class="material-symbols-outlined">close</span>
+            </button>
         </div>
-      </div>
-    </div>
-  </header>
+        <nav class="drawer-nav">
+            <a href="#home" class="drawer-link active">
+                <span class="material-symbols-outlined">home</span>
+                <span>Главная</span>
+            </a>
+            <a href="#about" class="drawer-link">
+                <span class="material-symbols-outlined">person</span>
+                <span>Обо мне</span>
+            </a>
+            <a href="#courses" class="drawer-link">
+                <span class="material-symbols-outlined">school</span>
+                <span>Курсы</span>
+            </a>
+            <a href="#prices" class="drawer-link">
+                <span class="material-symbols-outlined">payments</span>
+                <span>Цены</span>
+            </a>
+            <a href="#contact" class="drawer-link">
+                <span class="material-symbols-outlined">contact_mail</span>
+                <span>Контакты</span>
+            </a>
+        </nav>
+        <div class="drawer-footer">
+            <a href="https://wa.me/79183455143" class="btn-filled drawer-cta">
+                <span class="material-symbols-outlined">event_available</span>
+                Записаться на урок
+            </a>
+        </div>
+    </aside>
 
-  <!-- Секция курсов -->
-  <section class="section section-bg" id="courses">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">Что я преподаю</h2>
-        <p class="section-description">
-          Коротко о курсах — полный список на <a href="#courses" class="link">странице курсов</a>.
-        </p>
-      </div>
-      
-      <div class="courses-grid">
-        <!-- Python -->
-        <article class="course-card">
-          <div class="course-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.18l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02 1.27.05zm-6.3 1.98l-.23.33-.08.41.08.41.23.34.33.22.41.09.41-.09.33-.22.23-.34.08-.41-.08-.41-.23-.33-.33-.22-.41-.09-.41.09zm13.09 3.95l.28.06.32.12.35.18.36.27.36.35.35.47.32.59.28.73.21.88.14 1.04.05 1.23-.06 1.23-.16 1.04-.24.86-.32.71-.36.57-.4.45-.42.33-.42.24-.4.16-.36.09-.32.05-.24.02-.16-.01h-8.22v.82h5.84l.01 2.76.02.36-.05.34-.11.31-.17.29-.25.25-.31.24-.38.2-.44.17-.51.15-.58.13-.64.09-.71.07-.77.04-.84.01-1.27-.04-1.07-.14-.9-.2-.73-.25-.59-.3-.45-.33-.34-.34-.25-.34-.16-.33-.1-.3-.04-.25-.02-.2.01-.13v-5.34l.05-.64.13-.54.21-.46.26-.38.3-.32.33-.24.35-.2.35-.14.33-.1.3-.06.26-.04.21-.02.13-.01h5.84l.69-.05.59-.14.5-.21.41-.28.33-.32.27-.35.2-.36.15-.36.1-.35.07-.32.04-.28.02-.21V6.07h2.09l.14.01zm-6.47 14.25l-.23.33-.08.41.08.41.23.33.33.23.41.08.41-.08.33-.23.23-.33.08-.41-.08-.41-.23-.33-.33-.23-.41-.08-.41.08z"/>
-            </svg>
-          </div>
-          <h3 class="course-title">Python для начинающих</h3>
-          <p class="course-description">Синтаксис, ООП, API. Для автоматизации и junior-ролей. От основ до реальных проектов.</p>
-          <a href="courses.html" class="button primary small">Подробнее</a>
-        </article>
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="section hero-section">
+            <div class="hero-bg-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+            </div>
+            
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <div class="hero-badge">
+                            <span class="material-symbols-outlined">verified</span>
+                            Backend-репетитор
+                        </div>
+                        <h1 class="display-large">Python, Golang, ЕГЭ</h1>
+                        <p class="headline-small hero-subtitle">Метод «выстраданного познания» — от нуля до junior за 2–3 месяца</p>
+                        <p class="body-large hero-description">Учу не теорию, а практику: решай реальные задачи, как в R&D-команде. Бесплатный пробный урок + гарантия возврата, если нет прогресса за 4 занятия.</p>
+                        
+                        <div class="hero-actions">
+                            <a href="https://wa.me/79183455143?text=Хочу%20бесплатный%20пробный%20урок!" class="btn-filled btn-large pulse-animation">
+                                <span class="material-symbols-outlined">rocket_launch</span>
+                                Бесплатный урок
+                            </a>
+                            <a href="#courses" class="btn-tonal btn-large">
+                                <span class="material-symbols-outlined">explore</span>
+                                Смотреть курсы
+                            </a>
+                        </div>
+                        
+                        <div class="hero-trust">
+                            <div class="trust-item">
+                                <span class="material-symbols-outlined">shield</span>
+                                <span>Гарантия результата</span>
+                            </div>
+                            <div class="trust-item">
+                                <span class="material-symbols-outlined">schedule</span>
+                                <span>Ответ за 2 часа</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-visual">
+                        <div class="code-window">
+                            <div class="code-header">
+                                <div class="code-dots">
+                                    <span class="dot red"></span>
+                                    <span class="dot yellow"></span>
+                                    <span class="dot green"></span>
+                                </div>
+                                <span class="code-title">mentor.py</span>
+                                <div class="code-actions">
+                                    <span class="material-symbols-outlined">more_horiz</span>
+                                </div>
+                            </div>
+                            <div class="code-body">
+                                <pre><code><span class="code-comment"># Метод выстраданного познания</span>
+<span class="code-keyword">def</span> <span class="code-function">learn</span>(student):
+    <span class="code-keyword">while</span> <span class="code-keyword">not</span> student.is_junior():
+        task = get_real_task()
+        solution = student.solve(task)
         
-        <!-- Golang -->
-        <article class="course-card">
-          <div class="course-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M1.811 10.231c-.047 0-.058-.023-.035-.059l.246-.315c.023-.035.081-.058.128-.058h4.172c.046 0 .058.035.035.07l-.199.303c-.023.036-.082.07-.117.07zM.047 11.306c-.047 0-.059-.023-.035-.058l.245-.316c.023-.035.082-.058.129-.058h5.328c.047 0 .07.035.058.07l-.093.28c-.012.047-.058.07-.105.07zm2.828 1.075c-.047 0-.059-.035-.035-.07l.163-.292c.023-.035.07-.07.117-.07h2.337c.047 0 .07.035.07.082l-.023.28c0 .047-.047.082-.082.082zm12.129-2.36c-.736.187-1.239.327-1.963.514-.176.046-.187.058-.34-.117-.174-.199-.303-.327-.548-.444-.737-.362-1.45-.257-2.115.175-.795.514-1.204 1.274-1.192 2.22.011.935.654 1.706 1.577 1.835.795.105 1.46-.175 1.987-.77.105-.13.198-.27.315-.434H10.47c-.245 0-.304-.152-.222-.35.152-.362.432-.97.596-1.274a.315.315 0 0 1 .292-.187h4.253c-.023.316-.023.631-.07.947a4.983 4.983 0 0 1-.958 2.29c-.841 1.11-1.94 1.8-3.33 1.986-1.145.152-2.209-.07-3.143-.77-.865-.655-1.356-1.52-1.484-2.595-.152-1.274.222-2.419.993-3.424.83-1.086 1.928-1.776 3.272-2.02 1.098-.2 2.15-.07 3.096.571.62.41 1.063.97 1.356 1.648.07.105.023.164-.117.2m3.868 6.461c-1.064-.024-2.034-.328-2.852-1.029a3.665 3.665 0 0 1-1.262-2.255c-.21-1.32.152-2.489.947-3.529.853-1.122 1.881-1.706 3.272-1.95 1.192-.21 2.314-.095 3.33.595.923.63 1.496 1.484 1.648 2.605.198 1.578-.257 2.863-1.344 3.962-.771.783-1.718 1.273-2.805 1.495-.315.06-.63.07-.934.106zm2.78-4.72c-.011-.153-.011-.27-.034-.387-.21-1.157-1.274-1.81-2.384-1.554-1.087.245-1.788.935-2.045 2.033-.21.912.234 1.835 1.075 2.21.643.28 1.285.244 1.905-.07.926-.48 1.425-1.228 1.484-2.233z"/>
-            </svg>
-          </div>
-          <h3 class="course-title">Golang для разработки</h3>
-          <p class="course-description">Асинхронность, high-load системы. Для backend-специалистов и микросервисов.</p>
-          <a href="courses.html" class="button primary small">Подробнее</a>
-        </article>
-        
-        <!-- Backend -->
-        <article class="course-card">
-          <div class="course-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
-              <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
-              <line x1="6" y1="6" x2="6.01" y2="6"></line>
-              <line x1="6" y1="18" x2="6.01" y2="18"></line>
-            </svg>
-          </div>
-          <h3 class="course-title">Backend разработка</h3>
-          <p class="course-description">Docker, базы данных, микросервисы. Полный стек от основ до продакшена.</p>
-          <a href="courses.html" class="button primary small">Подробнее</a>
-        </article>
-        
-        <!-- ЕГЭ -->
-        <article class="course-card">
-          <div class="course-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
-              <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
-            </svg>
-          </div>
-          <h3 class="course-title">ЕГЭ/ОГЭ по информатике</h3>
-          <p class="course-description">Задачи 1–27, стратегии решения. 89+ баллов гарантированно.</p>
-          <a href="courses.html" class="button primary small">Подробнее</a>
-        </article>
-      </div>
-    </div>
-  </section>
+        <span class="code-keyword">if</span> solution.has_errors():
+            <span class="code-comment"># Ошибки = ресурс</span>
+            student.analyze_errors()
+            student.retry()
+        <span class="code-keyword">else</span>:
+            student.level_up()
+    
+    <span class="code-keyword">return</span> <span class="code-string">"Оффер получен! 🎉"</span></code></pre>
+                            </div>
+                        </div>
+                        
+                        <div class="hero-floating-card card-1">
+                            <span class="material-symbols-outlined">trending_up</span>
+                            <div>
+                                <span class="label-medium">92%</span>
+                                <span class="label-small">получают офферы</span>
+                            </div>
+                        </div>
+                        
+                        <div class="hero-floating-card card-2">
+                            <span class="material-symbols-outlined">school</span>
+                            <div>
+                                <span class="label-medium">89+</span>
+                                <span class="label-small">баллов ЕГЭ</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <!-- CTA секция -->
-  <section class="cta-section">
-    <div class="container">
-      <h2 class="cta-title">Начни сегодня</h2>
-      <p class="cta-description">
-        Бесплатный пробный урок: оцени метод и реши, подходит ли. Оплата после — без рисков.
-      </p>
-      <div class="cta-buttons">
-        <a href="https://wa.me/79183455143?text=Запишись%20на%20пробный%20урок!" class="button primary large" target="_blank" rel="noopener noreferrer">
-          <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-          </svg>
-          Пробный урок в WhatsApp
+        <!-- Stats Section -->
+        <section class="section stats-section">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon-wrapper">
+                            <span class="material-symbols-outlined">emoji_events</span>
+                        </div>
+                        <div class="stat-value" data-count="92">0%</div>
+                        <div class="stat-label">Учеников получают офферы</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon-wrapper">
+                            <span class="material-symbols-outlined">school</span>
+                        </div>
+                        <div class="stat-value" data-count="89">0+</div>
+                        <div class="stat-label">Баллов на ЕГЭ</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon-wrapper">
+                            <span class="material-symbols-outlined">schedule</span>
+                        </div>
+                        <div class="stat-value" data-count="3">0 мес</div>
+                        <div class="stat-label">До junior-позиции</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon-wrapper">
+                            <span class="material-symbols-outlined">groups</span>
+                        </div>
+                        <div class="stat-value" data-count="120">0+</div>
+                        <div class="stat-label">Учеников обучено</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section about-section">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-badge">
+                        <span class="material-symbols-outlined">person</span>
+                        Обо мне
+                    </div>
+                    <h2 class="display-medium">Привет, я Алексей</h2>
+                    <p class="body-large section-description">Репетитор ОГЭ/ЕГЭ по информатике и физике, Backend-разработчик с 6+ годами опыта в Python и Golang.</p>
+                </div>
+
+                <div class="about-grid">
+                    <div class="about-main">
+                        <div class="card-elevated about-card">
+                            <div class="card-content">
+                                <h3 class="title-large">Мой путь в IT</h3>
+                                <p class="body-medium">С 2019 года я погрузился в мир IT, начав с самостоятельного изучения Python и основ веб-разработки. Путь от новичка до backend-разработчика в fintech-стартапах научил меня главному: настоящие знания приходят через практику и преодоление трудностей.</p>
+                                <p class="body-medium">В 2022 году я начал совмещать разработку с преподаванием, помогая школьникам готовиться к ОГЭ и ЕГЭ по информатике и физике. К 2025 году через мои занятия прошло 120+ учеников. 94% из них сдали экзамены на высокие баллы или получили офферы в IT.</p>
+                            </div>
+                        </div>
+
+                        <div class="about-specializations">
+                            <h3 class="title-large">Мои специализации</h3>
+                            <div class="spec-grid">
+                                <div class="spec-item">
+                                    <div class="spec-icon">
+                                        <span class="material-symbols-outlined">code</span>
+                                    </div>
+                                    <div class="spec-content">
+                                        <h4 class="title-medium">ОГЭ/ЕГЭ по информатике</h4>
+                                        <p class="body-small">Полный разбор заданий 1-27, программирование на Python, алгоритмы и стратегии решения. Средний балл учеников: 87+</p>
+                                    </div>
+                                </div>
+                                <div class="spec-item">
+                                    <div class="spec-icon">
+                                        <span class="material-symbols-outlined">science</span>
+                                    </div>
+                                    <div class="spec-content">
+                                        <h4 class="title-medium">ОГЭ/ЕГЭ по физике</h4>
+                                        <p class="body-small">От механики до квантовой физики. Учу решать задачи через понимание процессов, а не заучивание формул.</p>
+                                    </div>
+                                </div>
+                                <div class="spec-item">
+                                    <div class="spec-icon">
+                                        <span class="material-symbols-outlined">terminal</span>
+                                    </div>
+                                    <div class="spec-content">
+                                        <h4 class="title-medium">Backend на Python</h4>
+                                        <p class="body-small">Django, FastAPI, базы данных, асинхронное программирование. От основ до продвинутых тем за 2-3 месяца.</p>
+                                    </div>
+                                </div>
+                                <div class="spec-item">
+                                    <div class="spec-icon">
+                                        <span class="material-symbols-outlined">bolt</span>
+                                    </div>
+                                    <div class="spec-content">
+                                        <h4 class="title-medium">Backend на Golang</h4>
+                                        <p class="body-small">Горутины, каналы, высоконагруженные системы. Идеально для тех, кто хочет работать в серьезных проектах.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="about-timeline">
+                        <h3 class="title-large">Эволюция</h3>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-card">
+                                    <span class="label-large timeline-year">2019</span>
+                                    <h4 class="title-medium">Старт в IT: Самообучение</h4>
+                                    <p class="body-small">Изучил Python, основы алгоритмов и веб-разработки. Создал первые проекты — от Telegram-ботов до простых веб-приложений.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-card">
+                                    <span class="label-large timeline-year">2020-2022</span>
+                                    <h4 class="title-medium">Профессиональный рост</h4>
+                                    <p class="body-small">Backend-разработчик в fintech и e-commerce. Освоил Golang, микросервисную архитектуру, высоконагруженные системы.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-card">
+                                    <span class="label-large timeline-year">2023</span>
+                                    <h4 class="title-medium">Начало преподавания</h4>
+                                    <p class="body-small">Разработал метод «выстраданного познания», объединив принципы качественной разработки и эффективного обучения.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-card">
+                                    <span class="label-large timeline-year">2024-2025</span>
+                                    <h4 class="title-medium">Масштабирование</h4>
+                                    <p class="body-small">120+ учеников, 94% успеха. Активно работаю над коммерческими проектами, интегрируя реальный опыт в обучение.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Methodology -->
+                <div class="methodology-section">
+                    <div class="card-filled methodology-card">
+                        <div class="card-content">
+                            <div class="methodology-header">
+                                <span class="material-symbols-outlined large-icon">psychology</span>
+                                <div>
+                                    <h3 class="headline-small">Метод «выстраданного познания»</h3>
+                                    <p class="body-large">Мозг запоминает не то, что легко даётся, а то, что требует усилий. Когда ты самостоятельно находишь решение через ошибки, ты создаёшь прочные нейронные связи.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="methodology-grid">
+                                <div class="principle-card">
+                                    <div class="principle-icon">
+                                        <span class="material-symbols-outlined">percent</span>
+                                    </div>
+                                    <div class="principle-content">
+                                        <h4 class="title-medium">70/30 правило</h4>
+                                        <p class="body-small">70% практики, 30% теории. Ты учишься через решение реальных задач.</p>
+                                    </div>
+                                </div>
+                                <div class="principle-card">
+                                    <div class="principle-icon">
+                                        <span class="material-symbols-outlined">bug_report</span>
+                                    </div>
+                                    <div class="principle-content">
+                                        <h4 class="title-medium">Ошибки как ресурс</h4>
+                                        <p class="body-small">Каждая ошибка — шаг к пониманию. Мы используем их как инструмент обучения.</p>
+                                    </div>
+                                </div>
+                                <div class="principle-card">
+                                    <div class="principle-icon">
+                                        <span class="material-symbols-outlined">help</span>
+                                    </div>
+                                    <div class="principle-content">
+                                        <h4 class="title-medium">Направляющие вопросы</h4>
+                                        <p class="body-small">Я не даю готовые ответы — я задаю вопросы, которые направляют тебя к решению.</p>
+                                    </div>
+                                </div>
+                                <div class="principle-card">
+                                    <div class="principle-icon">
+                                        <span class="material-symbols-outlined">support_agent</span>
+                                    </div>
+                                    <div class="principle-content">
+                                        <h4 class="title-medium">Поддержка 24/7</h4>
+                                        <p class="body-small">Постоянный фидбек в реальном времени. Персональная поддержка в Telegram.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Courses Section -->
+        <section id="courses" class="section courses-section">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-badge">
+                        <span class="material-symbols-outlined">school</span>
+                        Курсы
+                    </div>
+                    <h2 class="display-medium">От Python до ЕГЭ</h2>
+                    <p class="body-large section-description">Не просто уроки, а путь к мастерству. Бесплатные roadmaps для самостоятельного обучения или индивидуальные занятия с наставником.</p>
+                </div>
+
+                <!-- Tabs -->
+                <div class="segmented-buttons">
+                    <button class="segment-btn active" data-tab="roadmaps">
+                        <span class="material-symbols-outlined">map</span>
+                        Бесплатные Roadmaps
+                    </button>
+                    <button class="segment-btn" data-tab="individual">
+                        <span class="material-symbols-outlined">person</span>
+                        С наставником
+                    </button>
+                </div>
+
+                <!-- Roadmaps Tab -->
+                <div class="tab-content active" id="roadmaps-tab">
+                    <div class="courses-grid">
+                        <div class="card-elevated course-card">
+                            <div class="course-icon-wrapper">
+                                <span class="material-symbols-outlined">code</span>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="title-large">Python Developer</h3>
+                                <p class="body-medium">Полный путь от основ Python до Junior-разработчика: синтаксис, ООП, веб-разработка, базы данных.</p>
+                                <div class="course-chips">
+                                    <span class="chip chip-assist">Django</span>
+                                    <span class="chip chip-assist">FastAPI</span>
+                                    <span class="chip chip-assist">SQL</span>
+                                    <span class="chip chip-assist">ORM</span>
+                                </div>
+                                <a href="https://avick23.github.io/roadmap_python/" class="btn-text" target="_blank">
+                                    Открыть Roadmap
+                                    <span class="material-symbols-outlined">open_in_new</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="card-elevated course-card">
+                            <div class="course-icon-wrapper">
+                                <span class="material-symbols-outlined">terminal</span>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="title-large">Golang Developer</h3>
+                                <p class="body-medium">От основ Go до высоконагруженных систем: горутины, каналы, микросервисы, gRPC.</p>
+                                <div class="course-chips">
+                                    <span class="chip chip-assist">Concurrency</span>
+                                    <span class="chip chip-assist">gRPC</span>
+                                    <span class="chip chip-assist">Microservices</span>
+                                </div>
+                                <a href="https://avick23.github.io/roadmap_golang/" class="btn-text" target="_blank">
+                                    Открыть Roadmap
+                                    <span class="material-symbols-outlined">open_in_new</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="card-elevated course-card">
+                            <div class="course-icon-wrapper">
+                                <span class="material-symbols-outlined">dns</span>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="title-large">Backend Developer</h3>
+                                <p class="body-medium">Полный стек backend-разработки: от основ до production. Docker, Kubernetes, CI/CD, мониторинг.</p>
+                                <div class="course-chips">
+                                    <span class="chip chip-assist">Docker</span>
+                                    <span class="chip chip-assist">K8s</span>
+                                    <span class="chip chip-assist">CI/CD</span>
+                                    <span class="chip chip-assist">REST API</span>
+                                </div>
+                                <a href="https://avick23.github.io/roadmap_backend/" class="btn-text" target="_blank">
+                                    Открыть Roadmap
+                                    <span class="material-symbols-outlined">open_in_new</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="card-elevated course-card">
+                            <div class="course-icon-wrapper">
+                                <span class="material-symbols-outlined">settings_applications</span>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="title-large">DevOps Engineer</h3>
+                                <p class="body-medium">Инфраструктура как код, автоматизация, облачные технологии. Linux, CI/CD, Kubernetes.</p>
+                                <div class="course-chips">
+                                    <span class="chip chip-assist">Linux</span>
+                                    <span class="chip chip-assist">Git</span>
+                                    <span class="chip chip-assist">Monitoring</span>
+                                    <span class="chip chip-assist">IaC</span>
+                                </div>
+                                <a href="https://avick23.github.io/roadmap_devops/" class="btn-text" target="_blank">
+                                    Открыть Roadmap
+                                    <span class="material-symbols-outlined">open_in_new</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Individual Tab -->
+                <div class="tab-content" id="individual-tab">
+                    <div class="courses-grid">
+                        <div class="card-filled course-card">
+                            <div class="course-icon-wrapper primary">
+                                <span class="material-symbols-outlined">psychology</span>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="title-large">Python: От нуля до Junior</h3>
+                                <p class="body-medium">Полный курс Python: от синтаксиса до создания веб-приложений. Django или FastAPI на выбор.</p>
+                                <ul class="feature-list">
+                                    <li>
+                                        <span class="material-symbols-outlined">check_circle</span>
+                                        40+ часов практики
+                                    </li>
+                                    <li>
+                                        <span class="material-symbols-outlined">check_circle</span>
+                                        Еженедельные код-ревью
+                                    </li>
+                                    <li>
+                                        <span class="material-symbols-outlined">check_circle</span>
+                                        Пет-проекты в портфолио
+                                    </li>
+                                    <li>
+                                        <span class="material-symbols-outlined">check_circle</span>
+                                        Подготовка к собеседованиям
+                                    </li>
+                                </ul>
+                                <a href="https://wa.me/79183455143?text=Интересует%20курс%20Python" class="btn-filled">Записаться</a>
+                            </div>
+                        </div>
+
+                        <div class="card-filled course-card">
+                            <div class="course-icon-wrapper secondary">
+                                <span class="material-symbols-outlined">bolt</span>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="title-large">Golang: High-load системы</h3>
+                                <p class="body-medium">От основ до production-систем. Конкурентность, микросервисы, производительность.</p>
+                                <ul class="feature-list">
+                                    <li>
+                                        <span class="material-symbols-outlined">check_circle</span>
+                                        30+ часов практики
+                                    </li>
+                                    <li>
+                                        <span class="material-symbols-outlined">check_circle</span>
+                                        Реальные high-load задачи
+                                    </li>
+                                    <li>
+                                        <span class="material-symbols-outlined">check_circle</span>
+                                        Проект для портфолио
+                                    </li>
+                                </ul>
+                                <a href="https://wa.me/79183455143?text=Интересует%20курс%20Golang!" class="btn-filled">Записаться</a>
+                            </div>
+                        </div>
+
+                        <div class="card-filled course-card">
+                            <div class="course-icon-wrapper tertiary">
+                                <span class="material-symbols-outlined">quiz</span>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="title-large">ЕГЭ Информатика: 89+</h3>
+                                <p class="body-medium">Задания 1-27 с глубиной. Программирование на Python, стратегии, мок-экзамены.</p>
+                                <ul class="feature-list">
+                                    <li>
+                                        <span class="material-symbols-outlined">check_circle</span>
+                                        25+ часов по темам ЕГЭ
+                                    </li>
+                                    <li>
+                                        <span class="material-symbols-outlined">check_circle</span>
+                                        100+ задач с разбором
+                                    </li>
+                                    <li>
+                                        <span class="material-symbols-outlined">check_circle</span>
+                                        Гарантия результата
+                                    </li>
+                                </ul>
+                                <a href="https://wa.me/79183455143?text=Интересует%20ЕГЭ%20информатика!" class="btn-filled">Записаться</a>
+                            </div>
+                        </div>
+
+                        <div class="card-filled course-card">
+                            <div class="course-icon-wrapper error">
+                                <span class="material-symbols-outlined">science</span>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="title-large">ЕГЭ Физика</h3>
+                                <p class="body-medium">От механики до квантовой физики. Решение через понимание, не зубрёжку.</p>
+                                <ul class="feature-list">
+                                    <li>
+                                        <span class="material-symbols-outlined">check_circle</span>
+                                        30+ часов по темам
+                                    </li>
+                                    <li>
+                                        <span class="material-symbols-outlined">check_circle</span>
+                                        Моделирование в Python
+                                    </li>
+                                    <li>
+                                        <span class="material-symbols-outlined">check_circle</span>
+                                        Средний балл 85+
+                                    </li>
+                                </ul>
+                                <a href="https://wa.me/79183455143?text=Интересует%20ЕГЭ%20физика!" class="btn-filled">Записаться</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prices Section -->
+        <section id="prices" class="section prices-section">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-badge">
+                        <span class="material-symbols-outlined">payments</span>
+                        Цены
+                    </div>
+                    <h2 class="display-medium">Прозрачное ценообразование</h2>
+                    <p class="body-large section-description">Сравните: средняя стоимость курсов — 40 000–80 000 ₽ без гарантии результата. Я предлагаю индивидуальный подход с гарантией.</p>
+                </div>
+
+                <div class="pricing-grid">
+                    <div class="card-elevated pricing-card">
+                        <div class="card-content">
+                            <h3 class="title-large">Групповые занятия</h3>
+                            <div class="price-block">
+                                <span class="price-value">1 500 ₽</span>
+                                <span class="price-period">/час</span>
+                            </div>
+                            <p class="body-small price-note">До 5 человек в группе</p>
+                            <ul class="feature-list">
+                                <li>
+                                    <span class="material-symbols-outlined">check_circle</span>
+                                    Обмен опытом в группе
+                                </li>
+                                <li>
+                                    <span class="material-symbols-outlined">check_circle</span>
+                                    Стандартная программа
+                                </li>
+                                <li>
+                                    <span class="material-symbols-outlined">check_circle</span>
+                                    Доступ к материалам
+                                </li>
+                            </ul>
+                            <a href="https://wa.me/79183455143?text=Интересуют%20групповые%20занятия!" class="btn-outlined">Выбрать</a>
+                        </div>
+                    </div>
+
+                    <div class="card-elevated pricing-card popular">
+                        <div class="popular-badge">
+                            <span class="material-symbols-outlined">star</span>
+                            Популярный
+                        </div>
+                        <div class="card-content">
+                            <h3 class="title-large">Индивидуальные занятия</h3>
+                            <div class="price-block">
+                                <span class="price-value">3 500 ₽</span>
+                                <span class="price-period">/час</span>
+                            </div>
+                            <p class="body-small price-note">1 на 1 с ментором</p>
+                            <ul class="feature-list">
+                                <li>
+                                    <span class="material-symbols-outlined">check_circle</span>
+                                    Полная персонализация
+                                </li>
+                                <li>
+                                    <span class="material-symbols-outlined">check_circle</span>
+                                    Гибкое расписание
+                                </li>
+                                <li>
+                                    <span class="material-symbols-outlined">check_circle</span>
+                                    Доп. материалы и поддержка
+                                </li>
+                                <li>
+                                    <span class="material-symbols-outlined">check_circle</span>
+                                    Гарантия прогресса
+                                </li>
+                                <li>
+                                    <span class="material-symbols-outlined">check_circle</span>
+                                    Поддержка 24/7
+                                </li>
+                            </ul>
+                            <a href="https://wa.me/79183455143?text=Хочу%20индивидуальные%20занятия!" class="btn-filled">Выбрать</a>
+                        </div>
+                    </div>
+
+                    <div class="card-elevated pricing-card">
+                        <div class="card-content">
+                            <h3 class="title-large">Пакет 10 занятий</h3>
+                            <div class="price-block">
+                                <span class="price-value">30 000 ₽</span>
+                                <span class="price-period">пакет</span>
+                            </div>
+                            <p class="body-small price-note success">Экономия 5 000 ₽</p>
+                            <ul class="feature-list">
+                                <li>
+                                    <span class="material-symbols-outlined">check_circle</span>
+                                    Все плюсы индивидуальных
+                                </li>
+                                <li>
+                                    <span class="material-symbols-outlined">check_circle</span>
+                                    Фиксированная цена
+                                </li>
+                                <li>
+                                    <span class="material-symbols-outlined">check_circle</span>
+                                    Приоритет в расписании
+                                </li>
+                                <li>
+                                    <span class="material-symbols-outlined">check_circle</span>
+                                    +1 бонусное занятие
+                                </li>
+                                <li>
+                                    <span class="material-symbols-outlined">check_circle</span>
+                                    Доступ к закрытым материалам
+                                </li>
+                            </ul>
+                            <a href="https://wa.me/79183455143?text=Интересует%20пакет%2010%20занятий!" class="btn-outlined">Выбрать</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Guarantee -->
+                <div class="guarantee-section">
+                    <div class="card-filled guarantee-card">
+                        <div class="card-content">
+                            <div class="guarantee-icon">
+                                <span class="material-symbols-outlined">verified_user</span>
+                            </div>
+                            <div class="guarantee-text">
+                                <h3 class="headline-small">Гарантия возврата средств</h3>
+                                <p class="body-medium">Если после 4 занятий вы не видите прогресса и не можете решать задачи того уровня, который был определён в начале обучения — я верну 50% от оплаченной суммы. Риск на мне, а не на вас.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ROI Calculator -->
+                <div class="roi-section">
+                    <div class="card-elevated roi-card">
+                        <div class="card-content">
+                            <h3 class="title-large">Рассчитайте вашу выгоду</h3>
+                            <p class="body-medium">Сравните инвестицию в обучение с будущим доходом</p>
+                            <div class="roi-grid">
+                                <div class="roi-item">
+                                    <span class="material-symbols-outlined">trending_down</span>
+                                    <div>
+                                        <span class="title-medium">30 000 ₽</span>
+                                        <span class="body-small">Инвестиция за 10 занятий</span>
+                                    </div>
+                                </div>
+                                <div class="roi-item">
+                                    <span class="material-symbols-outlined">trending_up</span>
+                                    <div>
+                                        <span class="title-medium">80 000 ₽</span>
+                                        <span class="body-small">Зарплата junior в месяц</span>
+                                    </div>
+                                </div>
+                                <div class="roi-item success">
+                                    <span class="material-symbols-outlined">schedule</span>
+                                    <div>
+                                        <span class="title-medium">2 недели</span>
+                                        <span class="body-small">Срок окупаемости</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="section testimonials-section">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-badge">
+                        <span class="material-symbols-outlined">reviews</span>
+                        Отзывы
+                    </div>
+                    <h2 class="display-medium">Что говорят ученики</h2>
+                    <p class="body-large section-description">Реальные отзывы от тех, кто прошёл обучение по методу «выстраданного познания».</p>
+                </div>
+
+                <div class="testimonials-grid">
+                    <div class="card-elevated testimonial-card">
+                        <div class="card-content">
+                            <div class="testimonial-rating">
+                                <span class="material-symbols-outlined">star</span>
+                                <span class="material-symbols-outlined">star</span>
+                                <span class="material-symbols-outlined">star</span>
+                                <span class="material-symbols-outlined">star</span>
+                                <span class="material-symbols-outlined">star</span>
+                            </div>
+                            <p class="body-medium testimonial-text">«Сдала ЕГЭ по информатике на 94 балла! До занятий боялась программирования, теперь понимаю логику и могу сама писать код. Поступила на бюджет в СПбГУ.»</p>
+                            <div class="testimonial-author">
+                                <div class="avatar">М</div>
+                                <div class="author-info">
+                                    <h4 class="title-small">Мария, 17 лет</h4>
+                                    <p class="label-small">Поступила в СПбГУ</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-elevated testimonial-card">
+                        <div class="card-content">
+                            <div class="testimonial-rating">
+                                <span class="material-symbols-outlined">star</span>
+                                <span class="material-symbols-outlined">star</span>
+                                <span class="material-symbols-outlined">star</span>
+                                <span class="material-symbols-outlined">star</span>
+                                <span class="material-symbols-outlined">star</span>
+                            </div>
+                            <p class="body-medium testimonial-text">«За 3 месяца научился автоматизировать рутинные задачи в Excel с помощью Python. Теперь вместо 2 часов трачу 10 минут на отчёты.»</p>
+                            <div class="testimonial-author">
+                                <div class="avatar">А</div>
+                                <div class="author-info">
+                                    <h4 class="title-small">Андрей, 29 лет</h4>
+                                    <p class="label-small">Экономист</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-elevated testimonial-card">
+                        <div class="card-content">
+                            <div class="testimonial-rating">
+                                <span class="material-symbols-outlined">star</span>
+                                <span class="material-symbols-outlined">star</span>
+                                <span class="material-symbols-outlined">star</span>
+                                <span class="material-symbols-outlined">star</span>
+                                <span class="material-symbols-outlined">star</span>
+                            </div>
+                            <p class="body-medium testimonial-text">«Наконец-то разобрался с программированием в университете! Раньше просто копировал код, теперь понимаю каждую строчку.»</p>
+                            <div class="testimonial-author">
+                                <div class="avatar">Д</div>
+                                <div class="author-info">
+                                    <h4 class="title-small">Дмитрий, 20 лет</h4>
+                                    <p class="label-small">Студент МИРЭА</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="section faq-section">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-badge">
+                        <span class="material-symbols-outlined">help</span>
+                        FAQ
+                    </div>
+                    <h2 class="display-medium">Частые вопросы</h2>
+                </div>
+
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">Подойдёт ли метод для полных новичков?</span>
+                            <span class="material-symbols-outlined faq-icon">expand_more</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p class="body-medium">Да, особенно для новичков! Метод формирует правильное мышление программиста с самого начала. Ты учишься не просто писать код, а решать проблемы — это ключевой навык в IT.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">Что если я не успеваю за темпом?</span>
+                            <span class="material-symbols-outlined faq-icon">expand_more</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p class="body-medium">Темп полностью индивидуален. Мы двигаемся так быстро, как ты можешь усваивать материал. Главное — не скорость, а качество понимания.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">Как работает гарантия возврата?</span>
+                            <span class="material-symbols-outlined faq-icon">expand_more</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p class="body-medium">Если после 4 занятий ты не видишь прогресса, я возвращаю 50% оплаты. На практике этого почти никогда не происходит — метод работает для всех, кто готов прилагать усилия.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">Как проходит пробный урок?</span>
+                            <span class="material-symbols-outlined faq-icon">expand_more</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p class="body-medium">Пробный урок длится 45–60 минут. Мы знакомимся, определяем твой уровень, обсуждаем цели и составляем индивидуальный план обучения. Ты получаешь практическое задание и понимаешь, как строится обучение. Это бесплатно и без обязательств.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">Нужна ли предоплата?</span>
+                            <span class="material-symbols-outlined faq-icon">expand_more</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p class="body-medium">Нет, пробный урок полностью бесплатный. Оплата начинается только после того, как ты решишь продолжить обучение. Первое платное занятие оплачивается после его проведения.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">Какое оборудование нужно для занятий?</span>
+                            <span class="material-symbols-outlined faq-icon">expand_more</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p class="body-medium">Достаточно компьютера с доступом в интернет, микрофоном и камерой. Мы занимаемся через Zoom, Discord или другую удобную для тебя платформу. Для программирования понадобится установить Python, Go или другую необходимую среду — я помогу с настройкой.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">Почему индивидуальные занятия дороже групповых?</span>
+                            <span class="material-symbols-outlined faq-icon">expand_more</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p class="body-medium">Индивидуальные занятия включают полную персонализацию программы, поддержку 24/7, адаптацию под ваш темп и гарантию результата. Это как персональный тренер против групповых занятий в фитнес-зале — эффективность в 3–5 раз выше.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">Можно ли поменять время занятия?</span>
+                            <span class="material-symbols-outlined faq-icon">expand_more</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p class="body-medium">Да, время занятия можно перенести, если сообщить об этом за 24 часа. В экстренных случаях — за 6 часов. Это позволяет мне предложить это время другому ученику.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section contact-section">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-badge">
+                        <span class="material-symbols-outlined">contact_mail</span>
+                        Контакты
+                    </div>
+                    <h2 class="display-medium">Свяжитесь со мной</h2>
+                    <p class="body-large section-description">Готов начать обучение? Выбери удобный способ связи. Отвечаю в течение 2 часов.</p>
+                </div>
+
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h3 class="title-large">Способы связи</h3>
+                        <div class="contact-methods">
+                            <a href="https://wa.me/79183455143?text=Здравствуйте!%20Хочу%20записаться%20на%20бесплатный%20пробный%20урок." class="card-outlined contact-method" target="_blank">
+                                <div class="contact-icon whatsapp">
+                                    <span class="material-symbols-outlined">chat</span>
+                                </div>
+                                <div class="contact-details">
+                                    <h4 class="title-medium">WhatsApp</h4>
+                                    <p class="body-small">Быстрый ответ, обсуждение деталей</p>
+                                    <p class="label-medium">+7 918 345-51-43</p>
+                                </div>
+                                <span class="material-symbols-outlined contact-arrow">arrow_forward</span>
+                            </a>
+
+                            <a href="https://t.me/AVick23" class="card-outlined contact-method" target="_blank">
+                                <div class="contact-icon telegram">
+                                    <span class="material-symbols-outlined">send</span>
+                                </div>
+                                <div class="contact-details">
+                                    <h4 class="title-medium">Telegram</h4>
+                                    <p class="body-small">Личные сообщения, код-ревью</p>
+                                    <p class="label-medium">@AVick23</p>
+                                </div>
+                                <span class="material-symbols-outlined contact-arrow">arrow_forward</span>
+                            </a>
+
+                            <a href="https://t.me/avick_bot" class="card-outlined contact-method" target="_blank">
+                                <div class="contact-icon bot">
+                                    <span class="material-symbols-outlined">smart_toy</span>
+                                </div>
+                                <div class="contact-details">
+                                    <h4 class="title-medium">Telegram Bot</h4>
+                                    <p class="body-small">Автоматическая запись на занятия</p>
+                                    <p class="label-medium">@avick_bot</p>
+                                </div>
+                                <span class="material-symbols-outlined contact-arrow">arrow_forward</span>
+                            </a>
+
+                            <a href="mailto:vikulov2811@gmail.com" class="card-outlined contact-method">
+                                <div class="contact-icon email">
+                                    <span class="material-symbols-outlined">email</span>
+                                </div>
+                                <div class="contact-details">
+                                    <h4 class="title-medium">Email</h4>
+                                    <p class="body-small">Подробные вопросы, документы</p>
+                                    <p class="label-medium">vikulov2811@gmail.com</p>
+                                </div>
+                                <span class="material-symbols-outlined contact-arrow">arrow_forward</span>
+                            </a>
+                        </div>
+
+                        <div class="card-filled contact-note">
+                            <span class="material-symbols-outlined">info</span>
+                            <p class="body-small">Работаю онлайн — из любой точки мира. Удобное время для занятий: пн-пт 9:00-21:00, сб-вс 10:00-18:00 (по МСК). Отвечаю в течение 2 часов в рабочее время.</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-form-wrapper">
+                        <div class="card-elevated form-card">
+                            <div class="card-content">
+                                <h3 class="title-large">Форма обратной связи</h3>
+                                <p class="body-medium">Заполни форму, и я свяжусь с тобой в удобное время.</p>
+                                
+                                <form id="contact-form" class="contact-form">
+                                    <div class="form-field">
+                                        <label for="name" class="form-label">Имя *</label>
+                                        <div class="text-field-wrapper">
+                                            <input type="text" id="name" name="name" required class="text-field" placeholder=" ">
+                                            <span class="text-field-outline"></span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-field">
+                                        <label for="email" class="form-label">Email *</label>
+                                        <div class="text-field-wrapper">
+                                            <input type="email" id="email" name="email" required class="text-field" placeholder=" ">
+                                            <span class="text-field-outline"></span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-field">
+                                        <label for="phone" class="form-label">Телефон (опционально)</label>
+                                        <div class="text-field-wrapper">
+                                            <input type="tel" id="phone" name="phone" class="text-field" placeholder=" ">
+                                            <span class="text-field-outline"></span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-field">
+                                        <label for="contact-method" class="form-label">Предпочтительный способ связи</label>
+                                        <div class="text-field-wrapper select-wrapper">
+                                            <select id="contact-method" name="contact-method" class="text-field">
+                                                <option value="whatsapp">WhatsApp</option>
+                                                <option value="telegram">Telegram</option>
+                                                <option value="email">Email</option>
+                                                <option value="call">Телефонный звонок</option>
+                                            </select>
+                                            <span class="material-symbols-outlined select-arrow">expand_more</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-field">
+                                        <label for="course" class="form-label">Интересующий курс</label>
+                                        <div class="text-field-wrapper select-wrapper">
+                                            <select id="course" name="course" class="text-field">
+                                                <option value="">Выберите курс</option>
+                                                <option value="python">Python для начинающих</option>
+                                                <option value="golang">Golang для разработки</option>
+                                                <option value="backend">Backend разработка</option>
+                                                <option value="ege-info">ЕГЭ/ОГЭ по информатике</option>
+                                                <option value="ege-physics">Физика для ЕГЭ</option>
+                                                <option value="other">Другое</option>
+                                            </select>
+                                            <span class="material-symbols-outlined select-arrow">expand_more</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-field">
+                                        <label for="message" class="form-label">Сообщение *</label>
+                                        <div class="text-field-wrapper">
+                                            <textarea id="message" name="message" rows="4" required class="text-field" placeholder=" "></textarea>
+                                            <span class="text-field-outline"></span>
+                                        </div>
+                                    </div>
+                                    
+                                    <button type="submit" class="btn-filled btn-large form-submit">
+                                        <span class="material-symbols-outlined">send</span>
+                                        Отправить сообщение
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="section cta-section">
+            <div class="container">
+                <div class="card-filled cta-card">
+                    <div class="cta-bg-shapes">
+                        <div class="cta-shape shape-1"></div>
+                        <div class="cta-shape shape-2"></div>
+                    </div>
+                    <div class="card-content">
+                        <h2 class="headline-medium">Готов испытать метод на себе?</h2>
+                        <p class="body-large">Запишись на бесплатный пробный урок и почувствуй разницу. Без обязательств, только практика.</p>
+                        <div class="cta-actions">
+                            <a href="https://wa.me/79183455143?text=Хочу%20попробовать%20метод%20выстраданного%20познания!" class="btn-filled btn-large">
+                                <span class="material-symbols-outlined">rocket_launch</span>
+                                Пробный урок
+                            </a>
+                            <a href="https://t.me/AVick23" class="btn-tonal btn-large">
+                                <span class="material-symbols-outlined">send</span>
+                                Telegram
+                            </a>
+                        </div>
+                        <div class="cta-urgency">
+                            <span class="material-symbols-outlined">warning</span>
+                            <span class="label-medium">Осталось 2 места на пробные уроки на этой неделе</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="brand">
+                        <span class="material-symbols-outlined">code</span>
+                        <h3>Алексей Викулов</h3>
+                    </div>
+                    <p class="body-small">Backend-репетитор: Python, Golang, ЕГЭ</p>
+                    <p class="body-small">Метод «выстраданного познания»</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4 class="title-small">Разделы</h4>
+                    <ul>
+                        <li><a href="#about">Обо мне</a></li>
+                        <li><a href="#courses">Курсы</a></li>
+                        <li><a href="#prices">Цены</a></li>
+                        <li><a href="#contact">Контакты</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4 class="title-small">Контакты</h4>
+                    <p class="body-small">
+                        <span class="material-symbols-outlined">call</span>
+                        +7 918 345-51-43
+                    </p>
+                    <p class="body-small">
+                        <span class="material-symbols-outlined">email</span>
+                        vikulov2811@gmail.com
+                    </p>
+                </div>
+                
+                <div class="footer-social">
+                    <h4 class="title-small">Социальные сети</h4>
+                    <div class="social-links">
+                        <a href="https://wa.me/79183455143" class="icon-btn" aria-label="WhatsApp" target="_blank">
+                            <span class="material-symbols-outlined">chat</span>
+                        </a>
+                        <a href="https://t.me/AVick23" class="icon-btn" aria-label="Telegram" target="_blank">
+                            <span class="material-symbols-outlined">send</span>
+                        </a>
+                        <a href="https://t.me/avick_bot" class="icon-btn" aria-label="Telegram Bot" target="_blank">
+                            <span class="material-symbols-outlined">smart_toy</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="body-small">© 2023-2025 Алексей Викулов. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FAB (Floating Action Button) -->
+    <a href="https://wa.me/79183455143?text=Здравствуйте!%20Хочу%20записаться%20на%20занятие." class="fab-extended" id="fab" aria-label="Записаться">
+        <span class="material-symbols-outlined">chat</span>
+        <span class="label-large">Записаться</span>
+    </a>
+
+    <!-- Bottom Navigation (Mobile) -->
+    <nav class="bottom-nav" id="bottom-nav">
+        <a href="#home" class="bottom-nav-item active">
+            <span class="material-symbols-outlined">home</span>
+            <span class="label-small">Главная</span>
         </a>
-        <a href="https://t.me/AVick23" class="button secondary large" target="_blank" rel="noopener noreferrer">
-          <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
-          </svg>
-          В Telegram
+        <a href="#about" class="bottom-nav-item">
+            <span class="material-symbols-outlined">person</span>
+            <span class="label-small">Обо мне</span>
         </a>
-      </div>
-      <p class="small-note pulse">
-        Осталось <strong>2</strong> места на пробные уроки на этой неделе
-      </p>
+        <a href="#courses" class="bottom-nav-item">
+            <span class="material-symbols-outlined">school</span>
+            <span class="label-small">Курсы</span>
+        </a>
+        <a href="#prices" class="bottom-nav-item">
+            <span class="material-symbols-outlined">payments</span>
+            <span class="label-small">Цены</span>
+        </a>
+        <a href="#contact" class="bottom-nav-item">
+            <span class="material-symbols-outlined">contact_mail</span>
+            <span class="label-small">Контакты</span>
+        </a>
+    </nav>
+
+    <!-- Snackbar for notifications -->
+    <div class="snackbar" id="snackbar">
+        <span class="snackbar-text">Сообщение отправлено!</span>
+        <button class="btn-text snackbar-action">OK</button>
     </div>
-  </section>
 
-  <!-- Футер -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-brand">
-          <h3 class="footer-logo">Алексей Викулов</h3>
-          <p class="footer-tagline">Backend-репетитор: Python, Golang, ЕГЭ</p>
-        </div>
-        
-        <div class="footer-column">
-          <h4>Разделы</h4>
-          <ul class="footer-links">
-            <li><a href="#about">Обо мне</a></li>
-            <li><a href="#courses">Курсы</a></li>
-            <li><a href="#learning">Обучение</a></li>
-            <li><a href="#prices">Цены</a></li>
-          </ul>
-        </div>
-        
-        <div class="footer-column">
-          <h4>Контакты</h4>
-          <div class="footer-contact">
-            <p>+7 918 345-51-43</p>
-            <p>vikulov2811@gmail.com</p>
-          </div>
-          <div class="social-icons">
-            <a href="https://t.me/AVick23" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Telegram">
-              <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
-              </svg>
-            </a>
-            <a href="https://wa.me/79183455143" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="WhatsApp">
-              <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-              </svg>
-            </a>
-            <a href="mailto:vikulov2811@gmail.com" class="social-icon" aria-label="Email">
-              <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                <polyline points="22,6 12,13 2,6"></polyline>
-              </svg>
-            </a>
-          </div>
-        </div>
-      </div>
-      
-      <div class="footer-bottom">
-        <p>© 2023-2025 Алексей Викулов. Все права защищены.</p>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Мобильный переключатель темы -->
-  <button class="theme-toggle theme-toggle-mobile" id="themeToggleMobile" aria-label="Toggle theme">
-    <svg class="icon sun-icon-mobile" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <circle cx="12" cy="12" r="5"></circle>
-      <line x1="12" y1="1" x2="12" y2="3"></line>
-      <line x1="12" y1="21" x2="12" y2="23"></line>
-      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-      <line x1="1" y1="12" x2="3" y2="12"></line>
-      <line x1="21" y1="12" x2="23" y2="12"></line>
-      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-    </svg>
-    <svg class="icon moon-icon-mobile" style="display:none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-    </svg>
-  </button>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Элементы
-      const navbar = document.getElementById('navbar');
-      const navbarToggle = document.getElementById('navbarToggle');
-      const navbarMenu = document.getElementById('navbarMenu');
-      const themeToggle = document.getElementById('themeToggle');
-      const themeToggleMobile = document.getElementById('themeToggleMobile');
-      const menuIcon = navbarToggle.querySelector('.menu-icon');
-      const closeIcon = navbarToggle.querySelector('.close-icon');
-      const sunIcon = themeToggle.querySelector('.sun-icon');
-      const moonIcon = themeToggle.querySelector('.moon-icon');
-      const sunIconMobile = themeToggleMobile.querySelector('.sun-icon-mobile');
-      const moonIconMobile = themeToggleMobile.querySelector('.moon-icon-mobile');
-
-      // Инициализация темы
-      let currentTheme = localStorage.getItem('theme') || 'dark';
-      document.documentElement.setAttribute('data-theme', currentTheme);
-      updateThemeIcons(currentTheme);
-
-      // Переключатель темы
-      function toggleTheme() {
-        currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        document.documentElement.setAttribute('data-theme', currentTheme);
-        localStorage.setItem('theme', currentTheme);
-        updateThemeIcons(currentTheme);
-      }
-
-      function updateThemeIcons(theme) {
-        const isDark = theme === 'dark';
-        sunIcon.style.display = isDark ? 'block' : 'none';
-        moonIcon.style.display = isDark ? 'none' : 'block';
-        sunIconMobile.style.display = isDark ? 'block' : 'none';
-        moonIconMobile.style.display = isDark ? 'none' : 'block';
-      }
-
-      themeToggle.addEventListener('click', toggleTheme);
-      themeToggleMobile.addEventListener('click', toggleTheme);
-
-      // Мобильное меню
-      navbarToggle.addEventListener('click', function() {
-        navbarMenu.classList.toggle('active');
-        const isActive = navbarMenu.classList.contains('active');
-        menuIcon.style.display = isActive ? 'none' : 'block';
-        closeIcon.style.display = isActive ? 'block' : 'none';
-      });
-
-      // Закрытие меню при клике на ссылку
-      document.querySelectorAll('.navbar-links .nav-link').forEach(function(link) {
-        link.addEventListener('click', function() {
-          navbarMenu.classList.remove('active');
-          menuIcon.style.display = 'block';
-          closeIcon.style.display = 'none';
-        });
-      });
-
-      // Скролл навигации
-      window.addEventListener('scroll', function() {
-        if (window.scrollY > 50) {
-          navbar.classList.add('scrolled');
-        } else {
-          navbar.classList.remove('scrolled');
-        }
-      });
-
-      // Анимация статистики
-      const statValues = document.querySelectorAll('.stat-value');
-      let animated = false;
-
-      function animateStats() {
-        if (animated) return;
-        animated = true;
-
-        statValues.forEach(function(stat) {
-          const value = parseInt(stat.getAttribute('data-value'));
-          const suffix = stat.getAttribute('data-suffix') || '';
-          let current = 0;
-          const duration = 1500;
-          const increment = value / (duration / 16);
-
-          function updateValue() {
-            current += increment;
-            if (current >= value) {
-              current = value;
-              stat.textContent = value + suffix;
-            } else {
-              stat.textContent = Math.floor(current) + suffix;
-              requestAnimationFrame(updateValue);
-            }
-          }
-
-          updateValue();
-        });
-      }
-
-      // Intersection Observer для анимации
-      const statsSection = document.querySelector('.hero-stats');
-      if (statsSection) {
-        const observer = new IntersectionObserver(function(entries) {
-          entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-              animateStats();
-              observer.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.5 });
-
-        observer.observe(statsSection);
-      }
-
-      // Плавная прокрутка
-      document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
-        anchor.addEventListener('click', function(e) {
-          const href = this.getAttribute('href');
-          if (href !== '#') {
-            e.preventDefault();
-            const target = document.querySelector(href);
-            if (target) {
-              target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-              });
-            }
-          }
-        });
-      });
-    });
-  </script>
+    <script src="script.js"></script>
 </body>
 </html>
